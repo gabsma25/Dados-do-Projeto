@@ -5,9 +5,12 @@
 Lê os parquets de saida/etapas/ e roda ~30 checks:
   - selecionado (02a)  : tipagem, chave única, taxas em [0,100], sem '--'
   - longitudinal (02b) : LAG/DELTA/T1 coerentes escola a escola, ANO_ALVO
-  - censo (03)         : 17 features binárias, cobertura por ano
+  - censo (03)         : 18 features binárias, sem "zeros estruturais"
   - base final (04)    : cobertura no universo tx_rend, chaves únicas
-  - base_atual.parquet : idêntica ao 04
+  - índices (05)       : 04 + 6 colunas (a validação detalhada está em
+                         testes/02_validar_indices.py)
+  - base_atual.parquet : idêntica ao 05
+  - 01 bruto x 02b     : mesmas escolas em cada ano (seção 14)
 
 Saída:
     gustavo/saida/relatorios/validacao_base.txt
@@ -51,6 +54,9 @@ P_SEL = SAIDA_ETAPAS / "02a_tx_rend_selecionado.parquet"
 P_LONG = SAIDA_ETAPAS / "02b_tx_rend_longitudinal.parquet"
 P_CENSO = SAIDA_ETAPAS / "03_censo_features.parquet"
 P_FINAL = SAIDA_ETAPAS / "04_base_com_censo.parquet"
+P_IND = SAIDA_ETAPAS / "05_base_com_indices.parquet"
+P_FONTES = SAIDA_REL / "fontes_features_censo.csv"
+P_BRUTO = SAIDA_ETAPAS / "01_tx_rend_bruto.parquet"
 P_ATUAL = GUSTAVO / "saida" / "base_atual.parquet"
 
 REPORT = SAIDA_REL / "validacao_base.txt"
@@ -105,6 +111,8 @@ paths_obrigatorios = {
     "02b longitudinal": P_LONG,
     "03 censo": P_CENSO,
     "04 base final": P_FINAL,
+    "05 base com índices": P_IND,
+    "fontes do censo": P_FONTES,
     "base_atual": P_ATUAL,
 }
 for nome, p in paths_obrigatorios.items():
@@ -116,12 +124,15 @@ sel = pd.read_parquet(P_SEL)
 lon = pd.read_parquet(P_LONG)
 censo = pd.read_parquet(P_CENSO)
 base = pd.read_parquet(P_FINAL)
+ind = pd.read_parquet(P_IND)
+fontes = pd.read_csv(P_FONTES, dtype={'coluna_usada': 'string'}).fillna({'coluna_usada': ''})
 atual = pd.read_parquet(P_ATUAL)
 
 ok(f"02a selecionado:    {sel.shape[0]:>7,} × {sel.shape[1]:>3}")
 ok(f"02b longitudinal:   {lon.shape[0]:>7,} × {lon.shape[1]:>3}")
 ok(f"03 censo features:  {censo.shape[0]:>7,} × {censo.shape[1]:>3}")
 ok(f"04 base final:      {base.shape[0]:>7,} × {base.shape[1]:>3}")
+ok(f"05 com índices:     {ind.shape[0]:>7,} × {ind.shape[1]:>3}")
 ok(f"base_atual:         {atual.shape[0]:>7,} × {atual.shape[1]:>3}")
 
 anos = sorted(base["ANO"].dropna().unique().tolist())
@@ -156,6 +167,17 @@ if not nao_float:
 else:
     fail(f"taxas não-Float64: {nao_float}")
 
+
+for nome_est, df_est in [("02b", lon), ("03", censo), ("04", base), ("05", ind)]:
+    if str(df_est["CO_ENTIDADE"].dtype) == "string" and str(df_est["ANO"].dtype) in ("Int16", "int16"):
+        ok(f"{nome_est}: CO_ENTIDADE string e ANO inteiro 16 bits")
+    else:
+        fail(f"{nome_est}: CO_ENTIDADE={df_est['CO_ENTIDADE'].dtype}, ANO={df_est['ANO'].dtype}")
+v18 = [c for c in base.columns if c.startswith(("IIB_", "IDA_", "IDP_", "IEP_"))]
+if all(str(base[c].dtype) == "Int8" for c in v18) and str(base["INFRA_FONTE_ARTIGO"].dtype) == "Int8":
+    ok("04: 18 variáveis do Censo e INFRA_FONTE_ARTIGO são Int8 nullable")
+else:
+    fail("04: variáveis do Censo fora do tipo Int8")
 
 # ==================================================================
 # 2. Chave composta única
@@ -315,52 +337,126 @@ else:
 
 
 # ==================================================================
-# 11. Features do Censo — binárias
+# 11. Features do Censo — 18 variáveis binárias
 # ==================================================================
-secao("11. CENSO — BINÁRIAS")
+secao("11. CENSO — 18 VARIÁVEIS BINÁRIAS")
 
 vars_censo = [c for c in base.columns
               if c.startswith(("IIB_", "IDA_", "IDP_", "IEP_"))]
+if len(vars_censo) == 18:
+    ok("18 variáveis do artigo presentes (inclui IDP_patio_descoberto)")
+else:
+    fail(f"esperava 18 variáveis do artigo, achei {len(vars_censo)}")
+nao_bin = []
 for c in vars_censo:
     uniq = set(base[c].dropna().unique().tolist())
-    if uniq <= {0.0, 1.0}:
-        continue
-    fail(f"{c}: valores fora de {{0, 1}}: {sorted(uniq)[:5]}")
+    if not uniq <= {0.0, 1.0}:
+        nao_bin.append((c, sorted(uniq)[:5]))
+if nao_bin:
+    fail(f"valores fora de {{0, 1}}: {nao_bin}")
 else:
-    ok(f"{len(vars_censo)} features do Censo são binárias (0/1)")
+    ok(f"{len(vars_censo)} variáveis do Censo são binárias (0/1)")
 
+fa = base.groupby("ANO")["INFRA_FONTE_ARTIGO"].nunique()
+if (fa == 1).all() and set(base["INFRA_FONTE_ARTIGO"].dropna().unique()) <= {0, 1}:
+    ok("INFRA_FONTE_ARTIGO é 0/1 e constante dentro de cada ano")
+else:
+    fail("INFRA_FONTE_ARTIGO inconsistente")
 
 # ==================================================================
-# 12. Cobertura do Censo no universo tx_rend
+# 12. Cobertura e "zeros estruturais" (coluna não coletada != 0)
 # ==================================================================
-secao("12. COBERTURA DO CENSO NA BASE FINAL")
+secao("12. CENSO — AUSÊNCIA REAL x ZERO ESTRUTURAL")
 
-cob_por_ano = []
+aus_esp = (fontes[fontes["coluna_usada"] == ""]
+           .groupby("ano")["variavel"].apply(set).to_dict())
+prob_aus, prob_zero = [], []
 for ano in sorted(base["ANO"].unique()):
     sub = base[base["ANO"] == ano]
+    todo_nan = {c for c in vars_censo if sub[c].isna().all()}
+    esperado = aus_esp.get(int(ano), set())
+    if todo_nan != esperado:
+        prob_aus.append((int(ano), sorted(todo_nan ^ esperado)))
+    for c in vars_censo:
+        if c in esperado:
+            continue
+        v = sub[c].dropna()
+        if len(v) >= 30 and (v == 0).all():
+            prob_zero.append((int(ano), c))
     cob = sub[vars_censo].notna().mean().mean() * 100
-    cob_por_ano.append((ano, len(sub), round(cob, 1)))
-    info(f"{ano}: n={len(sub):>4}, cobertura={cob:.1f}%")
-
-anos_ok = [a for a, _, c in cob_por_ano if c > 99]
-anos_ruim = [a for a, _, c in cob_por_ano if c < 50]
-if len(anos_ok) >= 18:
-    ok(f"{len(anos_ok)}/19 anos com cobertura >99%")
-if anos_ruim == [2007]:
-    ok("só 2007 tem cobertura baixa (lacuna real do INEP)")
-elif anos_ruim:
-    warn(f"anos com cobertura <50%: {anos_ruim}")
-
-
-# ==================================================================
-# 13. base_atual idêntica ao 04
-# ==================================================================
-secao("13. base_atual = 04_base_com_censo")
-
-if base.equals(atual):
-    ok("base_atual.parquet é idêntico ao 04_base_com_censo.parquet")
+    info(f"{int(ano)}: n={len(sub):>4}, ausentes={len(esperado)}, cobertura={cob:.1f}%")
+if prob_aus:
+    fail(f"variáveis todo-NaN diferem do esperado (fontes): {prob_aus[:5]}")
 else:
-    fail("base_atual e 04 divergem")
+    ok("variáveis ausentes por ano batem com fontes_features_censo.csv")
+if prob_zero:
+    fail(f"variável 'coletada' vem toda zero (zero estrutural): {prob_zero[:6]}")
+else:
+    ok("nenhuma variável coletada vem toda zero em algum ano")
+cob_2012 = base[base["ANO"].between(2012, 2021)][vars_censo].notna().mean().mean() * 100
+if cob_2012 > 99:
+    ok(f"2012-2021: cobertura das 18 = {cob_2012:.1f}%")
+else:
+    warn(f"2012-2021: cobertura das 18 = {cob_2012:.1f}%")
+
+
+# ==================================================================
+# 13. base_atual idêntica ao 05 e 05 preserva o 04
+# ==================================================================
+secao("13. base_atual = 05 e 05 preserva 04")
+
+if ind.equals(atual):
+    ok("base_atual.parquet é idêntico ao 05_base_com_indices.parquet")
+else:
+    fail("base_atual e 05 divergem")
+if ind[list(base.columns)].equals(base):
+    ok("05 contém todas as colunas do 04 sem alteração")
+else:
+    fail("05 alterou colunas do 04")
+esperado_05 = 11 if "IIE_prop" in ind.columns else 6   # 5 zano + marcador (+5 prop com --com-prop)
+if ind.shape[1] - base.shape[1] == esperado_05:
+    ok(f"05 acrescenta exatamente {esperado_05} colunas ao 04")
+else:
+    fail(f"05 acrescenta {ind.shape[1] - base.shape[1]} colunas (esperado {esperado_05})")
+
+
+# ==================================================================
+# 14. 01 bruto x 02b — mesmas escolas, ano a ano (pendência do relatório 03)
+# ==================================================================
+secao("14. 01 BRUTO x 02b — CONJUNTO DE ESCOLAS POR ANO")
+
+if not P_BRUTO.exists():
+    warn("01_tx_rend_bruto.parquet ausente — seção pulada")
+else:
+    b01 = pd.read_parquet(P_BRUTO, columns=["ANO", "Ano", "CO_ENTIDADE", "Código da Escola"])
+    ano01 = b01["ANO"].fillna(b01["Ano"])
+    ent01 = b01["CO_ENTIDADE"].fillna(b01["Código da Escola"])
+    if ano01.isna().sum() == 0 and ent01.isna().sum() == 0:
+        ok("01: ano e código da escola preenchidos em todas as linhas (3 layouts do INEP)")
+    else:
+        fail(f"01: {int(ano01.isna().sum())} anos e {int(ent01.isna().sum())} códigos nulos")
+    conf = (((b01["ANO"].notna() & b01["Ano"].notna()) & (b01["ANO"] != b01["Ano"])).sum()
+            + ((b01["CO_ENTIDADE"].notna() & b01["Código da Escola"].notna())
+               & (b01["CO_ENTIDADE"] != b01["Código da Escola"])).sum())
+    if conf == 0:
+        ok("01: colunas harmonizadas e originais nunca se contradizem")
+    else:
+        fail(f"01: {int(conf)} linhas com ano/código contraditórios")
+    k01 = pd.DataFrame({"ANO": ano01.astype("Int64"), "E": ent01.astype("Int64").astype(str)})
+    if len(k01) == len(lon) and k01.duplicated().sum() == 0:
+        ok(f"01: {len(k01):,} linhas, chave (ano, escola) única, mesmo total do 02b")
+    else:
+        fail(f"01: {len(k01)} linhas / {int(k01.duplicated().sum())} duplicadas (02b tem {len(lon)})")
+    difer = []
+    for ano_i, g in k01.groupby("ANO"):
+        s1 = set(g["E"])
+        s2 = set(lon.loc[lon["ANO"].astype(int) == int(ano_i), "CO_ENTIDADE"].astype(str))
+        if s1 != s2:
+            difer.append((int(ano_i), len(s1 ^ s2)))
+    if not difer:
+        ok("01 e 02b têm exatamente as mesmas escolas em cada um dos 19 anos")
+    else:
+        fail(f"conjuntos de escolas diferem (ano, nº de escolas divergentes): {difer}")
 
 
 # ==================================================================

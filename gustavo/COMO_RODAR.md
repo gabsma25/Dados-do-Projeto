@@ -11,14 +11,15 @@ Tudo é rodado da pasta `gustavo/`. Os scripts funcionam de qualquer CWD
 python programas/99_pipeline.py
 ```
 
-Roda os 4 scripts em ordem:
+Roda os 5 scripts em ordem:
 
 1. `01_tx_rend_bruto.py`                    → `etapas/01_tx_rend_bruto.parquet`
 2. `02_tx_rend_selecionado_longitudinal.py` → `etapas/02a_*.parquet` e `etapas/02b_*.parquet`
 3. `03_censo_features.py`                   → `etapas/03_censo_features.parquet`
-4. `04_merge_features.py`                   → `etapas/04_base_com_censo.parquet` + `base_atual.parquet`
+4. `04_merge_features.py`                   → `etapas/04_base_com_censo.parquet`
+5. `05_indices_infra.py`                    → `etapas/05_base_com_indices.parquet` + `base_atual.parquet`
 
-**Tempo:** ~8 s com cache quente. ~10 min do zero (primeira vez, ou após
+**Tempo:** ~17 s com cache quente. ~10 min do zero (primeira vez, ou após
 apagar cache).
 
 **Flags:**
@@ -26,6 +27,8 @@ apagar cache).
 ```bash
 # Ignorar todo o cache (reprocessa dos zips originais)
 python programas/99_pipeline.py --force
+# (o 03 passou a gravar também {ano}_nacional.json no cache; cache antigo sem
+#  o .json é reprocessado automaticamente)
 
 # Começar de uma etapa específica (útil quando 01 e 02 já estão ok)
 python programas/99_pipeline.py --from 03
@@ -51,22 +54,28 @@ python programas/01_tx_rend_bruto.py --force-year 2010
 python programas/03_censo_features.py --force
 ```
 
-### Etapas 02 e 04 (não aceitam flag)
+### Etapas 02, 04 e 05 (não aceitam flag)
 
 ```bash
 # 02 — lê cache quente de 01, sempre regenera 02a e 02b (rápido: ~3 s)
 python programas/02_tx_rend_selecionado_longitudinal.py
 
-# 04 — lê 02b + 03, sempre regenera 04 e base_atual (rápido: ~1 s)
+# 04 — lê 02b + 03, sempre regenera o 04 (rápido: ~2 s)
 python programas/04_merge_features.py
+
+# 05 — lê o 04, gera as 4 dimensões z + IIE + marcador e atualiza base_atual (rápido: ~3 s)
+python programas/05_indices_infra.py
+
+# 05 — opcional: acrescenta também DIM_*_prop e IIE_prop (fora do padrão)
+python programas/05_indices_infra.py --com-prop
 ```
 
 **Por que 02 e 04 não têm `--force`:**
 
 - **02** — só trabalha em cima do cache, que já é o produto final do 01.
   Não existe "versão antiga" do 02 para descartar; regenerar é sempre barato.
-- **04** — só faz merge; não tem cache próprio. Se 02b ou 03 estiverem
-  desatualizados, o 04 vai refletir isso. Para forçar, refaça 02b e/ou 03 antes.
+- **04** e **05** — só fazem merge/contas; não têm cache próprio. Se 02b ou 03
+  estiverem desatualizados, refletem isso. Para forçar, refaça 02b e/ou 03 antes.
 
 **Quando o 02 não acha o cache do 01:** ele para com erro claro
 ("cache não encontrado"). Rode o 01 antes.
@@ -76,12 +85,36 @@ python programas/04_merge_features.py
 ## Testes
 
 ```bash
-# Validar a base final (29 checks)
+# Integridade da base, todos os estágios (45 checks)
 python testes/01_validar_base.py
+
+# Índices (05): recalcula tudo de forma independente e testa vazamento (41 checks; 44 com --com-prop)
+python testes/02_validar_indices.py
+
+# Auditoria do parquet PÓS-04: tipos, ausências, zeros estruturais, recomputo
+# da regra, comparação com o CSV original do INEP, antes x depois (35 checks com --completo)
+python testes/03_validar_censo_pos04.py          # --sem-bruto pula a leitura do CSV do INEP
+python testes/03_validar_censo_pos04.py --completo # confere também os zips 2007-2018 (mais lento)
 ```
 
-Saída em `saida/relatorios/validacao_base.txt`. Se algum check falhar,
+Saídas em `saida/relatorios/validacao_base.txt`, `validacao_indices.txt` e `validacao_pos04.txt`. Se algum check falhar,
 o relatório aponta qual.
+
+---
+
+## Análises de decisão (não são testes)
+
+```bash
+# Como tratar IDA/IDP/IIE em 2007-2011 (lê saida/base_atual.parquet, ~10 s)
+python analises/02_preenchimento_2007_2011.py
+
+# Escolha do método de normalização (HISTÓRICA: lê o instantâneo de 3 métodos em
+# saida/_backup_2026-10-14/05_base_com_indices_3metodos.parquet, ~15 s)
+python analises/01_escolha_metodo_infra.py
+```
+
+Saídas: `saida/relatorios/preenchimento_2007_2011.txt`, `escolha_metodo_infra.txt` e
+`escolha_metodo_infra_metricas.csv`. Nenhuma usa o desfecho como critério (regra 3).
 
 ---
 

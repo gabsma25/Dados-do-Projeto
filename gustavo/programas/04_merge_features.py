@@ -3,17 +3,19 @@
 04 — Junta o LONGITUDINAL (02b) com as FEATURES do CENSO (03).
 
 Entrada:  gustavo/saida/etapas/02b_tx_rend_longitudinal.parquet  (30 col)
-          gustavo/saida/etapas/03_censo_features.parquet         (19 col)
-Saída:    gustavo/saida/etapas/04_base_com_censo.parquet
-          gustavo/saida/base_atual.parquet            (cópia)
+          gustavo/saida/etapas/03_censo_features.parquet         (21 col: 18 variáveis
+                                                                  + INFRA_FONTE_ARTIGO + chaves)
+Saída:    gustavo/saida/etapas/04_base_com_censo.parquet         (12.597 × 49)
 Relatório: gustavo/saida/relatorios/merge_features.txt
+
+O base_atual.parquet NÃO é mais escrito aqui: a última etapa do pipeline (05,
+índices de infraestrutura) é quem o atualiza.
 
 Merge: LEFT a partir do longitudinal (todas as escolas com tx_rend mantidas,
 NaN onde o Censo não cobriu). Chave: (ANO, CO_ENTIDADE).
 
 Uso:  python programas/04_merge_features.py
 """
-import shutil
 import sys
 from pathlib import Path
 
@@ -44,7 +46,6 @@ if BASE_PROJETO is None:
 GUSTAVO = Path(__file__).resolve().parent.parent
 SAIDA_ETAPAS = GUSTAVO / "saida" / "etapas"
 SAIDA_REL = GUSTAVO / "saida" / "relatorios"
-SAIDA_BASE = GUSTAVO / "saida" / "base_atual.parquet"
 
 IN_LONG = SAIDA_ETAPAS / "02b_tx_rend_longitudinal.parquet"
 IN_CENSO = SAIDA_ETAPAS / "03_censo_features.parquet"
@@ -74,7 +75,7 @@ def main():
 
     # Normaliza chaves para string
     for df in (lon, censo):
-        df["CO_ENTIDADE"] = df["CO_ENTIDADE"].astype(str).str.strip()
+        df["CO_ENTIDADE"] = df["CO_ENTIDADE"].astype(str).str.strip().astype("string")
 
     # Merge
     antes = len(lon)
@@ -85,6 +86,7 @@ def main():
     # Cobertura das features do Censo
     vars_mussato = [c for c in base.columns
                     if c.startswith(("IIB_", "IDA_", "IDP_", "IEP_"))]
+    assert len(vars_mussato) == 18, f"esperava 18 variáveis, achei {len(vars_mussato)}"
     print(f"\nCobertura das {len(vars_mussato)} features do Censo:")
     linhas = [
         "MERGE — 02b + 03",
@@ -105,9 +107,6 @@ def main():
     # Salva
     base.to_parquet(OUT, index=False)
     print(f"\n>>> {OUT}")
-
-    shutil.copy2(OUT, SAIDA_BASE)
-    print(f">>> {SAIDA_BASE} (cópia)")
 
     OUT_REL.write_text("\n".join(linhas), encoding="utf-8")
     print(f">>> Relatório: {OUT_REL}")

@@ -1,0 +1,60 @@
+ÍNDICES DE INFRAESTRUTURA — 05
+======================================================================
+Base: 12597 × 64 (15 colunas novas)
+
+Referência 2019: 152 escolas (artigo: 165; recorte aproximado)
+Parâmetros z fixos (soma bruta):
+  dim     n    media      dp
+  IIB   152    2.730   1.381
+  IDA   152    3.401   1.659
+  IDP   152    2.243   1.594
+  IEP   152    2.454   1.459
+
+PCA das 4 dimensões (2019, correlação):
+  autovalores:        3.049  0.403  0.334  0.215
+  variância explicada: 76.2%  10.1%  8.3%  5.4%
+  Kaiser (autovalor PC1 > 1): sim   PC1 > 60% da variância: sim
+  pesos PC1:           IIB=0.496  IDA=0.509  IDP=0.519  IEP=0.475
+
+Cobertura (% de escolas com valor) por ano:
+  ano     n     IIE_prop     IIE_zano   IIE_zref19
+ 2007   718         0.0%         0.0%         0.0%
+ 2008   624         0.0%         0.0%         0.0%
+ 2009   596         0.0%         0.0%         0.0%
+ 2010   632         0.0%         0.0%         0.0%
+ 2011   618         0.0%         0.0%         0.0%
+ 2012   641       100.0%       100.0%       100.0%
+ 2013   666       100.0%       100.0%       100.0%
+ 2014   670       100.0%       100.0%       100.0%
+ 2015   669       100.0%       100.0%       100.0%
+ 2016   677       100.0%       100.0%       100.0%
+ 2017   679       100.0%       100.0%       100.0%
+ 2018   674       100.0%       100.0%       100.0%
+ 2019   667       100.0%       100.0%       100.0%
+ 2020   662       100.0%       100.0%       100.0%
+ 2021   650       100.0%       100.0%       100.0%
+ 2022   682       100.0%       100.0%       100.0%
+ 2023   689       100.0%       100.0%       100.0%
+ 2024   696       100.0%       100.0%       100.0%
+ 2025   687       100.0%       100.0%       100.0%
+
+z por ano — média e desvio das somas brutas (IIB / IDA / IDP / IEP):
+  2007: IIB dp=1.41 | IDA -- | IDP -- | IEP dp=1.41
+  2008: IIB dp=1.43 | IDA -- | IDP -- | IEP dp=1.51
+  2009: IIB dp=1.42 | IDA -- | IDP -- | IEP dp=1.59
+  2010: IIB dp=1.52 | IDA -- | IDP -- | IEP dp=1.62
+  2011: IIB dp=1.53 | IDA -- | IDP -- | IEP dp=1.62
+  2012: IIB dp=1.58 | IDA dp=1.89 | IDP dp=1.59 | IEP dp=1.62
+  2013: IIB dp=1.56 | IDA dp=1.98 | IDP dp=1.59 | IEP dp=1.67
+  2014: IIB dp=1.58 | IDA dp=2.00 | IDP dp=1.62 | IEP dp=1.72
+  2015: IIB dp=1.55 | IDA dp=2.03 | IDP dp=1.64 | IEP dp=1.68
+  2016: IIB dp=1.56 | IDA dp=2.03 | IDP dp=1.64 | IEP dp=1.68
+  2017: IIB dp=1.57 | IDA dp=2.05 | IDP dp=1.64 | IEP dp=1.66
+  2018: IIB dp=1.58 | IDA dp=2.04 | IDP dp=1.64 | IEP dp=1.68
+  2019: IIB dp=1.56 | IDA dp=2.04 | IDP dp=1.61 | IEP dp=1.66
+  2020: IIB dp=1.59 | IDA dp=2.05 | IDP dp=1.62 | IEP dp=1.67
+  2021: IIB dp=1.56 | IDA dp=2.03 | IDP dp=1.61 | IEP dp=1.65
+  2022: IIB dp=1.58 | IDA dp=2.02 | IDP dp=1.58 | IEP dp=1.63
+  2023: IIB dp=1.52 | IDA dp=1.99 | IDP dp=1.51 | IEP dp=1.60
+  2024: IIB dp=1.47 | IDA dp=1.97 | IDP dp=1.49 | IEP dp=1.59
+  2025: IIB dp=1.34 | IDA dp=1.97 | IDP dp=1.48 | IEP dp=1.56

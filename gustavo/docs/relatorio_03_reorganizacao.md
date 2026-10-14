@@ -6,6 +6,8 @@
 **Escopo:** reorganização completa da pasta `gustavo/` em pipeline sequencial, correção dos pontos deixados em aberto nos relatórios 01 e 02, e consolidação final da base pronta para o modelo.
 **Documentos anteriores:** `relatorio_01_diagnostico_e_bruto.md`, `relatorio_02_selecao_e_longitudinal.md`
 
+> **Nota (14/10/2026):** a base descrita aqui (17 variáveis do Censo, 29 checks) foi corrigida e estendida depois. Ver `relatorio_04_dezoito_variaveis_e_indices.md` (correção do Censo, 18 variáveis) e `relatorio_05_fechamento_18_variaveis_2026-10-14.md` (índices finais). Os itens 'em aberto' do §7.2 estão resolvidos nesses relatórios.
+
 ---
 
 ## 0. Sumário executivo

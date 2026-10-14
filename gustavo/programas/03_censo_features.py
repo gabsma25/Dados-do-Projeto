@@ -1,29 +1,43 @@
 # -*- coding: utf-8 -*-
 """
-03 — Extrai as 17 features de infraestrutura do Censo Escolar (Almeida &
+03 — Extrai as 18 features de infraestrutura do Censo Escolar (Almeida &
 Mussato, 2023) para RR, 2007-2025.
 
 Entrada:  abandono-escolar/dados/{bruto,origem}/censo/
 Saída:    gustavo/saida/etapas/03_censo_features.parquet
-Cache:    gustavo/cache/censo/{ano}.parquet
-Relatório: gustavo/saida/relatorios/diagnostico_features_censo.txt
+Cache:    gustavo/cache/censo/{ano}.parquet       (linhas de RR, colunas cruas)
+          gustavo/cache/censo/{ano}_nacional.json (estatística nacional por coluna)
+Relatórios: gustavo/saida/relatorios/diagnostico_features_censo.txt
+            gustavo/saida/relatorios/fontes_features_censo.csv
 
-Coalesce dinâmico: se uma variável tem 2 candidatas (ex: IN_BANHEIRO_DENTRO_PREDIO
-e IN_BANHEIRO), pega o primeiro valor não-nulo por linha/ano.
+REGRA DE FONTE (corrigida em 14/10/2026)
+----------------------------------------
+Cada variável tem uma lista de colunas candidatas: a PRIMEIRA é a do artigo
+(Quadro 3); as demais são substitutas para anos em que a do artigo não existia
+no questionário. O INEP mantém muitas colunas no layout mesmo quando a pergunta
+não foi feita (tudo 0), então "a coluna existe" NÃO significa "foi coletada".
+Para cada (variável, ano) usamos a primeira candidata COLETADA naquele ano, onde
+coletada = pelo menos uma escola do BRASIL com valor 1 naquela coluna/ano.
+Se nenhuma candidata foi coletada, o valor é NA (nunca 0).
 
-Nota: 2007 tem 4 features 100% vazias no Brasil inteiro (lacuna real do
-INEP): IDA_despensa, IDA_secretaria, IDA_refeitorio, IDP_patio_coberto.
+Tipagem (regra 6 do CLAUDE.md): CO_ENTIDADE `string`, ANO `Int16`, as 18
+variáveis e INFRA_FONTE_ARTIGO `Int8` nullable.
+
+A coluna INFRA_FONTE_ARTIGO vale 1 no ano em que as 18 variáveis vieram das
+colunas do próprio artigo; 0 quando alguma usou substituta ou ficou ausente.
+A matriz variável × ano com a coluna usada fica em fontes_features_censo.csv.
 
 Uso:  python programas/03_censo_features.py [--force]
 """
 import argparse
 import io
+import json
 import re
 import warnings
 import zipfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 warnings.filterwarnings("ignore")
@@ -64,6 +78,7 @@ CACHE.mkdir(parents=True, exist_ok=True)
 
 OUT = SAIDA_ETAPAS / "03_censo_features.parquet"
 OUT_REL = SAIDA_REL / "diagnostico_features_censo.txt"
+OUT_FONTES = SAIDA_REL / "fontes_features_censo.csv"
 
 ANO_MINIMO = 2007
 CHUNKSIZE = 500_000
@@ -72,27 +87,26 @@ COL_UF_CANDIDATOS = ("SG_UF", "UF", "SG_UF_ESCOLA")
 CO_UF_CANDIDATOS = ("CO_UF", "COD_UF", "CODIGO_UF", "CO_UF_ESCOLA")
 COL_ID_CANDIDATOS = ("CO_ENTIDADE", "COD_ESCOLA", "CO_ESCOLA")
 
-# 17 features do Almeida & Mussato (valor = lista de candidatas, em ordem)
+# 18 variáveis do Almeida & Mussato (Quadro 3). Lista = candidatas em ordem de
+# prioridade: [coluna do artigo, substitutas para anos antigos].
 VARIAVEIS = {
-    "IIB_agua_potavel":     ["IN_AGUA_FILTRADA", "IN_AGUA_POTAVEL"],
+    "IIB_agua_potavel":     ["IN_AGUA_POTAVEL", "IN_AGUA_FILTRADA"],
     "IIB_energia_rede":     ["IN_ENERGIA_REDE_PUBLICA"],
     "IIB_coleta_lixo":      ["IN_LIXO_SERVICO_COLETA"],
-    "IIB_banheiro":         ["IN_BANHEIRO_DENTRO_PREDIO", "IN_BANHEIRO"],
+    "IIB_banheiro":         ["IN_BANHEIRO", "IN_BANHEIRO_DENTRO_PREDIO"],
     "IDA_despensa":         ["IN_DESPENSA"],
     "IDA_refeitorio":       ["IN_REFEITORIO"],
     "IDA_sala_diretoria":   ["IN_SALA_DIRETORIA"],
     "IDA_sala_professor":   ["IN_SALA_PROFESSOR"],
     "IDA_secretaria":       ["IN_SECRETARIA"],
-    "IDP_biblioteca":       ["IN_BIBLIOTECA_SALA_LEITURA", "IN_BIBLIOTECA"],
+    "IDP_biblioteca":       ["IN_BIBLIOTECA", "IN_BIBLIOTECA_SALA_LEITURA"],
     "IDP_lab_informatica":  ["IN_LABORATORIO_INFORMATICA"],
     "IDP_patio_coberto":    ["IN_PATIO_COBERTO"],
+    "IDP_patio_descoberto": ["IN_PATIO_DESCOBERTO"],
     "IDP_quadra_esportes":  ["IN_QUADRA_ESPORTES"],
     "IEP_computador":       ["IN_COMPUTADOR"],
     "IEP_impressora":       ["IN_EQUIP_IMPRESSORA"],
-    "IEP_projetor":         ["IN_EQUIP_RETROPROJETOR",
-                             "IN_EQUIP_MULTIMIDIA",
-                             "IN_MATERIAL_PED_MULTIMIDIA",
-                             "IN_EQUIP_DATA_SHOW"],
+    "IEP_projetor":         ["IN_EQUIP_MULTIMIDIA", "IN_EQUIP_RETROPROJETOR"],
     "IEP_internet":         ["IN_INTERNET"],
 }
 
@@ -187,87 +201,106 @@ def detectar_coluna_id(cols):
 
 
 # ------------------------------------------------------------------
-# Processar 1 ano
+# Processar 1 ano  -> cache cru (RR) + estatística nacional por coluna
 # ------------------------------------------------------------------
+CANDIDATAS = sorted({c for lista in VARIAVEIS.values() for c in lista})
+
+
 def processar_ano(ano, arquivo, tipo, force=False):
     cache_path = CACHE / f"{ano}.parquet"
-    if not force and cache_path.exists():
+    stats_path = CACHE / f"{ano}_nacional.json"
+    if not force and cache_path.exists() and stats_path.exists():
         try:
-            return ano, pd.read_parquet(cache_path), f"[cache] {ano}"
+            cru = pd.read_parquet(cache_path)
+            stats = json.loads(stats_path.read_text(encoding="utf-8"))
+            return ano, cru, stats, f"[cache] {ano}"
         except Exception:
             pass
 
     fonte, _ = abrir_fonte(arquivo, tipo)
     cols, sep = ler_cabecalho(fonte)
     if not cols:
-        return ano, None, f"{ano}: cabeçalho ilegível"
-
+        return ano, None, None, f"{ano}: cabeçalho ilegível"
     col_uf, modo_uf = detectar_coluna_uf(cols)
-    if col_uf is None:
-        return ano, None, f"{ano}: sem coluna UF"
-
     col_id = detectar_coluna_id(cols)
-    if col_id is None:
-        return ano, None, f"{ano}: sem coluna de ID"
+    if col_uf is None or col_id is None:
+        return ano, None, None, f"{ano}: sem coluna UF/ID"
 
     cols_up = {c.upper().strip(): c for c in cols}
-    candidatos_por_var = {}
-    todas_candidatas = set()
-    for var, lista in VARIAVEIS.items():
-        existentes = []
-        for cand in lista:
-            if cand.upper() in cols_up:
-                existentes.append(cols_up[cand.upper()])
-        candidatos_por_var[var] = existentes
-        todas_candidatas.update(existentes)
+    presentes = {c: cols_up[c] for c in CANDIDATAS if c in cols_up}
+    if not presentes:
+        return ano, None, None, f"{ano}: nenhuma candidata presente"
 
-    if not todas_candidatas:
-        return ano, None, f"{ano}: nenhuma candidata presente"
-
-    usecols = sorted(todas_candidatas | {col_uf, col_id})
-
+    usecols = sorted(set(presentes.values()) | {col_uf, col_id})
     fonte, _ = abrir_fonte(arquivo, tipo)
+    stats = {"_n_brasil": 0}
+    for c in presentes:
+        stats[c] = {"nao_nulo": 0, "uns": 0}
     partes = []
-    n_total = n_rr = 0
     try:
         for chunk in pd.read_csv(fonte, sep=sep, encoding="latin1",
-                                 usecols=usecols, chunksize=CHUNKSIZE,
+                                 usecols=usecols, chunksize=300_000,
                                  low_memory=False):
-            n_total += len(chunk)
+            stats["_n_brasil"] += len(chunk)
+            for c, real in presentes.items():
+                s = pd.to_numeric(chunk[real], errors="coerce")
+                stats[c]["nao_nulo"] += int(s.notna().sum())
+                stats[c]["uns"] += int((s == 1).sum())
             if modo_uf == "sigla":
                 mask = chunk[col_uf].astype(str).str.upper().str.strip() == "RR"
             else:
                 mask = pd.to_numeric(chunk[col_uf], errors="coerce") == 14
-            chunk = chunk[mask]
-            n_rr += len(chunk)
-            if len(chunk) == 0:
-                continue
-            partes.append(chunk)
+            if mask.any():
+                partes.append(chunk[mask])
     except Exception as e:
-        return ano, None, f"{ano}: falha lendo dados ({e})"
+        return ano, None, None, f"{ano}: falha lendo dados ({e})"
 
     if not partes:
-        return ano, None, f"{ano}: nenhuma linha RR"
+        return ano, None, None, f"{ano}: nenhuma linha RR"
 
     df = pd.concat(partes, ignore_index=True)
+    cru = pd.DataFrame({"ANO": ano,
+                        "CO_ENTIDADE": df[col_id].astype(str).str.strip()})
+    for c, real in presentes.items():
+        cru[c] = pd.to_numeric(df[real], errors="coerce")
+    cru.to_parquet(cache_path, index=False)
+    stats_path.write_text(json.dumps(stats), encoding="utf-8")
+    return ano, cru, stats, f"{ano}: n_RR={len(cru)} n_BR={stats['_n_brasil']}"
 
+
+def escolher_fonte(candidatas, stats):
+    """Primeira candidata coletada no ano (>=1 escola do Brasil com valor 1)."""
+    for cand in candidatas:
+        st = stats.get(cand)
+        if st and st["uns"] > 0:
+            return cand
+    return None
+
+
+def montar_ano(ano, cru, stats):
     out = pd.DataFrame({
-        "ANO": ano,
-        "CO_ENTIDADE": df[col_id].astype(str).str.strip(),
+        "ANO": pd.Series(ano, index=cru.index, dtype="Int16"),
+        "CO_ENTIDADE": cru["CO_ENTIDADE"].astype("string"),
     })
-    for var, existentes in candidatos_por_var.items():
-        if not existentes:
-            out[var] = pd.NA
-            continue
-        sub = df[existentes].apply(pd.to_numeric, errors="coerce")
-        out[var] = sub.bfill(axis=1).iloc[:, 0]
-
-    try:
-        out.to_parquet(cache_path, index=False)
-    except Exception as e:
-        return ano, None, f"{ano}: cache falhou ({e})"
-
-    return ano, out, f"{ano}: n_RR={len(out)} ({len(candidatos_por_var)} vars)"
+    fontes, todas_artigo = [], True
+    n_br = max(stats["_n_brasil"], 1)
+    for var, lista in VARIAVEIS.items():
+        usada = escolher_fonte(lista, stats)
+        if usada is None:
+            out[var] = pd.Series(pd.NA, index=cru.index, dtype="Int8")
+            todas_artigo = False
+        else:
+            out[var] = pd.to_numeric(cru[usada], errors="coerce").astype("Int8").values
+            if usada != lista[0]:
+                todas_artigo = False
+        fontes.append({
+            "ano": ano, "variavel": var, "coluna_artigo": lista[0],
+            "coluna_usada": usada or "",
+            "pct_um_brasil": round(stats[usada]["uns"] / n_br * 100, 2)
+                             if usada else np.nan,
+        })
+    out["INFRA_FONTE_ARTIGO"] = pd.Series(1 if todas_artigo else 0, index=cru.index, dtype="Int8")
+    return out, fontes
 
 
 # ------------------------------------------------------------------
@@ -279,7 +312,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 78)
-    print("03 — CENSO FEATURES (17 do Almeida & Mussato) — RR 2007-2025")
+    print("03 — CENSO FEATURES (18 do Almeida & Mussato) — RR 2007-2025")
     print(f"BASE_PROJETO: {BASE_PROJETO}")
     print(f"Cache:        {CACHE}")
     if args.force:
@@ -289,52 +322,74 @@ def main():
     arquivos = listar_arquivos()
     print(f"Arquivos: {len(arquivos)}\n")
 
-    resultados = []
-    with ThreadPoolExecutor(max_workers=4) as ex:
-        futs = {ex.submit(processar_ano, a, f, t, args.force): a
-                for a, f, t in arquivos}
-        for fut in as_completed(futs):
-            ano, df, msg = fut.result()
-            print(f"  {msg}")
-            if df is not None:
-                resultados.append((ano, df))
+    # Sequencial de propósito: cada ano carrega o CSV nacional em memória
+    # (2010 estourava memória com 4 threads).
+    partes, fontes = [], []
+    for a, f, t in arquivos:
+        ano, cru, stats, msg = processar_ano(a, f, t, args.force)
+        print(f"  {msg}", flush=True)
+        if cru is None:
+            continue
+        df_ano, fnt = montar_ano(ano, cru, stats)
+        partes.append(df_ano)
+        fontes += fnt
 
-    if not resultados:
+    if not partes:
         print("[!] Nada processado.")
         return
 
-    resultados.sort(key=lambda x: x[0])
-    censo = pd.concat([df for _, df in resultados], ignore_index=True)
+    censo = pd.concat(partes, ignore_index=True)
     print(f"\n>>> Censo features: {censo.shape[0]} linhas × "
           f"{censo.shape[1]} colunas")
-
     censo.to_parquet(OUT, index=False)
     print(f">>> {OUT}")
 
-    # Relatório
-    vars_mussato = list(VARIAVEIS.keys())
+    fontes_df = pd.DataFrame(fontes)
+    fontes_df.to_csv(OUT_FONTES, index=False, encoding="utf-8")
+    print(f">>> {OUT_FONTES}")
+
+    vars18 = list(VARIAVEIS.keys())
     linhas = [
         "FEATURES DO CENSO — RR 2007-2025",
-        "=" * 60,
-        f"Linhas: {censo.shape[0]}",
-        f"Colunas: {censo.shape[1]}",
+        "=" * 70,
+        f"Linhas: {censo.shape[0]}   Colunas: {censo.shape[1]}",
         "",
-        "Colunas (17):",
-    ] + [f"  - {v}" for v in vars_mussato] + [
+        "Colunas (18 variáveis + INFRA_FONTE_ARTIGO):",
+    ] + [f"  - {v}" for v in vars18] + [
+        "  - INFRA_FONTE_ARTIGO (1 = as 18 vieram das colunas do artigo)",
         "",
-        "Cobertura por ano (escolas do Censo, não do tx_rend):",
-        f"{'ano':>5}{'n':>7}{'cobertura_media':>20}",
+        "Por ano: n escolas RR | variáveis ausentes (nenhuma candidata coletada) |",
+        "variáveis com coluna substituta | cobertura das 18 | fonte = artigo?",
+        f"{'ano':>5}{'n':>6}{'ausentes':>10}{'substitutas':>13}"
+        f"{'cobertura%':>12}{'artigo':>8}",
     ]
     for ano in sorted(censo["ANO"].unique()):
         sub = censo[censo["ANO"] == ano]
-        cob = round(sub[vars_mussato].notna().mean().mean() * 100, 1)
-        linhas.append(f"{ano:>5}{len(sub):>7}{cob:>20}")
-
+        fa = fontes_df[fontes_df["ano"] == ano]
+        aus = int((fa["coluna_usada"] == "").sum())
+        subst = int(((fa["coluna_usada"] != "") &
+                     (fa["coluna_usada"] != fa["coluna_artigo"])).sum())
+        cob = round(sub[vars18].notna().mean().mean() * 100, 1)
+        linhas.append(f"{ano:>5}{len(sub):>6}{aus:>10}{subst:>13}"
+                      f"{cob:>12}{int(sub['INFRA_FONTE_ARTIGO'].iloc[0]):>8}")
     linhas += [
         "",
-        "Nota: 2007 tem 4 features 100% vazias no Brasil inteiro (lacuna real",
-        "do INEP): IDA_despensa, IDA_secretaria, IDA_refeitorio, IDP_patio_coberto.",
+        "Variáveis ausentes por ano (nunca coletadas naquele ano no Brasil):",
     ]
+    for ano in sorted(censo["ANO"].unique()):
+        fa = fontes_df[(fontes_df["ano"] == ano) & (fontes_df["coluna_usada"] == "")]
+        if len(fa):
+            linhas.append(f"  {ano}: " + ", ".join(fa["variavel"]))
+    linhas += [
+        "",
+        "Variáveis com coluna substituta (não é a coluna do artigo):",
+    ]
+    for ano in sorted(censo["ANO"].unique()):
+        fa = fontes_df[(fontes_df["ano"] == ano) & (fontes_df["coluna_usada"] != "") &
+                       (fontes_df["coluna_usada"] != fontes_df["coluna_artigo"])]
+        if len(fa):
+            linhas.append(f"  {ano}: " + ", ".join(
+                f"{r.variavel}<-{r.coluna_usada}" for r in fa.itertuples()))
     OUT_REL.write_text("\n".join(linhas), encoding="utf-8")
     print(f">>> Relatório: {OUT_REL}")
 

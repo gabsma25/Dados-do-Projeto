@@ -1,0 +1,1641 @@
+{
+  "metodo": "zano (z-score dentro de cada ano) com itens disponíveis por ano; IIE = PC1 das 4 dimensões z do próprio ano",
+  "com_prop": false,
+  "min_escolas_ano": 30,
+  "min_itens_dim": 2,
+  "itens_por_ano": {
+    "2007": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_sala_diretoria",
+        "IDA_sala_professor"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2008": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_sala_diretoria",
+        "IDA_sala_professor"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2009": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_sala_diretoria",
+        "IDA_sala_professor"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2010": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_sala_diretoria",
+        "IDA_sala_professor"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2011": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_sala_diretoria",
+        "IDA_sala_professor"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2012": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2013": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2014": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2015": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2016": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2017": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2018": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2019": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2020": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2021": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2022": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2023": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2024": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    },
+    "2025": {
+      "IIB": [
+        "IIB_agua_potavel",
+        "IIB_energia_rede",
+        "IIB_coleta_lixo",
+        "IIB_banheiro"
+      ],
+      "IDA": [
+        "IDA_despensa",
+        "IDA_refeitorio",
+        "IDA_sala_diretoria",
+        "IDA_sala_professor",
+        "IDA_secretaria"
+      ],
+      "IDP": [
+        "IDP_biblioteca",
+        "IDP_lab_informatica",
+        "IDP_patio_coberto",
+        "IDP_patio_descoberto",
+        "IDP_quadra_esportes"
+      ],
+      "IEP": [
+        "IEP_computador",
+        "IEP_impressora",
+        "IEP_projetor",
+        "IEP_internet"
+      ]
+    }
+  },
+  "z_por_ano": [
+    {
+      "ano": 2007,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 718,
+      "media_soma": 2.132311977715877,
+      "dp_soma": 1.407515819766423,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IDA",
+      "n_itens": 2,
+      "n": 718,
+      "media_soma": 0.8119777158774373,
+      "dp_soma": 0.9077329436549354,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IDP",
+      "n_itens": 3,
+      "n": 718,
+      "media_soma": 0.5376044568245125,
+      "dp_soma": 0.9488922435056314,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 718,
+      "media_soma": 0.8983286908077994,
+      "dp_soma": 1.4100603487890073,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 624,
+      "media_soma": 2.0961538461538463,
+      "dp_soma": 1.42675373934734,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IDA",
+      "n_itens": 2,
+      "n": 624,
+      "media_soma": 0.8573717948717948,
+      "dp_soma": 0.923609566320825,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IDP",
+      "n_itens": 3,
+      "n": 624,
+      "media_soma": 0.7387820512820513,
+      "dp_soma": 1.0937039179735364,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 624,
+      "media_soma": 1.1153846153846154,
+      "dp_soma": 1.5083593500867367,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 596,
+      "media_soma": 2.1661073825503356,
+      "dp_soma": 1.4240005143886203,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IDA",
+      "n_itens": 2,
+      "n": 596,
+      "media_soma": 0.9362416107382551,
+      "dp_soma": 0.9228431967486812,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IDP",
+      "n_itens": 3,
+      "n": 596,
+      "media_soma": 0.8842281879194631,
+      "dp_soma": 1.1693884601573017,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 596,
+      "media_soma": 1.2936241610738255,
+      "dp_soma": 1.5862325949627571,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 632,
+      "media_soma": 2.0854430379746836,
+      "dp_soma": 1.516463488705914,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IDA",
+      "n_itens": 2,
+      "n": 632,
+      "media_soma": 0.8987341772151899,
+      "dp_soma": 0.9153395539134647,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IDP",
+      "n_itens": 3,
+      "n": 632,
+      "media_soma": 0.8765822784810127,
+      "dp_soma": 1.172181117551454,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 632,
+      "media_soma": 1.3686708860759493,
+      "dp_soma": 1.6192569808912474,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 618,
+      "media_soma": 2.1537216828478964,
+      "dp_soma": 1.529852056286922,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IDA",
+      "n_itens": 2,
+      "n": 618,
+      "media_soma": 0.9676375404530745,
+      "dp_soma": 0.9167205787109496,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IDP",
+      "n_itens": 3,
+      "n": 618,
+      "media_soma": 0.9288025889967637,
+      "dp_soma": 1.1829884500716843,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 618,
+      "media_soma": 1.4886731391585761,
+      "dp_soma": 1.619271437101613,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 641,
+      "media_soma": 2.1154446177847115,
+      "dp_soma": 1.584567293447404,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 641,
+      "media_soma": 1.8627145085803432,
+      "dp_soma": 1.885952205218023,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 641,
+      "media_soma": 1.2917316692667706,
+      "dp_soma": 1.5929085132997336,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 641,
+      "media_soma": 1.5054602184087365,
+      "dp_soma": 1.6161388131574663,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 666,
+      "media_soma": 2.0435435435435436,
+      "dp_soma": 1.557572434188407,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 666,
+      "media_soma": 2.0315315315315314,
+      "dp_soma": 1.9805123544029457,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 666,
+      "media_soma": 1.2582582582582582,
+      "dp_soma": 1.592766861673426,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 666,
+      "media_soma": 1.524024024024024,
+      "dp_soma": 1.6658176286122135,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 670,
+      "media_soma": 2.064179104477612,
+      "dp_soma": 1.5760522656438107,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 670,
+      "media_soma": 2.1343283582089554,
+      "dp_soma": 1.9992201642928713,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 670,
+      "media_soma": 1.3492537313432835,
+      "dp_soma": 1.6236473713114785,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 670,
+      "media_soma": 1.6522388059701492,
+      "dp_soma": 1.7164574946765825,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 669,
+      "media_soma": 2.029895366218236,
+      "dp_soma": 1.551026514166244,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 669,
+      "media_soma": 2.242152466367713,
+      "dp_soma": 2.031431380476608,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 669,
+      "media_soma": 1.3348281016442451,
+      "dp_soma": 1.6407545500835476,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 669,
+      "media_soma": 1.6263079222720478,
+      "dp_soma": 1.6828409411278422,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 677,
+      "media_soma": 2.070901033973412,
+      "dp_soma": 1.5604968106236021,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 677,
+      "media_soma": 2.324963072378139,
+      "dp_soma": 2.030967100177684,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 677,
+      "media_soma": 1.4032496307237814,
+      "dp_soma": 1.6409245740208225,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 677,
+      "media_soma": 1.7016248153618907,
+      "dp_soma": 1.6760226767127568,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 679,
+      "media_soma": 2.0868924889543448,
+      "dp_soma": 1.5691584487669845,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 679,
+      "media_soma": 2.321060382916053,
+      "dp_soma": 2.0530550663189002,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 679,
+      "media_soma": 1.390279823269514,
+      "dp_soma": 1.637005710998078,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 679,
+      "media_soma": 1.6553755522827687,
+      "dp_soma": 1.6574719821097708,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 674,
+      "media_soma": 2.086053412462908,
+      "dp_soma": 1.583955581757562,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 674,
+      "media_soma": 2.3130563798219583,
+      "dp_soma": 2.037826671435866,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 674,
+      "media_soma": 1.3694362017804154,
+      "dp_soma": 1.6391946282588217,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 674,
+      "media_soma": 1.6646884272997033,
+      "dp_soma": 1.6755439280577624,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 667,
+      "media_soma": 2.341829085457271,
+      "dp_soma": 1.5642477480453603,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 667,
+      "media_soma": 2.3088455772113945,
+      "dp_soma": 2.0387467896738616,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 667,
+      "media_soma": 1.3448275862068966,
+      "dp_soma": 1.6098877642406924,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 667,
+      "media_soma": 1.7181409295352323,
+      "dp_soma": 1.659559782831742,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 662,
+      "media_soma": 2.3353474320241694,
+      "dp_soma": 1.5861717723423214,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 662,
+      "media_soma": 2.380664652567976,
+      "dp_soma": 2.047794668013794,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 662,
+      "media_soma": 1.4018126888217524,
+      "dp_soma": 1.61802433741131,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 662,
+      "media_soma": 1.7719033232628398,
+      "dp_soma": 1.6683283064449974,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 650,
+      "media_soma": 2.4123076923076923,
+      "dp_soma": 1.564756819868648,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 650,
+      "media_soma": 2.4261538461538463,
+      "dp_soma": 2.026347750782326,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 650,
+      "media_soma": 1.4092307692307693,
+      "dp_soma": 1.6120434310739395,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 650,
+      "media_soma": 1.8507692307692307,
+      "dp_soma": 1.6522826240757011,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 682,
+      "media_soma": 2.3812316715542523,
+      "dp_soma": 1.576439325292379,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 682,
+      "media_soma": 2.3299120234604107,
+      "dp_soma": 2.017798295899423,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 682,
+      "media_soma": 1.3196480938416422,
+      "dp_soma": 1.5771074507948633,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 682,
+      "media_soma": 1.8416422287390029,
+      "dp_soma": 1.6304009549062632,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 689,
+      "media_soma": 2.4775036284470247,
+      "dp_soma": 1.5181061583571773,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 689,
+      "media_soma": 2.304789550072569,
+      "dp_soma": 1.9949115946978777,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 689,
+      "media_soma": 1.2786647314949202,
+      "dp_soma": 1.50591305332339,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 689,
+      "media_soma": 1.9825834542815675,
+      "dp_soma": 1.6008846436156965,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 696,
+      "media_soma": 2.5704022988505746,
+      "dp_soma": 1.4663614595691126,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 696,
+      "media_soma": 2.3261494252873565,
+      "dp_soma": 1.9655671289965204,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 696,
+      "media_soma": 1.2557471264367817,
+      "dp_soma": 1.4877261305439375,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 696,
+      "media_soma": 2.007183908045977,
+      "dp_soma": 1.5924408722759764,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IIB",
+      "n_itens": 4,
+      "n": 687,
+      "media_soma": 2.7001455604075693,
+      "dp_soma": 1.3425247161432614,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IDA",
+      "n_itens": 5,
+      "n": 687,
+      "media_soma": 2.3304221251819506,
+      "dp_soma": 1.9706707484538826,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IDP",
+      "n_itens": 5,
+      "n": 687,
+      "media_soma": 1.24745269286754,
+      "dp_soma": 1.4805547183278667,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IEP",
+      "n_itens": 4,
+      "n": 687,
+      "media_soma": 2.011644832605531,
+      "dp_soma": 1.5600110295858904,
+      "valido": true
+    }
+  ],
+  "pca_por_ano": {
+    "2007": {
+      "n": 718,
+      "pesos_pc1": {
+        "IIB": 0.4575025515428937,
+        "IDA": 0.507054804422693,
+        "IDP": 0.5015372807045868,
+        "IEP": 0.5310811583054467
+      },
+      "autovalores": [
+        3.039594763903107,
+        0.49284813093697116,
+        0.30157575673933423,
+        0.16598134842058668
+      ],
+      "variancia_explicada": [
+        0.759898690975777,
+        0.12321203273424283,
+        0.07539393918483359,
+        0.04149533710514668
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2008": {
+      "n": 624,
+      "pesos_pc1": {
+        "IIB": 0.46984259373099296,
+        "IDA": 0.5092753659783262,
+        "IDP": 0.4954419325134626,
+        "IEP": 0.523854779715811
+      },
+      "autovalores": [
+        3.2398227234108354,
+        0.39525975181046963,
+        0.22242618887976712,
+        0.14249133589892643
+      ],
+      "variancia_explicada": [
+        0.8099556808527091,
+        0.09881493795261743,
+        0.0556065472199418,
+        0.03562283397473162
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2009": {
+      "n": 596,
+      "pesos_pc1": {
+        "IIB": 0.464228751647772,
+        "IDA": 0.5104839580950272,
+        "IDP": 0.5015101823567919,
+        "IEP": 0.5219054815420532
+      },
+      "autovalores": [
+        3.2413227398864786,
+        0.42002310469224097,
+        0.21034294646517745,
+        0.12831120895610348
+      ],
+      "variancia_explicada": [
+        0.8103306849716194,
+        0.10500577617306021,
+        0.05258573661629435,
+        0.032077802239025864
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2010": {
+      "n": 632,
+      "pesos_pc1": {
+        "IIB": 0.4651685058634423,
+        "IDA": 0.5101595685251906,
+        "IDP": 0.5003991201151091,
+        "IEP": 0.5224520996062585
+      },
+      "autovalores": [
+        3.310328142842581,
+        0.388110874580563,
+        0.191393623049214,
+        0.11016735952764074
+      ],
+      "variancia_explicada": [
+        0.8275820357106455,
+        0.09702771864514077,
+        0.047848405762303516,
+        0.027541839881910196
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2011": {
+      "n": 618,
+      "pesos_pc1": {
+        "IIB": 0.4762045142868591,
+        "IDA": 0.5096677553839246,
+        "IDP": 0.496033542969715,
+        "IEP": 0.5171254818162032
+      },
+      "autovalores": [
+        3.294366310786362,
+        0.36264158750817593,
+        0.19568250992446892,
+        0.14730959178099273
+      ],
+      "variancia_explicada": [
+        0.8235915776965906,
+        0.090660396877044,
+        0.04892062748111724,
+        0.03682739794524819
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2012": {
+      "n": 641,
+      "pesos_pc1": {
+        "IIB": 0.47315183389252036,
+        "IDA": 0.5075042870813827,
+        "IDP": 0.5065079154464093,
+        "IEP": 0.5118754460494226
+      },
+      "autovalores": [
+        3.3475537726244524,
+        0.3316294014855246,
+        0.18429501559529038,
+        0.13652181029473107
+      ],
+      "variancia_explicada": [
+        0.8368884431561134,
+        0.08290735037138118,
+        0.04607375389882261,
+        0.03413045257368278
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2013": {
+      "n": 666,
+      "pesos_pc1": {
+        "IIB": 0.47860833754533205,
+        "IDA": 0.5116442533684641,
+        "IDP": 0.4996364858969981,
+        "IEP": 0.5094286988260665
+      },
+      "autovalores": [
+        3.4098687723411416,
+        0.3046427338705495,
+        0.15098551735676957,
+        0.13450297643153725
+      ],
+      "variancia_explicada": [
+        0.8524671930852858,
+        0.07616068346763742,
+        0.037746379339192414,
+        0.03362574410788433
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2014": {
+      "n": 670,
+      "pesos_pc1": {
+        "IIB": 0.48215679711396847,
+        "IDA": 0.510762877131288,
+        "IDP": 0.49719051184174345,
+        "IEP": 0.5093600899912695
+      },
+      "autovalores": [
+        3.4598158699383443,
+        0.27433685827182164,
+        0.13535460915253825,
+        0.13049266263729636
+      ],
+      "variancia_explicada": [
+        0.8649539674845861,
+        0.06858421456795541,
+        0.03383865228813456,
+        0.03262316565932409
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2015": {
+      "n": 669,
+      "pesos_pc1": {
+        "IIB": 0.4918500208246885,
+        "IDA": 0.5054983488690293,
+        "IDP": 0.4938996863585611,
+        "IEP": 0.5085450581023807
+      },
+      "autovalores": [
+        3.4825744048458938,
+        0.23800436494342048,
+        0.14781408326214682,
+        0.1316071469485372
+      ],
+      "variancia_explicada": [
+        0.8706436012114738,
+        0.05950109123585515,
+        0.03695352081553672,
+        0.032901786737134314
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2016": {
+      "n": 677,
+      "pesos_pc1": {
+        "IIB": 0.49397406917453535,
+        "IDA": 0.506659107692221,
+        "IDP": 0.4920888875342935,
+        "IEP": 0.5070845041419979
+      },
+      "autovalores": [
+        3.4866141916566633,
+        0.23864660726324502,
+        0.1450440774474863,
+        0.1296951236326069
+      ],
+      "variancia_explicada": [
+        0.8716535479141655,
+        0.05966165181581123,
+        0.03626101936187156,
+        0.03242378090815171
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2017": {
+      "n": 679,
+      "pesos_pc1": {
+        "IIB": 0.4959619543569163,
+        "IDA": 0.507428403546482,
+        "IDP": 0.4904735196002205,
+        "IEP": 0.5059386145331357
+      },
+      "autovalores": [
+        3.466657835546904,
+        0.24456627797612104,
+        0.15180472609422424,
+        0.13697116038275084
+      ],
+      "variancia_explicada": [
+        0.866664458886726,
+        0.06114156949403026,
+        0.03795118152355606,
+        0.03424279009568771
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2018": {
+      "n": 674,
+      "pesos_pc1": {
+        "IIB": 0.4966661612220924,
+        "IDA": 0.5071535446116897,
+        "IDP": 0.4908877707613184,
+        "IEP": 0.5051209785800749
+      },
+      "autovalores": [
+        3.475276747350384,
+        0.23946268683441094,
+        0.15633545464427645,
+        0.12892511117092884
+      ],
+      "variancia_explicada": [
+        0.8688191868375961,
+        0.05986567170860274,
+        0.03908386366106912,
+        0.032231277792732216
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2019": {
+      "n": 667,
+      "pesos_pc1": {
+        "IIB": 0.4821459529867042,
+        "IDA": 0.5126126718817866,
+        "IDP": 0.4954809930280208,
+        "IEP": 0.5091778806986079
+      },
+      "autovalores": [
+        3.352463647299139,
+        0.30299750253953633,
+        0.1955851695545898,
+        0.14895368060673597
+      ],
+      "variancia_explicada": [
+        0.8381159118247845,
+        0.07574937563488407,
+        0.048896292388647435,
+        0.037238420151683986
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2020": {
+      "n": 662,
+      "pesos_pc1": {
+        "IIB": 0.4835252599899795,
+        "IDA": 0.5093898369029322,
+        "IDP": 0.49702319017243385,
+        "IEP": 0.5096010846166279
+      },
+      "autovalores": [
+        3.3737967536059004,
+        0.282979129824578,
+        0.19252634572904723,
+        0.15069777084047292
+      ],
+      "variancia_explicada": [
+        0.8434491884014754,
+        0.07074478245614453,
+        0.04813158643226183,
+        0.037674442710118244
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2021": {
+      "n": 650,
+      "pesos_pc1": {
+        "IIB": 0.48721705650391806,
+        "IDA": 0.5106145579642974,
+        "IDP": 0.49335605526412885,
+        "IEP": 0.5084211991850867
+      },
+      "autovalores": [
+        3.3455304182805383,
+        0.28592327149353547,
+        0.20757985054644953,
+        0.1609664596794768
+      ],
+      "variancia_explicada": [
+        0.8363826045701346,
+        0.07148081787338387,
+        0.051894962636612384,
+        0.0402416149198692
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2022": {
+      "n": 682,
+      "pesos_pc1": {
+        "IIB": 0.4924346850495733,
+        "IDA": 0.5135125191779475,
+        "IDP": 0.4870574923210654,
+        "IEP": 0.5065451340024516
+      },
+      "autovalores": [
+        3.334977777083695,
+        0.3038282356045508,
+        0.1985500091034023,
+        0.1626439782083536
+      ],
+      "variancia_explicada": [
+        0.8337444442709234,
+        0.07595705890113767,
+        0.04963750227585055,
+        0.04066099455208838
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2023": {
+      "n": 689,
+      "pesos_pc1": {
+        "IIB": 0.49275297916611477,
+        "IDA": 0.5148865735281456,
+        "IDP": 0.4861684671404887,
+        "IEP": 0.5056941165187026
+      },
+      "autovalores": [
+        3.308303400472089,
+        0.3226336135875284,
+        0.20335112326651025,
+        0.16571186267387186
+      ],
+      "variancia_explicada": [
+        0.8270758501180223,
+        0.08065840339688211,
+        0.05083778081662757,
+        0.04142796566846797
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2024": {
+      "n": 696,
+      "pesos_pc1": {
+        "IIB": 0.49237456234016413,
+        "IDA": 0.516964553775684,
+        "IDP": 0.48324164691239546,
+        "IEP": 0.5067469301231483
+      },
+      "autovalores": [
+        3.307186174851241,
+        0.330491047671578,
+        0.2039427920536378,
+        0.15837998542354215
+      ],
+      "variancia_explicada": [
+        0.8267965437128104,
+        0.08262276191789451,
+        0.050985698013409464,
+        0.039594996355885544
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    },
+    "2025": {
+      "n": 687,
+      "pesos_pc1": {
+        "IIB": 0.491207390651152,
+        "IDA": 0.5126461601795328,
+        "IDP": 0.4881854728302482,
+        "IEP": 0.5075274947629681
+      },
+      "autovalores": [
+        3.28166197519636,
+        0.3321070206213421,
+        0.20333869285563408,
+        0.1828923113266652
+      ],
+      "variancia_explicada": [
+        0.8204154937990896,
+        0.08302675515533549,
+        0.0508346732139085,
+        0.04572307783166628
+      ],
+      "kaiser": true,
+      "pc1_acima_60": true
+    }
+  },
+  "avisos": []
+}

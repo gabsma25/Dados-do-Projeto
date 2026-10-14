@@ -12,15 +12,15 @@ Para reconstruir tudo: `python programas/99_pipeline.py --force`
 **Cópia da última etapa pronta.** É o arquivo que o notebook de modelo
 consome.
 
-- Dimensões: 12.597 × 47
-- Conteúdo: idêntico ao `etapas/04_base_com_censo.parquet`
+- Dimensões: 12.597 × 64
+- Conteúdo: idêntico ao `etapas/05_base_com_indices.parquet`
 - Como trocar a base do modelo: substitua este arquivo por qualquer
   `.parquet` de `etapas/` (a maioria dos scripts usa as mesmas chaves
   `ANO + CO_ENTIDADE`, então o merge continua funcionando)
 
-**Quando ele é atualizado:** pelo `04_merge_features.py` (última etapa).
+**Quando ele é atualizado:** pelo `05_indices_infra.py` (última etapa).
 Se você rodar as etapas individualmente, o `base_atual.parquet` não muda
-até o `04` rodar de novo.
+até o `05` rodar de novo.
 
 ---
 
@@ -51,26 +51,44 @@ até o `04` rodar de novo.
 - **Uso:** base preditiva só com tx_rend. É a entrada do `04`.
 
 ### `03_censo_features.parquet`
-- **Dimensões:** 16.449 × 19
-- **O que tem:** 17 features de infraestrutura do Censo Escolar
-  (Almeida & Mussato, 2023) + chaves (`ANO`, `CO_ENTIDADE`):
+- **Dimensões:** 16.449 × 21
+- **O que tem:** as 18 variáveis de infraestrutura (Almeida & Mussato, 2023,
+  Quadro 3) + `INFRA_FONTE_ARTIGO` + chaves (`ANO`, `CO_ENTIDADE`):
   - `IIB_*` (4): água potável, energia de rede, coleta de lixo, banheiro
   - `IDA_*` (5): despensa, refeitório, sala de diretoria, sala de professores, secretaria
-  - `IDP_*` (4): biblioteca, lab. de informática, pátio coberto, quadra
+  - `IDP_*` (5): biblioteca, lab. de informática, pátio coberto, pátio descoberto, quadra
   - `IEP_*` (4): computador, impressora, projetor, internet
-- **Cobertura:** 100% em 2008–2025, 76,5% em 2007 (4 features do IDA + pátio
-  são lacuna real do INEP — colunas existem no schema mas não foram coletadas
-  no Brasil inteiro em 2007).
+- **Regra de fonte:** por ano, a primeira coluna realmente coletada (≥ 1 escola
+  do Brasil com valor 1), começando pela do artigo; `NaN` se nenhuma foi
+  coletada. Ver `relatorios/fontes_features_censo.csv` (variável × ano × coluna
+  usada) e `relatorios/diagnostico_features_censo.txt`.
+- `INFRA_FONTE_ARTIGO` = 1 nos anos em que as 18 vieram das colunas do artigo
+  (2019–2025).
 - **Gerado por:** `03_censo_features.py`
 - **Uso:** enriquecimento. Não é consumido sozinho.
 
 ### `04_base_com_censo.parquet`
-- **Dimensões:** 12.597 × 47
-- **O que tem:** `02b` + as 17 features do Censo (merge `LEFT` por
-  `ANO + CO_ENTIDADE`). 30 colunas do longitudinal + 17 do Censo (chaves
-  compartilhadas).
+- **Dimensões:** 12.597 × 49
+- **O que tem:** `02b` + as 18 variáveis + `INFRA_FONTE_ARTIGO` (merge `LEFT` por
+  `ANO + CO_ENTIDADE`).
 - **Gerado por:** `04_merge_features.py`
-- **Uso:** modelo com `tx_rend` + infraestrutura. É a base recomendada.
+- **Uso:** modelo com `tx_rend` + infraestrutura (itens individuais).
+
+### `05_base_com_indices.parquet`  (= `base_atual.parquet`)
+- **Dimensões:** 12.597 × 55
+- **O que tem:** `04` + 6 colunas derivadas, sem alterar nenhuma coluna do `04`:
+  - `DIM_IIB_zano`, `DIM_IDA_zano`, `DIM_IDP_zano`, `DIM_IEP_zano` (`Float64`): soma
+    dos itens **disponíveis no ano**, com z-score dentro de cada ano
+  - `IIE_zano` (`Float64`): PC1 das 4 dimensões, pesos calculados no próprio ano
+    (parâmetros e pesos por ano em `relatorios/indices_infra_parametros.json`)
+  - `INFRA_ITENS_COMPLETOS` (`Int8`): 1 em 2012–2025 (as 4 dimensões com todos os
+    itens do artigo), 0 em 2007–2011; marcador de período, não feature
+- Cobertura de 100% das escolas em todos os anos. Em 2007–2011 IDA usa 2 itens e IDP
+  3 itens (o Censo não coletava os outros 5); ver `docs/relatorio_05_...`, §5.
+- `05_indices_infra.py --com-prop` acrescenta `DIM_*_prop` e `IIE_prop`.
+- **Gerado por:** `05_indices_infra.py`
+- **Uso:** base recomendada para o modelo. Na hora de treinar, escolha as colunas
+  (18 itens, 4 dimensões de uma normalização, ou IIE).
 
 ---
 
@@ -97,9 +115,15 @@ dataset preditivo, use `02b`.
 
 - `diagnostico_bruto.txt` — resumo do `01`: por ano, escolas únicas, colunas
 - `validacao_longitudinal.txt` — validação do `02b` contra a base da Gabi (2019–2025)
-- `diagnostico_features_censo.txt` — cobertura das 17 features por ano, no universo do Censo
+- `diagnostico_features_censo.txt` — cobertura das 18 variáveis por ano e regra de fonte, no universo do Censo
+- `fontes_features_censo.csv` — coluna do Censo usada por (variável, ano)
 - `merge_features.txt` — cobertura do Censo no universo tx_rend (após o merge)
-- `validacao_base.txt` — 29 checks de integridade da base final
+- `indices_infra.txt` e `indices_infra_parametros.json` — itens usados por ano, PCA por ano, cobertura
+- `preenchimento_2007_2011.txt` — análise 02: custo de usar itens parciais em 2007–2011
+- `escolha_metodo_infra.txt` e `_metricas.csv` — análise 01 (histórica): comparação de prop/zano/zref19
+- `validacao_base.txt` — 45 checks de integridade da base
+- `validacao_pos04.txt` — auditoria do parquet pós-04 (35 checks com `--completo` + tabelas de prevalência e ausência por ano)
+- `validacao_indices.txt` — 41 checks dos índices (recálculo independente e teste de vazamento)
 
 ## Relatório de diagnóstico (na raiz de `saida/`)
 
@@ -123,3 +147,4 @@ python programas/04_merge_features.py
 
 # Validar a base final
 python testes/01_validar_base.py
+python testes/02_validar_indices.py

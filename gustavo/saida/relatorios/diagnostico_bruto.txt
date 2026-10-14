@@ -271,22 +271,22 @@ Colunas (todas):
   - 3_CAT_MED_NS
 
 Detalhes por zip:
+  2010: [cache] 632 linhas
   2009: [cache] 596 linhas
   2007: [cache] 718 linhas
-  2010: [cache] 632 linhas
   2008: [cache] 624 linhas
-  2013: [cache] 666 linhas
   2011: [cache] 618 linhas
-  2014: [cache] 670 linhas
   2012: [cache] 641 linhas
-  2015: [cache] 669 linhas
-  2018: [cache] 674 linhas
+  2013: [cache] 666 linhas
+  2014: [cache] 670 linhas
   2016: [cache] 677 linhas
   2017: [cache] 679 linhas
-  2021: [cache] 650 linhas
-  2019: [cache] 667 linhas
-  2022: [cache] 682 linhas
+  2015: [cache] 669 linhas
+  2018: [cache] 674 linhas
   2020: [cache] 662 linhas
-  2023: [cache] 689 linhas
-  2025: [cache] 687 linhas
+  2019: [cache] 667 linhas
+  2021: [cache] 650 linhas
+  2022: [cache] 682 linhas
   2024: [cache] 696 linhas
+  2025: [cache] 687 linhas
+  2023: [cache] 689 linhas

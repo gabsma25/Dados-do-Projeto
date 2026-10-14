@@ -1,0 +1,93 @@
+PREENCHIMENTO DE IDA, IDP E IIE EM 2007-2011
+==============================================================================
+Base: base_atual.parquet (12597 linhas, 2007-2025)
+
+==============================================================================
+1. ITENS DISPONÍVEIS POR ANO
+==============================================================================
+  Itens existentes em todos os anos: IIB_agua_potavel, IIB_energia_rede, IIB_coleta_lixo, IIB_banheiro, IDA_sala_diretoria, IDA_sala_professor, IDP_biblioteca, IDP_lab_informatica, IDP_quadra_esportes, IEP_computador, IEP_impressora, IEP_projetor, IEP_internet
+  Itens só de 2012 em diante:        IDA_despensa, IDA_refeitorio, IDA_secretaria, IDP_patio_coberto, IDP_patio_descoberto
+  Itens usados por ano — IDA: 2007-2011 = 2 de 5; 2012+ = 5 de 5   IDP: 2007-2011 = 3 de 5; 2012+ = 5 de 5   IIB e IEP: 4 de 4 sempre
+
+==============================================================================
+2. PERSISTÊNCIA DA POSIÇÃO DA MESMA ESCOLA EM VOLTA DE 2011→2012 (IIE, Spearman t→t+1)
+==============================================================================
+  A = só IIB+IEP | B = itens disponíveis (escolhida) | C = núcleo fixo | IIE_zano = coluna gravada pelo 05
+   transição       A       B       C  IIE_zano
+  2009→2010   0.967   0.981   0.981     0.981
+  2010→2011   0.972   0.977   0.977     0.978
+  2011→2012   0.962   0.961   0.975     0.961   <- virada de itens
+  2012→2013   0.961   0.974   0.972     0.973
+  2013→2014   0.971   0.976   0.973     0.976
+  2014→2015   0.969   0.979   0.976     0.978
+  Δ médio da mesma escola (dp):
+   transição       A       B       C
+  2009→2010  +0.070  +0.061  +0.061
+  2010→2011  -0.034  -0.037  -0.037
+  2011→2012  +0.032  +0.027  +0.030
+  2012→2013  +0.005  +0.007  +0.011
+  2013→2014  -0.020  -0.023  -0.020
+  2014→2015  +0.008  +0.005  +0.005
+
+==============================================================================
+3. DIMENSÕES IDA E IDP: itens disponíveis (B) x núcleo fixo (C)
+==============================================================================
+   dim   transição       B       C
+   IDA   2009→2010   0.967   0.967
+   IDA   2010→2011   0.945   0.945
+   IDA   2011→2012   0.888   0.964   <- virada de itens
+   IDA   2012→2013   0.940   0.942
+   IDA   2013→2014   0.953   0.939
+   IDP   2009→2010   0.968   0.968
+   IDP   2010→2011   0.946   0.946
+   IDP   2011→2012   0.927   0.952   <- virada de itens
+   IDP   2012→2013   0.949   0.952
+   IDP   2013→2014   0.941   0.958
+
+==============================================================================
+4. O QUE O prop TERIA FEITO NO NÍVEL (fração dos itens disponíveis, sem z)
+==============================================================================
+  IDA: Δ médio 2011→2012 da mesma escola = -0.223 dp com itens disponíveis; +0.013 dp com núcleo fixo
+  IDP: Δ médio 2011→2012 da mesma escola = -0.124 dp com itens disponíveis; +0.072 dp com núcleo fixo
+  (com z por ano o nível comum é removido; o prop deixaria esse salto na série)
+
+==============================================================================
+5. RESOLUÇÃO DAS DIMENSÕES PARCIAIS
+==============================================================================
+  IDA com 2 itens (2011): 3 valores distintos; maior grupo empatado = 44% das escolas
+  IDP com 3 itens (2011): 4 valores distintos; maior grupo empatado = 56% das escolas
+  IDA com 5 itens (2019): 6 valores distintos; maior grupo empatado = 33% das escolas
+  IDP com 5 itens (2019): 6 valores distintos; maior grupo empatado = 49% das escolas
+
+==============================================================================
+6. QUANTO FICA IMPERFEITO: versão parcial x completa, medido em 2012-2025
+==============================================================================
+  IDA (2 itens x 5 itens): Spearman dentro do ano — mínimo 0.889, média 0.901
+  IDP (3 itens x 5 itens): Spearman dentro do ano — mínimo 0.890, média 0.933
+  IIE (núcleo x completo): Spearman dentro do ano — mínimo 0.987, média 0.989
+  IIE (só IIB+IEP x completo): mínimo 0.966, média 0.969
+
+==============================================================================
+7. PESOS REAIS DO PC1 (normalizados para somar 1) COM A OPÇÃO ESCOLHIDA
+==============================================================================
+    ano      IIB   IDA   IDP   IEP   var.PC1
+   2007    0.229 0.254 0.251 0.266   76.0%
+   2008    0.235 0.255 0.248 0.262   81.0%
+   2009    0.232 0.255 0.251 0.261   81.0%
+   2010    0.233 0.255 0.250 0.261   82.8%
+   2011    0.238 0.255 0.248 0.259   82.4%
+   2012    0.237 0.254 0.253 0.256   83.7%
+   2013    0.239 0.256 0.250 0.255   85.2%
+   2014    0.241 0.255 0.249 0.255   86.5%
+   2015    0.246 0.253 0.247 0.254   87.1%
+   2016    0.247 0.253 0.246 0.254   87.2%
+   2017    0.248 0.254 0.245 0.253   86.7%
+   2018    0.248 0.254 0.245 0.253   86.9%
+   2019    0.241 0.256 0.248 0.255   83.8%
+   2020    0.242 0.255 0.249 0.255   84.3%
+   2021    0.244 0.255 0.247 0.254   83.6%
+   2022    0.246 0.257 0.244 0.253   83.4%
+   2023    0.246 0.258 0.243 0.253   82.7%
+   2024    0.246 0.259 0.242 0.253   82.7%
+   2025    0.246 0.256 0.244 0.254   82.0%
+  mín–máx por dimensão: IIB 0.229–0.248; IDA 0.253–0.259; IDP 0.242–0.253; IEP 0.253–0.266

@@ -1,16 +1,16 @@
 MERGE — 02b + 03
 ============================================================
 longitudinal: 12597 × 30
-censo:        16449 × 19
-base final:   12597 × 47
+censo:        16449 × 21
+base final:   12597 × 49
 
-Cobertura das 17 features do Censo (por ano):
+Cobertura das 18 features do Censo (por ano):
   ano      n     cobertura_media
- 2007    718                76.5
- 2008    624               100.0
- 2009    596               100.0
- 2010    632               100.0
- 2011    618               100.0
+ 2007    718                72.2
+ 2008    624                72.2
+ 2009    596                72.2
+ 2010    632                72.2
+ 2011    618                72.2
  2012    641               100.0
  2013    666               100.0
  2014    670               100.0

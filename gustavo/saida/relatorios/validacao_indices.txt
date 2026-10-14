@@ -1,0 +1,95 @@
+
+==============================================================================
+A. COLUNAS, TIPOS E COLUNAS LEGADAS
+==============================================================================
+  ✅ 6 colunas derivadas presentes: DIM_IIB_zano, DIM_IDA_zano, DIM_IDP_zano, DIM_IEP_zano, IIE_zano, INFRA_ITENS_COMPLETOS
+  ✅ 18 itens seguem Int8 (regra 6)
+  ✅ derivadas Float64 e INFRA_ITENS_COMPLETOS Int8 (regra 6)
+  ✅ nenhuma coluna legada _zref19 na base (método descartado em 14/10)
+  ✅ nenhuma coluna _prop (fora do padrão; use 05 --com-prop se quiser)
+  ✅ chave (CO_ENTIDADE, ANO) única
+
+==============================================================================
+B. ITENS DISPONÍVEIS POR ANO
+==============================================================================
+  ✅ cada item tem valor em 0% ou 100% das escolas de cada ano (ausência é estrutural)
+  ✅ itens por ano do JSON = recomputados do parquet
+  ✅ 13 itens existem em 2007-2025; 5 (despensa, refeitório, secretaria, pátios) só de 2012 em diante
+     itens usados (IIB IDA IDP IEP): 2007: [4, 2, 3, 4]; 2011: [4, 2, 3, 4]; 2012: [4, 5, 5, 4]; 2025: [4, 5, 5, 4]
+
+==============================================================================
+C. DIMENSÕES: soma dos itens disponíveis e z por ano (recomputados)
+==============================================================================
+  ✅ NaN das 4 dimensões coincide com o recomputado (só falta item numa escola gera NaN)
+  ✅ DIM_*_zano = z da soma dos itens disponíveis do ano (erro máx 0.0e+00)
+  ✅ soma bruta sempre entre 0 e o nº de itens disponíveis
+  ✅ cada dimensão tem média 0 e desvio 1 em todos os anos (desvios máx: 1.6e-16, 2.2e-16)
+  ✅ média/desvio/n por (dimensão, ano) do JSON = recomputados
+  ✅ todo (dimensão, ano) tem n ≥ 30 e desvio > 0
+  ✅ menor desvio da soma bruta: 0.91 (IDA/2007) — abaixo de 0,5 o z-score amplifica ruído
+
+==============================================================================
+D. SEM VAZAMENTO TEMPORAL (executa o 05 em dados perturbados)
+==============================================================================
+  ✅ 2009: embaralhar todos os OUTROS anos não muda as 5 colunas de 2009
+  ✅ 2012: embaralhar todos os OUTROS anos não muda as 5 colunas de 2012
+  ✅ 2019: embaralhar todos os OUTROS anos não muda as 5 colunas de 2019
+  ✅ 2025: embaralhar todos os OUTROS anos não muda as 5 colunas de 2025
+  ✅ controle negativo: um z com parâmetros de todos os anos MUDARIA 2019 (Δ máx 0.73) — o teste enxerga vazamento
+  ✅ embaralhar 2019 não altera nenhum outro ano (sem influência do futuro sobre o passado, nem o inverso)
+
+==============================================================================
+E. IIE: PC1 do próprio ano
+==============================================================================
+  ✅ IIE_zano é NaN exatamente quando falta alguma das 4 dimensões
+  ✅ IIE_zano = soma(peso·dimensão) com PC1 do ano (erro máx 2.7e-15)
+  ✅ pesos e autovalores por ano do JSON = recomputados
+  ✅ pesos de norma 1 e soma > 0 em todos os anos
+  ✅ variância do IIE em cada ano = autovalor do PC1
+  ✅ critério de Kaiser (autovalor PC1 > 1) em todos os anos
+  ✅ PC1 explica > 60% da variância em todos os anos (critério do artigo)
+  ✅ nenhum peso fora de 0,35–0,65 (dimensões contribuem de forma parecida)
+     pesos PC1 por dimensão (mín–máx entre anos): IIB 0.458–0.497; IDA 0.505–0.517; IDP 0.483–0.507; IEP 0.505–0.531
+     variância explicada pelo PC1: 76.0%–87.2%
+
+==============================================================================
+F. COBERTURA 2007-2025 E MARCADOR DE ITENS COMPLETOS
+==============================================================================
+  ✅ as 4 dimensões e o IIE existem para 100% das escolas em todos os anos (2007-2025)
+  ✅ INFRA_ITENS_COMPLETOS = 1 exatamente nos anos em que as 4 dimensões usam todos os itens do artigo
+  ✅ INFRA_ITENS_COMPLETOS = 1 para 2012-2025 e 0 para 2007-2011
+  ✅ INFRA_ITENS_COMPLETOS sem ausentes
+     escolas-ano com itens completos: 9409 de 12597 (74.7%)
+
+==============================================================================
+G. SANIDADE SUBSTANTIVA E LIMITAÇÃO DE 2007-2011
+==============================================================================
+  ✅ 2012: IIE médio urbano (2.21) > rural (-0.88)
+  ✅ 2019: IIE médio urbano (2.27) > rural (-0.92)
+  ✅ 2025: IIE médio urbano (2.16) > rural (-0.83)
+  ✅ IIE com PC1 ordena como a média simples das 4 dimensões (Spearman mínimo 0.9992)
+     persistência da posição da mesma escola (Spearman t→t+1) em volta da virada de itens:
+        transição     IDA     IDP     IIE
+       2009→2010   0.967   0.968   0.981
+       2010→2011   0.945   0.946   0.978
+       2011→2012   0.888   0.927   0.961   <- virada de itens
+       2012→2013   0.940   0.949   0.973
+       2013→2014   0.953   0.941   0.976
+  ✅ IDA: persistência na virada 2011→2012 = 0.888 (vizinhos 0.951; queda 0.063)
+  ✅ IDP: persistência na virada 2011→2012 = 0.927 (vizinhos 0.951; queda 0.024)
+  ✅ IIE: persistência na virada 2011→2012 = 0.961 (vizinhos 0.977; queda 0.016)
+     Limitação documentada: IDA/IDP de 2007-2011 usam 2 e 3 itens (relatório 05).
+
+==============================================================================
+H. COLUNAS OPCIONAIS (--com-prop)
+==============================================================================
+     base gerada sem --com-prop: nada a validar nesta seção
+
+==============================================================================
+RESUMO
+==============================================================================
+  ✅ OK:      41
+  ⚠️  Warn:   0
+  ❌ Falhas:  0
+
+  🎉 ÍNDICES VALIDADOS

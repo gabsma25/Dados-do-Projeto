@@ -1,0 +1,189 @@
+
+==============================================================================
+A. ESTRUTURA
+==============================================================================
+  ✅ shape 12,597 × 49: mesmas linhas do 02b + 18 variáveis + INFRA_FONTE_ARTIGO
+  ✅ nenhuma coluna além de 02b + 18 + INFRA_FONTE_ARTIGO
+  ✅ sem colunas do 05 (esta é a base pós-04)
+  ✅ chave (ANO, CO_ENTIDADE) única
+  ✅ mesma ordem e chaves do 02b
+  ✅ as 30 colunas do 02b estão intactas no 04
+  ✅ CO_ENTIDADE é string (regra 6)
+  ✅ ANO é Int16
+  ✅ 18 variáveis são Int8 nullable (regra 6: IN_* como Int8, nunca int8/float)
+  ✅ INFRA_FONTE_ARTIGO é Int8 nullable
+  ✅ INFRA_FONTE_ARTIGO constante dentro de cada ano
+
+==============================================================================
+B. AS 18 VARIÁVEIS DO ARTIGO (Quadro 3)
+==============================================================================
+  ✅ especificação do teste: IIB 4 + IDA 5 + IDP 5 + IEP 4 = 18
+  ✅ as colunas IIB_/IDA_/IDP_/IEP_ da base são exatamente as 18
+  ✅ IDP_patio_descoberto presente (a 18ª variável)
+  ✅ todas binárias (0/1)
+  ✅ sem valores infinitos
+
+==============================================================================
+C. AUSÊNCIAS: NaN esperado x inesperado
+==============================================================================
+  ✅ variáveis 100% ausentes por ano = as declaradas em fontes_features_censo.csv
+     % de escolas SEM valor, por variável e ano (-- = 0%; 100 = não coletada naquele ano):
+                             07  08  09  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25
+     IIB_agua_potavel        --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IIB_energia_rede        --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IIB_coleta_lixo         --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IIB_banheiro            --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDA_despensa           100 100 100 100 100  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDA_refeitorio         100 100 100 100 100  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDA_sala_diretoria      --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDA_sala_professor      --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDA_secretaria         100 100 100 100 100  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDP_biblioteca          --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDP_lab_informatica     --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDP_patio_coberto      100 100 100 100 100  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDP_patio_descoberto   100 100 100 100 100  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IDP_quadra_esportes     --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IEP_computador          --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IEP_impressora          --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IEP_projetor            --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+     IEP_internet            --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --  --
+  ✅ ausência parcial ≤10% em todos os (variável, ano) coletados
+
+==============================================================================
+D. ZEROS ESTRUTURAIS E VARIÁVEIS QUASE CONSTANTES
+==============================================================================
+  ✅ nenhuma variável coletada vem toda 0 em algum ano (o erro de 2019–2021 sumiu)
+  ✅ nenhuma variável toda 1
+  ✅ nenhuma variável com prevalência <2% nos anos coletados
+     PREVALÊNCIA (% de escolas com o item = 1), por variável e ano:
+                             07  08  09  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25
+     IIB_agua_potavel        65  67  67  63  60  55  48  45  41  42  44  43  61  60  61  61  66  70  82
+     IIB_energia_rede        55  51  56  54  58  60  61  63  64  65  66  66  66  66  68  69  74  77  77
+     IIB_coleta_lixo         32  30  31  30  32  34  34  36  34  36  36  36  37  37  39  38  38  40  39
+     IIB_banheiro            62  62  64  61  65  63  62  63  64  64  63  63  70  70  73  69  70  71  72
+     IDA_despensa            --  --  --  --  --  28  40  43  47  50  49  51  52  54  54  52  51  53  51
+     IDA_refeitorio          --  --  --  --  --  25  30  35  38  39  39  38  37  38  40  35  33  32  31
+     IDA_sala_diretoria      46  47  53  51  55  53  50  49  48  49  49  48  46  47  48  46  47  46  48
+     IDA_sala_professor      35  38  41  39  42  42  39  39  39  41  41  40  40  42  42  42  41  42  42
+     IDA_secretaria          --  --  --  --  --  38  44  47  53  54  54  55  57  57  60  58  58  60  61
+     IDP_biblioteca          25  31  33  32  34  36  33  34  33  34  35  34  34  34  34  31  28  27  25
+     IDP_lab_informatica     13  23  33  34  36  38  33  34  31  32  29  28  24  23  22  18  15  14  13
+     IDP_patio_coberto       --  --  --  --  --  24  28  32  35  37  38  37  36  39  40  39  40  41  42
+     IDP_patio_descoberto    --  --  --  --  --   6   8   9   9   9  10  11  14  16  16  16  17  16  15
+     IDP_quadra_esportes     15  20  22  22  23  26  25  26  26  27  28  28  27  28  28  27  28  28  29
+     IEP_computador          31  40  44  46  51  52  51  53  54  56  54  54  52  51  53  50  54  55  53
+     IEP_impressora          28  35  40  41  45  46  42  46  44  43  43  40  42  44  44  42  42  41  39
+     IEP_projetor            19  20  22  21  22  21  29  33  32  35  36  36  33  35  36  37  42  44  44
+     IEP_internet            13  17  23  29  31  32  31  33  33  35  33  36  44  47  53  55  61  60  66
+
+==============================================================================
+E. RECOMPUTO DA REGRA DE FONTE (cache + estatística nacional)
+==============================================================================
+  ✅ coluna usada em fontes_features_censo.csv = regra recomputada (19 anos × 18 variáveis)
+  ✅ 226,746 células do 04 conferem com a regra recomputada do cache
+
+==============================================================================
+F. COMPARAÇÃO COM O MICRODADO ORIGINAL DO INEP (sem cache, sem o script 03)
+==============================================================================
+     2007: ok  (718 escolas)  <- microdados_censo_escolar_2007.zip::microdados_ed_basica_2007/dados/microdados_ed_basica_2007.csv
+     2008: ok  (624 escolas)  <- microdados_censo_escolar_2008.zip::microdados_ed_basica_2008/dados/microdados_ed_basica_2008.csv
+     2009: ok  (596 escolas)  <- microdados_censo_escolar_2009.zip::microdados_ed_basica_2009/dados/microdados_ed_basica_2009.csv
+     2010: ok  (632 escolas)  <- microdados_censo_escolar_2010.zip::microdados_ed_basica_2010/dados/microdados_ed_basica_2010.csv
+     2011: ok  (618 escolas)  <- microdados_censo_escolar_2011.zip::microdados_ed_basica_2011/dados/microdados_ed_basica_2011.csv
+     2012: ok  (641 escolas)  <- microdados_censo_escolar_2012.zip::microdados_ed_basica_2012/dados/microdados_ed_basica_2012.csv
+     2013: ok  (666 escolas)  <- microdados_censo_escolar_2013.zip::microdados_ed_basica_2013/dados/microdados_ed_basica_2013.csv
+     2014: ok  (670 escolas)  <- microdados_censo_escolar_2014.zip::microdados_ed_basica_2014/dados/microdados_ed_basica_2014.csv
+     2015: ok  (669 escolas)  <- microdados_censo_escolar_2015.zip::microdados_ed_basica_2015/dados/microdados_ed_basica_2015.csv
+     2016: ok  (677 escolas)  <- microdados_censo_escolar_2016.zip::microdados_ed_basica_2016/dados/microdados_ed_basica_2016.csv
+     2017: ok  (679 escolas)  <- microdados_censo_escolar_2017.zip::microdados_ed_basica_2017/dados/microdados_ed_basica_2017.csv
+     2018: ok  (674 escolas)  <- microdados_censo_escolar_2018.zip::microdados_ed_basica_2018/dados/microdados_ed_basica_2018.csv
+     2019: ok  (667 escolas)  <- microdados_ed_basica_2019.csv
+     2020: ok  (662 escolas)  <- microdados_ed_basica_2020.CSV
+     2021: ok  (650 escolas)  <- microdados_ed_basica_2021.csv
+     2022: ok  (682 escolas)  <- microdados_ed_basica_2022.csv
+     2023: ok  (689 escolas)  <- microdados_ed_basica_2023.csv
+     2024: ok  (696 escolas)  <- microdados_ed_basica_2024.csv
+     2025: ok  (687 escolas)  <- Tabela_Escola_2025_V2.csv
+  ✅ 19 anos conferem célula a célula com o microdado ORIGINAL: 2007–2025
+
+==============================================================================
+G. MERGE COM O TX_REND
+==============================================================================
+  ✅ toda escola do tx_rend tem registro no Censo do mesmo ano
+     escolas por ano na base: 2007:718  2008:624  2009:596  2010:632  2011:618  2012:641  2013:666  2014:670  2015:669  2016:677  2017:679  2018:674  2019:667  2020:662  2021:650  2022:682  2023:689  2024:696  2025:687
+
+==============================================================================
+H. PLAUSIBILIDADE
+==============================================================================
+  ✅ nenhum salto >15 p.p. entre anos consecutivos sem troca de coluna
+     trocas de coluna-fonte ao longo de 2007-2025 (quebra de pergunta): despensa=1, refeitorio=1, secretaria=1, biblioteca=1, patio_coberto=1, patio_descoberto=1, projetor=1, agua_potavel=1, banheiro=1
+  ✅ instabilidade escola a escola ≤30% em todas as variáveis
+     % de escolas que trocam 0↔1 de um ano para o seguinte: agua_potavel=9, energia_rede=4, coleta_lixo=1, banheiro=3, despensa=6, refeitorio=6, sala_diretoria=4, sala_professor=4, secretaria=4, biblioteca=4, lab_informatica=5, patio_coberto=5, patio_descoberto=3, quadra_esportes=2, computador=6, impressora=7, projetor=5, internet=8
+  ✅ lab_informatica=1 sem computador: 0.3% das linhas (2012+)
+  ✅ internet=1 sem computador: 5.6% das linhas (2012+)
+  ✅ projetor=1 sem computador: 2.2% das linhas (2012+)
+  ✅ 2019: urbana ≥ rural em 18/18 itens
+  ✅ 2024: urbana ≥ rural em 18/18 itens
+
+==============================================================================
+I. ANTES x DEPOIS DA CORREÇÃO (04 anterior, em saida/_backup_2026-10-14)
+==============================================================================
+  ✅ mesmas 12,597 linhas antes e depois
+     variável               células mudadas   anos com mudança
+     IIB_agua_potavel                 1,198   19,20,21
+     IIB_energia_rede                     0   -
+     IIB_coleta_lixo                      0   -
+     IIB_banheiro                     1,407   19,20,21
+     IDA_despensa                     2,470   08,09,10,11
+     IDA_refeitorio                   2,470   08,09,10,11
+     IDA_sala_diretoria                   0   -
+     IDA_sala_professor                   0   -
+     IDA_secretaria                   2,470   08,09,10,11
+     IDP_biblioteca                     435   09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25
+     IDP_lab_informatica                  0   -
+     IDP_patio_coberto                2,470   08,09,10,11
+     IDP_quadra_esportes                  0   -
+     IEP_computador                       0   -
+     IEP_impressora                       0   -
+     IEP_projetor                     1,690   12,13,14,15,16,17,18,19,20,21
+     IEP_internet                         0   -
+  ✅ as 9 variáveis sem troca de coluna estão idênticas ao 04 anterior (correção sem efeito colateral)
+     IIB_agua_potavel: média 2019-2021 antes=0.00 → depois=0.61
+     IIB_banheiro: média 2019-2021 antes=0.00 → depois=0.71
+     IEP_projetor: média 2019-2021 antes=0.00 → depois=0.34
+
+==============================================================================
+J. USO NO MODELO: linhas com alvo e com as 18 completas
+==============================================================================
+       ano  escolas  alvo AF   AF+18  alvo EM   EM+18
+      2007      718      226       0      106       0
+      2008      624      221       0      102       0
+      2009      596      223       0      110       0
+      2010      632      226       0      112       0
+      2011      618      239       0      123       0
+      2012      641      239     239      125     125
+      2013      666      242     242      135     135
+      2014      670      245     245      142     142
+      2015      669      245     245      150     150
+      2016      677      248     248      157     157
+      2017      679      252     252      160     160
+      2018      674      249     249      168     168
+      2019      667      249     249      167     167
+      2020      662      246     246      167     167
+      2021      650      248     248      170     170
+      2022      682      244     244      176     176
+      2023      689      251     251      178     178
+      2024      696      256     256      181     181
+      2025      687        0       0        0       0
+     total    12597     4349    3214     2629    2076
+     anos em que há linhas AF com as 18 completas: 2012–2024
+  ✅ 2012–2024 têm linhas com alvo AF e as 18 completas
+
+==============================================================================
+RESUMO
+==============================================================================
+  ✅ OK:      35
+  ⚠️  Warn:   0
+  ❌ Falhas:  0
+
+  🎉 BASE PÓS-04 VALIDADA

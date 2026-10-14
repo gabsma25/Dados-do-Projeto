@@ -16,11 +16,23 @@ import io
 import zipfile
 from pathlib import Path
 
-# gustavo/ está ao lado de dados/
-BASE = Path(__file__).resolve().parent.parent
+def _achar_base_projeto():
+    """Acha abandono-escolar/ (a pasta com dados/) subindo a partir deste arquivo."""
+    here = Path(__file__).resolve().parent
+    for p in [here, *here.parents]:
+        for nome in ("abandono-escolar", "abandono_escolar"):
+            for raiz in (p, p.parent):
+                c = raiz / nome
+                if c.is_dir() and (c / "dados").is_dir():
+                    return c
+    raise SystemExit("[ERRO] não achei 'abandono-escolar/dados/'")
+
+
+BASE = _achar_base_projeto()
 DADOS = BASE / "dados"
 INDICADORES = DADOS / "origem" / "indicadores"
-SAIDA = Path(__file__).resolve().parent / "saida_inspecao.txt"
+SAIDA = (Path(__file__).resolve().parent.parent.parent / "saida" / "relatorios"
+         / "inspecao_zips_antigos.txt")
 
 # ------------------------------------------------------------------
 # Coleta: todos os zips em dados/origem/indicadores/ que são de

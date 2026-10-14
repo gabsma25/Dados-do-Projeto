@@ -1,0 +1,685 @@
+{
+  "ano_referencia": 2019,
+  "n_escolas_referencia": 152,
+  "n_escolas_artigo": 165,
+  "recorte": "DEPENDENCIA=Estadual & APROVACAO_MED não nulo (proxy de 'oferta ensino médio')",
+  "z_referencia_2019": {
+    "IIB": {
+      "media": 2.7302631578947367,
+      "dp": 1.381124612012188,
+      "n": 152
+    },
+    "IDA": {
+      "media": 3.401315789473684,
+      "dp": 1.659343039075899,
+      "n": 152
+    },
+    "IDP": {
+      "media": 2.2434210526315788,
+      "dp": 1.5935590361395622,
+      "n": 152
+    },
+    "IEP": {
+      "media": 2.4539473684210527,
+      "dp": 1.4592662890963646,
+      "n": 152
+    }
+  },
+  "pca_2019": {
+    "autovalores": [
+      3.0486138935455176,
+      0.40260652732456603,
+      0.3339953337069025,
+      0.21478424542301416
+    ],
+    "variancia_explicada": [
+      0.7621534733863794,
+      0.10065163183114151,
+      0.08349883342672562,
+      0.05369606135575354
+    ],
+    "pesos_pc1": {
+      "IIB": 0.495567670984978,
+      "IDA": 0.5091811309282579,
+      "IDP": 0.5189741595857319,
+      "IEP": 0.47519793882489514
+    },
+    "matriz_correlacao": [
+      [
+        1.0,
+        0.6759,
+        0.7203,
+        0.6255
+      ],
+      [
+        0.6759,
+        1.0,
+        0.7791,
+        0.6393
+      ],
+      [
+        0.7203,
+        0.7791,
+        1.0,
+        0.6513
+      ],
+      [
+        0.6255,
+        0.6393,
+        0.6513,
+        1.0
+      ]
+    ]
+  },
+  "z_por_ano": [
+    {
+      "ano": 2007,
+      "dim": "IIB",
+      "n": 718,
+      "media_soma": 2.132311977715877,
+      "dp_soma": 1.407515819766423,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IIB",
+      "n": 624,
+      "media_soma": 2.0961538461538463,
+      "dp_soma": 1.42675373934734,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IIB",
+      "n": 596,
+      "media_soma": 2.1661073825503356,
+      "dp_soma": 1.4240005143886203,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IIB",
+      "n": 632,
+      "media_soma": 2.0854430379746836,
+      "dp_soma": 1.516463488705914,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IIB",
+      "n": 618,
+      "media_soma": 2.1537216828478964,
+      "dp_soma": 1.529852056286922,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IIB",
+      "n": 641,
+      "media_soma": 2.1154446177847115,
+      "dp_soma": 1.584567293447404,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IIB",
+      "n": 666,
+      "media_soma": 2.0435435435435436,
+      "dp_soma": 1.557572434188407,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IIB",
+      "n": 670,
+      "media_soma": 2.064179104477612,
+      "dp_soma": 1.5760522656438107,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IIB",
+      "n": 669,
+      "media_soma": 2.029895366218236,
+      "dp_soma": 1.551026514166244,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IIB",
+      "n": 677,
+      "media_soma": 2.070901033973412,
+      "dp_soma": 1.5604968106236021,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IIB",
+      "n": 679,
+      "media_soma": 2.0868924889543448,
+      "dp_soma": 1.5691584487669845,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IIB",
+      "n": 674,
+      "media_soma": 2.086053412462908,
+      "dp_soma": 1.583955581757562,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IIB",
+      "n": 667,
+      "media_soma": 2.341829085457271,
+      "dp_soma": 1.5642477480453603,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IIB",
+      "n": 662,
+      "media_soma": 2.3353474320241694,
+      "dp_soma": 1.5861717723423214,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IIB",
+      "n": 650,
+      "media_soma": 2.4123076923076923,
+      "dp_soma": 1.564756819868648,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IIB",
+      "n": 682,
+      "media_soma": 2.3812316715542523,
+      "dp_soma": 1.576439325292379,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IIB",
+      "n": 689,
+      "media_soma": 2.4775036284470247,
+      "dp_soma": 1.5181061583571773,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IIB",
+      "n": 696,
+      "media_soma": 2.5704022988505746,
+      "dp_soma": 1.4663614595691126,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IIB",
+      "n": 687,
+      "media_soma": 2.7001455604075693,
+      "dp_soma": 1.3425247161432614,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IDA",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2008,
+      "dim": "IDA",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2009,
+      "dim": "IDA",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2010,
+      "dim": "IDA",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2011,
+      "dim": "IDA",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2012,
+      "dim": "IDA",
+      "n": 641,
+      "media_soma": 1.8627145085803432,
+      "dp_soma": 1.885952205218023,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IDA",
+      "n": 666,
+      "media_soma": 2.0315315315315314,
+      "dp_soma": 1.9805123544029457,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IDA",
+      "n": 670,
+      "media_soma": 2.1343283582089554,
+      "dp_soma": 1.9992201642928713,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IDA",
+      "n": 669,
+      "media_soma": 2.242152466367713,
+      "dp_soma": 2.031431380476608,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IDA",
+      "n": 677,
+      "media_soma": 2.324963072378139,
+      "dp_soma": 2.030967100177684,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IDA",
+      "n": 679,
+      "media_soma": 2.321060382916053,
+      "dp_soma": 2.0530550663189002,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IDA",
+      "n": 674,
+      "media_soma": 2.3130563798219583,
+      "dp_soma": 2.037826671435866,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IDA",
+      "n": 667,
+      "media_soma": 2.3088455772113945,
+      "dp_soma": 2.0387467896738616,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IDA",
+      "n": 662,
+      "media_soma": 2.380664652567976,
+      "dp_soma": 2.047794668013794,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IDA",
+      "n": 650,
+      "media_soma": 2.4261538461538463,
+      "dp_soma": 2.026347750782326,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IDA",
+      "n": 682,
+      "media_soma": 2.3299120234604107,
+      "dp_soma": 2.017798295899423,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IDA",
+      "n": 689,
+      "media_soma": 2.304789550072569,
+      "dp_soma": 1.9949115946978777,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IDA",
+      "n": 696,
+      "media_soma": 2.3261494252873565,
+      "dp_soma": 1.9655671289965204,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IDA",
+      "n": 687,
+      "media_soma": 2.3304221251819506,
+      "dp_soma": 1.9706707484538826,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IDP",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2008,
+      "dim": "IDP",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2009,
+      "dim": "IDP",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2010,
+      "dim": "IDP",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2011,
+      "dim": "IDP",
+      "n": 0,
+      "media_soma": null,
+      "dp_soma": null,
+      "valido": false
+    },
+    {
+      "ano": 2012,
+      "dim": "IDP",
+      "n": 641,
+      "media_soma": 1.2917316692667706,
+      "dp_soma": 1.5929085132997336,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IDP",
+      "n": 666,
+      "media_soma": 1.2582582582582582,
+      "dp_soma": 1.592766861673426,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IDP",
+      "n": 670,
+      "media_soma": 1.3492537313432835,
+      "dp_soma": 1.6236473713114785,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IDP",
+      "n": 669,
+      "media_soma": 1.3348281016442451,
+      "dp_soma": 1.6407545500835476,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IDP",
+      "n": 677,
+      "media_soma": 1.4032496307237814,
+      "dp_soma": 1.6409245740208225,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IDP",
+      "n": 679,
+      "media_soma": 1.390279823269514,
+      "dp_soma": 1.637005710998078,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IDP",
+      "n": 674,
+      "media_soma": 1.3694362017804154,
+      "dp_soma": 1.6391946282588217,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IDP",
+      "n": 667,
+      "media_soma": 1.3448275862068966,
+      "dp_soma": 1.6098877642406924,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IDP",
+      "n": 662,
+      "media_soma": 1.4018126888217524,
+      "dp_soma": 1.61802433741131,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IDP",
+      "n": 650,
+      "media_soma": 1.4092307692307693,
+      "dp_soma": 1.6120434310739395,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IDP",
+      "n": 682,
+      "media_soma": 1.3196480938416422,
+      "dp_soma": 1.5771074507948633,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IDP",
+      "n": 689,
+      "media_soma": 1.2786647314949202,
+      "dp_soma": 1.50591305332339,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IDP",
+      "n": 696,
+      "media_soma": 1.2557471264367817,
+      "dp_soma": 1.4877261305439375,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IDP",
+      "n": 687,
+      "media_soma": 1.24745269286754,
+      "dp_soma": 1.4805547183278667,
+      "valido": true
+    },
+    {
+      "ano": 2007,
+      "dim": "IEP",
+      "n": 718,
+      "media_soma": 0.8983286908077994,
+      "dp_soma": 1.4100603487890073,
+      "valido": true
+    },
+    {
+      "ano": 2008,
+      "dim": "IEP",
+      "n": 624,
+      "media_soma": 1.1153846153846154,
+      "dp_soma": 1.5083593500867367,
+      "valido": true
+    },
+    {
+      "ano": 2009,
+      "dim": "IEP",
+      "n": 596,
+      "media_soma": 1.2936241610738255,
+      "dp_soma": 1.5862325949627571,
+      "valido": true
+    },
+    {
+      "ano": 2010,
+      "dim": "IEP",
+      "n": 632,
+      "media_soma": 1.3686708860759493,
+      "dp_soma": 1.6192569808912474,
+      "valido": true
+    },
+    {
+      "ano": 2011,
+      "dim": "IEP",
+      "n": 618,
+      "media_soma": 1.4886731391585761,
+      "dp_soma": 1.619271437101613,
+      "valido": true
+    },
+    {
+      "ano": 2012,
+      "dim": "IEP",
+      "n": 641,
+      "media_soma": 1.5054602184087365,
+      "dp_soma": 1.6161388131574663,
+      "valido": true
+    },
+    {
+      "ano": 2013,
+      "dim": "IEP",
+      "n": 666,
+      "media_soma": 1.524024024024024,
+      "dp_soma": 1.6658176286122135,
+      "valido": true
+    },
+    {
+      "ano": 2014,
+      "dim": "IEP",
+      "n": 670,
+      "media_soma": 1.6522388059701492,
+      "dp_soma": 1.7164574946765825,
+      "valido": true
+    },
+    {
+      "ano": 2015,
+      "dim": "IEP",
+      "n": 669,
+      "media_soma": 1.6263079222720478,
+      "dp_soma": 1.6828409411278422,
+      "valido": true
+    },
+    {
+      "ano": 2016,
+      "dim": "IEP",
+      "n": 677,
+      "media_soma": 1.7016248153618907,
+      "dp_soma": 1.6760226767127568,
+      "valido": true
+    },
+    {
+      "ano": 2017,
+      "dim": "IEP",
+      "n": 679,
+      "media_soma": 1.6553755522827687,
+      "dp_soma": 1.6574719821097708,
+      "valido": true
+    },
+    {
+      "ano": 2018,
+      "dim": "IEP",
+      "n": 674,
+      "media_soma": 1.6646884272997033,
+      "dp_soma": 1.6755439280577624,
+      "valido": true
+    },
+    {
+      "ano": 2019,
+      "dim": "IEP",
+      "n": 667,
+      "media_soma": 1.7181409295352323,
+      "dp_soma": 1.659559782831742,
+      "valido": true
+    },
+    {
+      "ano": 2020,
+      "dim": "IEP",
+      "n": 662,
+      "media_soma": 1.7719033232628398,
+      "dp_soma": 1.6683283064449974,
+      "valido": true
+    },
+    {
+      "ano": 2021,
+      "dim": "IEP",
+      "n": 650,
+      "media_soma": 1.8507692307692307,
+      "dp_soma": 1.6522826240757011,
+      "valido": true
+    },
+    {
+      "ano": 2022,
+      "dim": "IEP",
+      "n": 682,
+      "media_soma": 1.8416422287390029,
+      "dp_soma": 1.6304009549062632,
+      "valido": true
+    },
+    {
+      "ano": 2023,
+      "dim": "IEP",
+      "n": 689,
+      "media_soma": 1.9825834542815675,
+      "dp_soma": 1.6008846436156965,
+      "valido": true
+    },
+    {
+      "ano": 2024,
+      "dim": "IEP",
+      "n": 696,
+      "media_soma": 2.007183908045977,
+      "dp_soma": 1.5924408722759764,
+      "valido": true
+    },
+    {
+      "ano": 2025,
+      "dim": "IEP",
+      "n": 687,
+      "media_soma": 2.011644832605531,
+      "dp_soma": 1.5600110295858904,
+      "valido": true
+    }
+  ],
+  "min_escolas_ano": 30
+}

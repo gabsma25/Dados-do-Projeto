@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-99 — Pipeline completo: 01 → 02 → 03 → 04.
+99 — Pipeline completo: 01 → 02 → 03 → 04 → 05.
 
-Roda os 4 scripts em ordem. Cada um é independente e tem cache próprio.
+Roda os 5 scripts em ordem. Cada um é independente e tem cache próprio.
 Se um falhar, o pipeline para e você pode retomar de onde parou (rodando
 o script específico).
 
@@ -25,6 +25,7 @@ ETAPAS = [
     ("02", "02_tx_rend_selecionado_longitudinal.py", []),
     ("03", "03_censo_features.py", ["--force"]),  # aceita --force
     ("04", "04_merge_features.py", []),
+    ("05", "05_indices_infra.py", []),
 ]
 
 
@@ -49,7 +50,7 @@ def main():
         etapas = ETAPAS
 
     print("=" * 78)
-    print("PIPELINE — 01 → 02 → 03 → 04")
+    print("PIPELINE — 01 → 02 → 03 → 04 → 05")
     print(f"GUSTAVO: {GUSTAVO}")
     if args.force:
         print("Modo: --force (ignora cache)")

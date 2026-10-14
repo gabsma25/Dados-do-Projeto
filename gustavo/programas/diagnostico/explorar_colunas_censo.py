@@ -53,7 +53,7 @@ if BASE_PROJETO is None:
 DADOS = BASE_PROJETO / "dados"
 CENSO_BRUTO = DADOS / "bruto" / "censo"
 CENSO_ORIGEM = DADOS / "origem" / "censo"
-SAIDA = Path(__file__).resolve().parent.parent / "saida"
+SAIDA = Path(__file__).resolve().parent.parent.parent / "saida"   # gustavo/saida (o script está em programas/diagnostico/)
 SAIDA.mkdir(exist_ok=True, parents=True)
 
 

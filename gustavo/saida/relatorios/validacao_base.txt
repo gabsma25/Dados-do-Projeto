@@ -4,9 +4,10 @@
 ==============================================================================
   ✅ 02a selecionado:     12,597 ×  19
   ✅ 02b longitudinal:    12,597 ×  30
-  ✅ 03 censo features:   16,449 ×  19
-  ✅ 04 base final:       12,597 ×  47
-  ✅ base_atual:          12,597 ×  47
+  ✅ 03 censo features:   16,449 ×  21
+  ✅ 04 base final:       12,597 ×  49
+  ✅ 05 com índices:      12,597 ×  55
+  ✅ base_atual:          12,597 ×  55
      anos: [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
 
 ==============================================================================
@@ -16,6 +17,11 @@
   ✅ CO_MUNICIPIO é string
   ✅ ANO é inteiro (int16)
   ✅ todas as 12 taxas são Float64 nullable
+  ✅ 02b: CO_ENTIDADE string e ANO inteiro 16 bits
+  ✅ 03: CO_ENTIDADE string e ANO inteiro 16 bits
+  ✅ 04: CO_ENTIDADE string e ANO inteiro 16 bits
+  ✅ 05: CO_ENTIDADE string e ANO inteiro 16 bits
+  ✅ 04: 18 variáveis do Censo e INFRA_FONTE_ARTIGO são Int8 nullable
 
 ==============================================================================
 2. CHAVE (ANO, CO_ENTIDADE)
@@ -91,43 +97,57 @@ ANO
   ✅ todas as 452 linhas sem alvo (2007-2024) confirmam escola ausente em t+1
 
 ==============================================================================
-11. CENSO — BINÁRIAS
+11. CENSO — 18 VARIÁVEIS BINÁRIAS
 ==============================================================================
-  ✅ 17 features do Censo são binárias (0/1)
+  ✅ 18 variáveis do artigo presentes (inclui IDP_patio_descoberto)
+  ✅ 18 variáveis do Censo são binárias (0/1)
+  ✅ INFRA_FONTE_ARTIGO é 0/1 e constante dentro de cada ano
 
 ==============================================================================
-12. COBERTURA DO CENSO NA BASE FINAL
+12. CENSO — AUSÊNCIA REAL x ZERO ESTRUTURAL
 ==============================================================================
-     2007: n= 718, cobertura=76.5%
-     2008: n= 624, cobertura=100.0%
-     2009: n= 596, cobertura=100.0%
-     2010: n= 632, cobertura=100.0%
-     2011: n= 618, cobertura=100.0%
-     2012: n= 641, cobertura=100.0%
-     2013: n= 666, cobertura=100.0%
-     2014: n= 670, cobertura=100.0%
-     2015: n= 669, cobertura=100.0%
-     2016: n= 677, cobertura=100.0%
-     2017: n= 679, cobertura=100.0%
-     2018: n= 674, cobertura=100.0%
-     2019: n= 667, cobertura=100.0%
-     2020: n= 662, cobertura=100.0%
-     2021: n= 650, cobertura=100.0%
-     2022: n= 682, cobertura=100.0%
-     2023: n= 689, cobertura=100.0%
-     2024: n= 696, cobertura=100.0%
-     2025: n= 687, cobertura=100.0%
-  ✅ 18/19 anos com cobertura >99%
+     2007: n= 718, ausentes=5, cobertura=72.2%
+     2008: n= 624, ausentes=5, cobertura=72.2%
+     2009: n= 596, ausentes=5, cobertura=72.2%
+     2010: n= 632, ausentes=5, cobertura=72.2%
+     2011: n= 618, ausentes=5, cobertura=72.2%
+     2012: n= 641, ausentes=0, cobertura=100.0%
+     2013: n= 666, ausentes=0, cobertura=100.0%
+     2014: n= 670, ausentes=0, cobertura=100.0%
+     2015: n= 669, ausentes=0, cobertura=100.0%
+     2016: n= 677, ausentes=0, cobertura=100.0%
+     2017: n= 679, ausentes=0, cobertura=100.0%
+     2018: n= 674, ausentes=0, cobertura=100.0%
+     2019: n= 667, ausentes=0, cobertura=100.0%
+     2020: n= 662, ausentes=0, cobertura=100.0%
+     2021: n= 650, ausentes=0, cobertura=100.0%
+     2022: n= 682, ausentes=0, cobertura=100.0%
+     2023: n= 689, ausentes=0, cobertura=100.0%
+     2024: n= 696, ausentes=0, cobertura=100.0%
+     2025: n= 687, ausentes=0, cobertura=100.0%
+  ✅ variáveis ausentes por ano batem com fontes_features_censo.csv
+  ✅ nenhuma variável coletada vem toda zero em algum ano
+  ✅ 2012-2021: cobertura das 18 = 100.0%
 
 ==============================================================================
-13. base_atual = 04_base_com_censo
+13. base_atual = 05 e 05 preserva 04
 ==============================================================================
-  ✅ base_atual.parquet é idêntico ao 04_base_com_censo.parquet
+  ✅ base_atual.parquet é idêntico ao 05_base_com_indices.parquet
+  ✅ 05 contém todas as colunas do 04 sem alteração
+  ✅ 05 acrescenta exatamente 6 colunas ao 04
+
+==============================================================================
+14. 01 BRUTO x 02b — CONJUNTO DE ESCOLAS POR ANO
+==============================================================================
+  ✅ 01: ano e código da escola preenchidos em todas as linhas (3 layouts do INEP)
+  ✅ 01: colunas harmonizadas e originais nunca se contradizem
+  ✅ 01: 12,597 linhas, chave (ano, escola) única, mesmo total do 02b
+  ✅ 01 e 02b têm exatamente as mesmas escolas em cada um dos 19 anos
 
 ==============================================================================
 RESUMO
 ==============================================================================
-  ✅ OK:      29
+  ✅ OK:      45
   ⚠️  Warn:   0
   ❌ Falhas:  0
 
