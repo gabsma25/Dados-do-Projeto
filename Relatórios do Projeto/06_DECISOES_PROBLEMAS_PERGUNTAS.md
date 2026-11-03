@@ -30,6 +30,13 @@ ainda depende de decisão.
 
 # Parte B — Problemas conhecidos
 
+**Dois prefixos, desde 2026-11-02.** `Pnnn` = problema de **dados**, com a
+linha oficial em `abandono-escolar/docs/problemas.csv` (a numeração é a do
+código e dos testes). `Mnnn` = problema de **método ou ambiente**, registrado
+só neste documento. A colisão anterior (dois sistemas usando "P": P021 e P022
+significavam coisas diferentes aqui e no `abandono-escolar`) foi resolvida
+assim: P021 → M001, P022 → M002, P024 → M003, P025 → M004.
+
 ## P001 a P006 — herdados do repositório da Gabriela
 
 Ver `docs/problemas.csv` no repositório. Cobre descobertas sobre os
@@ -51,9 +58,9 @@ dados do INEP (nomes de arquivo inconsistentes, etc.).
 
 ## P020 — md5 do INEP desatualizado (caso específico)
 
-- Caso irmão do P007.
+- Caso irmão do P007 (HAD escolas 2020 e 2021).
 
-## P021 — v1 atual tem 4 problemas metodológicos
+## M001 — v1 atual tem 4 problemas metodológicos (antigo P021)
 
 - Não filtra escolas públicas.
 - Imputação quebrada por tipo.
@@ -62,7 +69,7 @@ dados do INEP (nomes de arquivo inconsistentes, etc.).
 - **Correção:** ver `07_PLANOS.md`, Fase 2.
 - **Status:** a corrigir.
 
-## P022 — Instabilidade temporal do modelo
+## M002 — Instabilidade temporal do modelo (antigo P022)
 
 - R² positivo no teste 2025, negativo na validação 2024.
 - **Não é bug**, é característica dos dados.
@@ -72,11 +79,12 @@ dados do INEP (nomes de arquivo inconsistentes, etc.).
 
 ## P023 — Base do orientador ausente
 
-- `dados/externo/base_longitudinal_v1/` não está no clone local.
+- `dados/externo/base_longitudinal_v1/` não estava no clone local.
 - **Ação:** pedir ao orientador.
-- **Status:** pendente.
+- **Status:** resolvido — em 2026-11-02 a pasta existe com os 6 arquivos.
+  Linha proposta para `problemas.csv`.
 
-## P024 — Bootstrap lento em pasta sincronizada
+## M003 — Bootstrap lento em pasta sincronizada (antigo P024)
 
 - Tempo real ~3h52min (esperado ~44 min).
 - **Causa provável:** pasta `Meu Drive` (Google Drive) atrapalhando
@@ -84,7 +92,7 @@ dados do INEP (nomes de arquivo inconsistentes, etc.).
 - **Recomendação:** mover para pasta local sem sync.
 - **Status:** recomendação.
 
-## P025 — Métricas de classificação ausentes
+## M004 — Métricas de classificação ausentes (antigo P025)
 
 - O projeto é de regressão, mas o uso real pede classificação
   (Recall@K).
