@@ -89,13 +89,14 @@ def previsoes_permutadas(pipe, X, blocos, n, rng):
     return out
 
 
-def rodar_etapa(painel, etapa, anos=ANOS_TESTE, n_perm_boot=0):
+def rodar_etapa(painel, etapa, anos=ANOS_TESTE, n_perm_boot=0, grupos_perm=None):
     """Resultados (baselines + modelos × blocos × cenários), importâncias e
     previsões por ano (para o bootstrap de escolas).
 
     prev: lista de {"etapa", "ano_alvo", "y", "co", "p": {(cenario, modelo, bloco): ŷ},
                     "perm": {(cenario, modelo): {bloco: [ŷ permutado, ...]}}}
-    "perm" só é preenchido para o bloco 4 do Cenário B e se n_perm_boot > 0.
+    "perm" só é preenchido para o bloco 4 do Cenário B e se n_perm_boot > 0;
+    grupos_perm(etapa, cenario) define os grupos permutados (padrão: P.blocos).
     """
     res, imp, prev = [], [], []
     rng = np.random.default_rng(SEMENTE)
@@ -132,7 +133,8 @@ def rodar_etapa(painel, etapa, anos=ANOS_TESTE, n_perm_boot=0):
                         for lin in importancia_blocos(pipe, te[cols].copy(), y, blocos, rng):
                             imp.append({**cab, "cenario": cen, "modelo": mod, **lin})
                         if n_perm_boot and cen == "B":
-                            perm[(cen, mod)] = previsoes_permutadas(pipe, te[cols].copy(), blocos,
+                            grupos = (grupos_perm or P.blocos)(etapa, cen)
+                            perm[(cen, mod)] = previsoes_permutadas(pipe, te[cols].copy(), grupos,
                                                                     n_perm_boot, rng_perm)
         prev.append({"etapa": etapa, "ano_alvo": ano, "y": y,
                      "co": te["CO_ENTIDADE"].astype(str).to_numpy(), "p": p_ano, "perm": perm})

@@ -99,9 +99,19 @@ J. Bootstrap agrupado por escola
   ✅ estimativa agrupada = média das 4 transições do 02 (Ridge b2; erro 5.6e-17)
 
 ==============================================================================
+K. Testes múltiplos e grupos de permutação
+==============================================================================
+  ✅ Holm: [0,01; 0,04; 0,03; 0,20] → [0,04; 0,09; 0,09; 0,20] (step-down, monótono)
+  ✅ p bootstrap: tudo > 0 → 2/(B+1); tudo = 0 → 1; simétrico → 1
+  ✅ AF/B: grupos TDI e ATU separados particionam as colunas do bloco 4
+  ✅ AF/A: grupos TDI e ATU separados particionam as colunas do bloco 4
+  ✅ EM/B: grupos TDI e ATU separados particionam as colunas do bloco 4
+  ✅ EM/A: grupos TDI e ATU separados particionam as colunas do bloco 4
+
+==============================================================================
 RESUMO
 ==============================================================================
-  ✅ OK:      59
+  ✅ OK:      65
   ⚠️  Warn:   0
   ❌ Falhas:  0
 

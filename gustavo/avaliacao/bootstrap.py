@@ -87,3 +87,31 @@ class Agrupado:
 
 def recall_ano(y, p, sel, fracao):
     return M.recall_at_k(y[sel], p[sel], M.k_de_fracao(len(sel), fracao))
+
+
+# ------------------------------------------------------------------
+# Testes múltiplos (regra de 2026-11-02): p-valor bootstrap + Holm por família
+# ------------------------------------------------------------------
+def p_bootstrap(d):
+    """p bilateral da hipótese 'diferença = 0' pela distribuição bootstrap d.
+
+    p = min(1, 2·min(#(d ≤ 0) + 1, #(d ≥ 0) + 1) / (B + 1)). Com B reamostragens
+    o menor p possível é 2/(B+1): B precisa ser grande o bastante para a
+    família (Holm exige p ≤ α/m no primeiro passo).
+    """
+    d = np.asarray(d)
+    b = len(d)
+    return min(1.0, 2 * min((d <= 0).sum() + 1, (d >= 0).sum() + 1) / (b + 1))
+
+
+def holm(pvals):
+    """p-valores ajustados por Holm (step-down), na ordem de entrada."""
+    p = np.asarray(pvals, dtype="float64")
+    m = len(p)
+    ordem = np.argsort(p)
+    ajust = np.empty(m)
+    corrente = 0.0
+    for pos, i in enumerate(ordem):
+        corrente = max(corrente, min(1.0, (m - pos) * p[i]))
+        ajust[i] = corrente
+    return ajust

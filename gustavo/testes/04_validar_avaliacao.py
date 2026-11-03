@@ -19,6 +19,8 @@
      reamostragem, diferença de um preditor com ele mesmo = 0, classes
   J. bootstrap agrupado: sorteio por escola leva todos os anos da escola,
      repetição duplica as linhas; estimativa agrupada = média das anuais do 02
+  K. testes múltiplos: Holm contra conta à mão; p bootstrap; grupos de
+     permutação com TDI e ATU separados formam partição das colunas do bloco 4
 
 Saída: gustavo/saida/relatorios/validacao_avaliacao.txt
 Uso:   python testes/04_validar_avaliacao.py
@@ -305,6 +307,25 @@ if p02c.exists():
           f"agrupado diverge da média anual ({erro:.2e})")
 else:
     warn("02c_largura.csv ausente — rode avaliacao/02c_poder.py")
+
+# ------------------------------------------------------------------
+secao("K. Testes múltiplos e grupos de permutação")
+# ------------------------------------------------------------------
+ph = BS.holm([0.01, 0.04, 0.03, 0.20])
+check(np.allclose(ph, [0.04, 0.09, 0.09, 0.20]),
+      "Holm: [0,01; 0,04; 0,03; 0,20] → [0,04; 0,09; 0,09; 0,20] (step-down, monótono)",
+      f"Holm incorreto: {ph}")
+check(BS.p_bootstrap(np.full(999, 0.5)) == 2 / 1000 and BS.p_bootstrap(np.zeros(99)) == 1.0
+      and abs(BS.p_bootstrap(np.r_[np.full(50, -1.0), np.full(50, 1.0)]) - 1.0) < 1e-12,
+      "p bootstrap: tudo > 0 → 2/(B+1); tudo = 0 → 1; simétrico → 1", "p bootstrap incorreto")
+for etapa in ("AF", "EM"):
+    for cen in P.CENARIOS:
+        gi = P.blocos_importancia(etapa, cen)
+        cols_gi = [c for v in gi.values() for c in v]
+        check(sorted(cols_gi) == sorted(P.colunas_bloco(etapa, cen, 4)) and len(cols_gi) == len(set(cols_gi))
+              and gi["TDI"][0].startswith("TDI_") and gi["ATU"][0].startswith("ATU_"),
+              f"{etapa}/{cen}: grupos TDI e ATU separados particionam as colunas do bloco 4",
+              f"{etapa}/{cen}: grupos de permutação não particionam o bloco 4")
 
 # ------------------------------------------------------------------
 secao("RESUMO")

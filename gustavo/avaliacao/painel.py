@@ -57,6 +57,17 @@ def blocos(etapa, cenario):
 # Blocos cumulativos pré-especificados: 1 = rend; 2 = +TDI/ATU; 3 = +IED; 4 = +infra
 ORDEM_BLOCOS = ["rendimento", "TDI_ATU", "IED", "infraestrutura"]
 
+# Grupos de PERMUTAÇÃO com TDI e ATU separados (2026-11-02). Só a medida de
+# importância muda: o modelo continua o do bloco 4, com as mesmas colunas.
+GRUPOS_IMPORTANCIA = ["rendimento", "TDI", "ATU", "IED", "infraestrutura"]
+
+
+def blocos_importancia(etapa, cenario):
+    b = blocos(etapa, cenario)
+    tdi, atu = b["TDI_ATU"]
+    return {"rendimento": b["rendimento"], "TDI": [tdi], "ATU": [atu],
+            "IED": b["IED"], "infraestrutura": b["infraestrutura"]}
+
 
 def colunas_bloco(etapa, cenario, k):
     b = blocos(etapa, cenario)
