@@ -1,0 +1,92 @@
+
+==============================================================================
+A. Métricas de regressão (contas à mão)
+==============================================================================
+  ✅ MAE([0,2,4],[1,2,7]) = 4/3
+  ✅ RMSE = sqrt(10/3)
+  ✅ R² = 1 - 10/8 = -0,25 (negativo permitido)
+  ✅ R² da média do próprio conjunto = 0
+  ✅ K = round(f·n), mínimo 1 (233→23, 165→17 [16,5↑], 5→1)
+
+==============================================================================
+B. Recall@K
+==============================================================================
+  ✅ ordem perfeita no topo → 1
+  ✅ ordem invertida → 0
+  ✅ 1 de 2 acertos → 0,5
+  ✅ previsão constante → K/n (k=1)
+  ✅ previsão constante → K/n (k=4)
+  ✅ previsão constante → K/n (k=8)
+  ✅ previsão constante → K/n (k=20)
+  ✅ empates: valor esperado = média sobre todas as ordens (25 casos, erro máx 1.1e-16)
+
+==============================================================================
+C. Baselines
+==============================================================================
+  ✅ AF 2015: B1 = y_t; B0 do treino só nas 5 sem y_t
+  ✅ AF 2021: B1 = y_t; B0 do treino só nas 2 sem y_t
+  ✅ AF 2025: B1 = y_t; B0 do treino só nas 5 sem y_t
+  ✅ AF: B0 de 2016 não muda com alvos de 2016+ perturbados (sem vazamento)
+  ✅ EM 2015: B1 = y_t; B0 do treino só nas 3 sem y_t
+  ✅ EM 2021: B1 = y_t; B0 do treino só nas 1 sem y_t
+  ✅ EM 2025: B1 = y_t; B0 do treino só nas 5 sem y_t
+  ✅ EM: B0 de 2016 não muda com alvos de 2016+ perturbados (sem vazamento)
+
+==============================================================================
+D. Universo
+==============================================================================
+  ✅ AF: só escolas públicas
+  ✅ AF: todas com alvo (oferecem a etapa em t+1)
+  ✅ AF: chave (ANO, CO_ENTIDADE) única
+  ✅ AF: ANO_ALVO = ANO + 1
+  ✅ AF: 4155 escolas-ano no universo
+  ✅ EM: só escolas públicas
+  ✅ EM: todas com alvo (oferecem a etapa em t+1)
+  ✅ EM: chave (ANO, CO_ENTIDADE) única
+  ✅ EM: ANO_ALVO = ANO + 1
+  ✅ EM: 2478 escolas-ano no universo
+
+==============================================================================
+E. Conferência cruzada com o projeto oficial (B1, pares completos)
+==============================================================================
+  ✅ MAE do B1 bate com desfechos_persistencia.csv nas 12 transições (dif. máx 0.005)
+
+==============================================================================
+F. B2 (mediana do treino por localização × dependência)
+==============================================================================
+  ✅ B2: U→3, R→2, célula nova → mediana geral 3
+
+==============================================================================
+G. Painel da Etapa 2
+==============================================================================
+  ✅ AF: lags t, t−1, t−2 conferidos em 200 linhas sorteadas
+  ✅ AF: ABANDONO_T0 = y_t do universo
+  ✅ AF: DLAG = abandono(t−1) − abandono(t−2)
+  ✅ AF: Cenário B sem rendimento de t, sem DELTA1 e sem APROVACAO
+  ✅ AF: nenhuma composição completa (sem APROVACAO, sem IED N6/ALTO)
+  ✅ AF: painel = universo da Etapa 1 em 2019–2024 (1419 linhas)
+  ✅ AF: ANO 2019–2024 e ANO_ALVO = ANO + 1
+  ✅ EM: lags t, t−1, t−2 conferidos em 200 linhas sorteadas
+  ✅ EM: ABANDONO_T0 = y_t do universo
+  ✅ EM: DLAG = abandono(t−1) − abandono(t−2)
+  ✅ EM: Cenário B sem rendimento de t, sem DELTA1 e sem APROVACAO
+  ✅ EM: nenhuma composição completa (sem APROVACAO, sem IED N6/ALTO)
+  ✅ EM: painel = universo da Etapa 1 em 2019–2024 (980 linhas)
+  ✅ EM: ANO 2019–2024 e ANO_ALVO = ANO + 1
+
+==============================================================================
+H. Walk-forward sem vazamento
+==============================================================================
+  ✅ rodar_etapa: perturbar os anos após 2022 não muda nenhuma métrica de 2022 (20 linhas)
+  ✅ rodar_etapa: treino de 2022 = só ANO_ALVO < 2022
+  ✅ ridge: o alvo do ano de teste não entra no ajuste
+  ✅ arvore: o alvo do ano de teste não entra no ajuste
+
+==============================================================================
+RESUMO
+==============================================================================
+  ✅ OK:      51
+  ⚠️  Warn:   0
+  ❌ Falhas:  0
+
+  🎉 INSTRUMENTO VALIDADO
