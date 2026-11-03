@@ -1,0 +1,121 @@
+cenario,etapa,modelo,bloco,referencia,Rec@10 pontual,Rec@10 IC>0,Rec@10 IC<0,Rec@20 pontual,Rec@20 IC>0,Rec@20 IC<0,decisao
+A,AF,arvore,1,B1R,1/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,arvore,1,B1R_lag,3/4,0/4,0/4,2/4,0/4,0/4,não
+A,AF,arvore,1,B2,4/4,2/4,0/4,4/4,2/4,0/4,indeterminado
+A,AF,arvore,2,B1R,2/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,arvore,2,B1R_lag,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+A,AF,arvore,2,B2,4/4,2/4,0/4,4/4,4/4,0/4,indeterminado
+A,AF,arvore,2,bloco 1,2/4,0/4,0/4,4/4,0/4,0/4,não
+A,AF,arvore,3,B1R,2/4,0/4,2/4,1/4,0/4,0/4,não
+A,AF,arvore,3,B1R_lag,2/4,0/4,0/4,2/4,0/4,0/4,não
+A,AF,arvore,3,B2,4/4,1/4,0/4,4/4,2/4,0/4,indeterminado
+A,AF,arvore,3,bloco 2,0/4,0/4,0/4,0/4,0/4,1/4,não
+A,AF,arvore,4,B1R,2/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,arvore,4,B1R_lag,3/4,0/4,0/4,2/4,0/4,0/4,não
+A,AF,arvore,4,B2,4/4,1/4,0/4,4/4,2/4,0/4,indeterminado
+A,AF,arvore,4,bloco 3,2/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,ridge,1,B1R,0/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,ridge,1,B1R_lag,3/4,0/4,0/4,3/4,0/4,0/4,indeterminado
+A,AF,ridge,1,B2,4/4,2/4,0/4,4/4,3/4,0/4,indeterminado
+A,AF,ridge,2,B1R,1/4,0/4,0/4,3/4,0/4,0/4,não
+A,AF,ridge,2,B1R_lag,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+A,AF,ridge,2,B2,4/4,2/4,0/4,4/4,3/4,0/4,indeterminado
+A,AF,ridge,2,bloco 1,1/4,0/4,0/4,3/4,0/4,0/4,não
+A,AF,ridge,3,B1R,1/4,0/4,0/4,2/4,0/4,0/4,não
+A,AF,ridge,3,B1R_lag,4/4,0/4,0/4,3/4,0/4,0/4,indeterminado
+A,AF,ridge,3,B2,4/4,3/4,0/4,4/4,4/4,0/4,supera/adota
+A,AF,ridge,3,bloco 2,2/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,ridge,4,B1R,1/4,0/4,0/4,1/4,0/4,0/4,não
+A,AF,ridge,4,B1R_lag,3/4,0/4,0/4,2/4,0/4,0/4,não
+A,AF,ridge,4,B2,4/4,2/4,0/4,4/4,2/4,0/4,indeterminado
+A,AF,ridge,4,bloco 3,0/4,0/4,0/4,0/4,0/4,0/4,não
+A,EM,arvore,1,B1R,1/4,0/4,1/4,1/4,0/4,1/4,não
+A,EM,arvore,1,B1R_lag,1/4,1/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,1,B2,3/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,2,B1R,0/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,2,B1R_lag,1/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,arvore,2,B2,2/4,1/4,0/4,2/4,1/4,0/4,não
+A,EM,arvore,2,bloco 1,1/4,0/4,0/4,4/4,1/4,0/4,não
+A,EM,arvore,3,B1R,0/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,3,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,arvore,3,B2,3/4,1/4,0/4,3/4,1/4,0/4,indeterminado
+A,EM,arvore,3,bloco 2,1/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,4,B1R,0/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,arvore,4,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,arvore,4,B2,3/4,1/4,0/4,3/4,1/4,0/4,indeterminado
+A,EM,arvore,4,bloco 3,1/4,0/4,0/4,0/4,0/4,0/4,não
+A,EM,ridge,1,B1R,1/4,0/4,1/4,1/4,0/4,1/4,não
+A,EM,ridge,1,B1R_lag,1/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,ridge,1,B2,4/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,ridge,2,B1R,2/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,ridge,2,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,ridge,2,B2,4/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,ridge,2,bloco 1,2/4,0/4,0/4,2/4,0/4,0/4,não
+A,EM,ridge,3,B1R,2/4,0/4,0/4,2/4,0/4,0/4,não
+A,EM,ridge,3,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+A,EM,ridge,3,B2,4/4,0/4,0/4,3/4,1/4,0/4,indeterminado
+A,EM,ridge,3,bloco 2,1/4,0/4,0/4,1/4,0/4,0/4,não
+A,EM,ridge,4,B1R,2/4,0/4,0/4,3/4,0/4,0/4,não
+A,EM,ridge,4,B1R_lag,2/4,0/4,0/4,3/4,1/4,0/4,não
+A,EM,ridge,4,B2,4/4,0/4,0/4,4/4,1/4,0/4,indeterminado
+A,EM,ridge,4,bloco 3,1/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,arvore,1,B1R,2/4,0/4,1/4,1/4,0/4,0/4,não
+B,AF,arvore,1,B1R_lag,3/4,0/4,0/4,1/4,0/4,0/4,não
+B,AF,arvore,1,B2,4/4,0/4,0/4,4/4,2/4,0/4,indeterminado
+B,AF,arvore,2,B1R,2/4,0/4,1/4,2/4,0/4,0/4,não
+B,AF,arvore,2,B1R_lag,2/4,0/4,0/4,3/4,0/4,0/4,não
+B,AF,arvore,2,B2,4/4,1/4,0/4,4/4,3/4,0/4,indeterminado
+B,AF,arvore,2,bloco 1,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+B,AF,arvore,3,B1R,2/4,0/4,1/4,2/4,0/4,0/4,não
+B,AF,arvore,3,B1R_lag,2/4,0/4,0/4,3/4,0/4,0/4,não
+B,AF,arvore,3,B2,4/4,1/4,0/4,4/4,2/4,0/4,indeterminado
+B,AF,arvore,3,bloco 2,1/4,0/4,0/4,1/4,0/4,0/4,não
+B,AF,arvore,4,B1R,2/4,0/4,1/4,2/4,0/4,0/4,não
+B,AF,arvore,4,B1R_lag,2/4,0/4,0/4,3/4,0/4,0/4,não
+B,AF,arvore,4,B2,4/4,1/4,0/4,4/4,2/4,0/4,indeterminado
+B,AF,arvore,4,bloco 3,1/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,ridge,1,B1R,2/4,0/4,0/4,2/4,1/4,0/4,não
+B,AF,ridge,1,B1R_lag,3/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,ridge,1,B2,4/4,1/4,0/4,4/4,3/4,0/4,indeterminado
+B,AF,ridge,2,B1R,2/4,0/4,0/4,3/4,0/4,0/4,não
+B,AF,ridge,2,B1R_lag,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+B,AF,ridge,2,B2,4/4,1/4,0/4,4/4,3/4,0/4,indeterminado
+B,AF,ridge,2,bloco 1,0/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,ridge,3,B1R,2/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,ridge,3,B1R_lag,4/4,0/4,0/4,3/4,0/4,0/4,indeterminado
+B,AF,ridge,3,B2,4/4,2/4,0/4,4/4,4/4,0/4,indeterminado
+B,AF,ridge,3,bloco 2,2/4,0/4,0/4,1/4,0/4,0/4,não
+B,AF,ridge,4,B1R,1/4,0/4,0/4,2/4,0/4,0/4,não
+B,AF,ridge,4,B1R_lag,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+B,AF,ridge,4,B2,4/4,2/4,0/4,4/4,4/4,0/4,indeterminado
+B,AF,ridge,4,bloco 3,0/4,0/4,0/4,1/4,0/4,0/4,não
+B,EM,arvore,1,B1R,1/4,0/4,0/4,1/4,0/4,1/4,não
+B,EM,arvore,1,B1R_lag,1/4,0/4,0/4,1/4,1/4,0/4,não
+B,EM,arvore,1,B2,2/4,1/4,0/4,1/4,1/4,0/4,não
+B,EM,arvore,2,B1R,1/4,0/4,1/4,1/4,0/4,0/4,não
+B,EM,arvore,2,B1R_lag,1/4,0/4,0/4,1/4,1/4,0/4,não
+B,EM,arvore,2,B2,3/4,1/4,0/4,2/4,1/4,0/4,não
+B,EM,arvore,2,bloco 1,3/4,0/4,0/4,3/4,0/4,0/4,indeterminado
+B,EM,arvore,3,B1R,1/4,0/4,1/4,1/4,0/4,0/4,não
+B,EM,arvore,3,B1R_lag,2/4,0/4,0/4,1/4,1/4,0/4,não
+B,EM,arvore,3,B2,4/4,1/4,0/4,2/4,1/4,0/4,não
+B,EM,arvore,3,bloco 2,2/4,0/4,0/4,2/4,0/4,0/4,não
+B,EM,arvore,4,B1R,1/4,0/4,1/4,1/4,0/4,0/4,não
+B,EM,arvore,4,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+B,EM,arvore,4,B2,4/4,1/4,0/4,2/4,1/4,0/4,não
+B,EM,arvore,4,bloco 3,0/4,0/4,1/4,1/4,0/4,0/4,não
+B,EM,ridge,1,B1R,1/4,0/4,1/4,1/4,0/4,0/4,não
+B,EM,ridge,1,B1R_lag,2/4,0/4,0/4,1/4,1/4,0/4,não
+B,EM,ridge,1,B2,3/4,0/4,0/4,2/4,1/4,0/4,não
+B,EM,ridge,2,B1R,2/4,0/4,0/4,2/4,0/4,0/4,não
+B,EM,ridge,2,B1R_lag,2/4,0/4,0/4,2/4,1/4,0/4,não
+B,EM,ridge,2,B2,4/4,1/4,0/4,3/4,1/4,0/4,indeterminado
+B,EM,ridge,2,bloco 1,3/4,0/4,0/4,4/4,0/4,0/4,indeterminado
+B,EM,ridge,3,B1R,2/4,0/4,0/4,2/4,0/4,0/4,não
+B,EM,ridge,3,B1R_lag,2/4,0/4,0/4,3/4,1/4,0/4,não
+B,EM,ridge,3,B2,4/4,1/4,0/4,4/4,1/4,0/4,indeterminado
+B,EM,ridge,3,bloco 2,1/4,0/4,0/4,1/4,0/4,0/4,não
+B,EM,ridge,4,B1R,1/4,0/4,0/4,1/4,0/4,0/4,não
+B,EM,ridge,4,B1R_lag,2/4,0/4,0/4,3/4,1/4,0/4,não
+B,EM,ridge,4,B2,4/4,1/4,0/4,3/4,1/4,0/4,indeterminado
+B,EM,ridge,4,bloco 3,1/4,0/4,0/4,0/4,0/4,0/4,não

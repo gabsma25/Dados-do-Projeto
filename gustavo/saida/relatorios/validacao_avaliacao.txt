@@ -83,9 +83,25 @@ H. Walk-forward sem vazamento
   ✅ arvore: o alvo do ano de teste não entra no ajuste
 
 ==============================================================================
+I. Bootstrap de escolas
+==============================================================================
+  ✅ 1000 reamostragens por preditor e métrica
+  ✅ pareado: dois preditores iguais têm a mesma distribuição (mesmos índices)
+  ✅ previsão constante = K/n em toda reamostragem
+  ✅ intervalo [0.00, 0.57] contém a estimativa pontual
+  ✅ classes: IC > 0 vence, IC < 0 perde, cruza zero indeterminado
+
+==============================================================================
+J. Bootstrap agrupado por escola
+==============================================================================
+  ✅ sorteio por escola: cada escola sorteada entra com todos os seus anos (repetições inteiras)
+  ✅ agrupado: 3 escolas, 2 anos, por_ano separa as linhas
+  ✅ estimativa agrupada = média das 4 transições do 02 (Ridge b2; erro 5.6e-17)
+
+==============================================================================
 RESUMO
 ==============================================================================
-  ✅ OK:      51
+  ✅ OK:      59
   ⚠️  Warn:   0
   ❌ Falhas:  0
 

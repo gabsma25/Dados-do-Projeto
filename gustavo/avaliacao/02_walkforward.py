@@ -28,7 +28,7 @@ import painel as P  # noqa: E402
 import walkforward as W  # noqa: E402
 
 SAIDA = Path(__file__).resolve().parent.parent / "saida" / "avaliacao"
-ROTULO = {"B0": "B0 média", "B1R": "B1R ordena por y_t", "B1R_lag": "B1R_lag ordena por y_t−1",
+ROTULO = {"B0": "B0 média", "B1R": "B1R limite otimista (y_t)", "B1R_lag": "B1R_lag BASELINE (y_t−1)",
           "B2": "B2 mediana loc×dep"}
 
 
@@ -90,7 +90,7 @@ def main():
     res, imp = [], []
     for etapa in ("AF", "EM"):
         painel = P.montar(etapa, atual, oficial)
-        r, i = W.rodar_etapa(painel, etapa, anos)
+        r, i, _ = W.rodar_etapa(painel, etapa, anos)
         res.append(r); imp.append(i)
     res, imp = pd.concat(res, ignore_index=True), pd.concat(imp, ignore_index=True)
     SAIDA.mkdir(parents=True, exist_ok=True)

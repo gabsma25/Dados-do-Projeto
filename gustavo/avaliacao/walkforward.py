@@ -53,9 +53,10 @@ MODELOS = ("ridge", "arvore")
 
 def metricas(y, p):
     n = len(y)
-    k10, k20 = M.k_de_fracao(n, .10), M.k_de_fracao(n, .20)
-    return {"n": n, "MAE": M.mae(y, p), "R2": M.r2(y, p),
-            "Rec@10": M.recall_at_k(y, p, k10), "Rec@20": M.recall_at_k(y, p, k20)}
+    out = {"n": n, "MAE": M.mae(y, p), "R2": M.r2(y, p)}
+    for f in (.10, .20, .30):
+        out[f"Rec@{int(f * 100)}"] = M.recall_at_k(y, p, M.k_de_fracao(n, f))
+    return out
 
 
 def importancia_blocos(pipe, X, y, blocos, rng):
@@ -75,10 +76,30 @@ def importancia_blocos(pipe, X, y, blocos, rng):
     return linhas
 
 
-def rodar_etapa(painel, etapa, anos=ANOS_TESTE):
-    """Resultados (baselines + modelos × blocos × cenários) e importâncias."""
-    res, imp = [], []
+def previsoes_permutadas(pipe, X, blocos, n, rng):
+    """n previsões com cada bloco permutado (mesma permutação nas colunas do bloco)."""
+    out = {}
+    for nome, cols in blocos.items():
+        lst = []
+        for _ in range(n):
+            Xp = X.copy()
+            Xp[cols] = X[cols].to_numpy()[rng.permutation(len(X))]
+            lst.append(pipe.predict(Xp))
+        out[nome] = lst
+    return out
+
+
+def rodar_etapa(painel, etapa, anos=ANOS_TESTE, n_perm_boot=0):
+    """Resultados (baselines + modelos × blocos × cenários), importâncias e
+    previsões por ano (para o bootstrap de escolas).
+
+    prev: lista de {"etapa", "ano_alvo", "y", "co", "p": {(cenario, modelo, bloco): ŷ},
+                    "perm": {(cenario, modelo): {bloco: [ŷ permutado, ...]}}}
+    "perm" só é preenchido para o bloco 4 do Cenário B e se n_perm_boot > 0.
+    """
+    res, imp, prev = [], [], []
     rng = np.random.default_rng(SEMENTE)
+    rng_perm = np.random.default_rng(SEMENTE + 1)   # separado: não altera o rng da importância
     s = P.SUF[etapa]
     for ano in anos:
         tr = painel[painel["ANO_ALVO"] < ano]
@@ -94,17 +115,25 @@ def rodar_etapa(painel, etapa, anos=ANOS_TESTE):
             "B1R_lag": B.b1_persistencia(te, mu, f"ABANDONO_{s}_L1"),    # ordena por y_{t−1}
             "B2": B.b2_mediana_estrato(tr, te),
         }
+        p_ano, perm = {}, {}
         for nome, p in base.items():
             res.append({**cab, "cenario": "-", "modelo": nome, "bloco": 0, **metricas(y, p)})
+            p_ano[("-", nome, 0)] = p
         for cen in P.CENARIOS:
             blocos = P.blocos(etapa, cen)
             for k in range(1, len(P.ORDEM_BLOCOS) + 1):
                 cols = P.colunas_bloco(etapa, cen, k)
                 for mod in MODELOS:
                     pipe = modelo(mod).fit(tr[cols], ytr)
-                    res.append({**cab, "cenario": cen, "modelo": mod, "bloco": k,
-                                **metricas(y, pipe.predict(te[cols]))})
+                    p = pipe.predict(te[cols])
+                    res.append({**cab, "cenario": cen, "modelo": mod, "bloco": k, **metricas(y, p)})
+                    p_ano[(cen, mod, k)] = p
                     if k == len(P.ORDEM_BLOCOS):
                         for lin in importancia_blocos(pipe, te[cols].copy(), y, blocos, rng):
                             imp.append({**cab, "cenario": cen, "modelo": mod, **lin})
-    return pd.DataFrame(res), pd.DataFrame(imp)
+                        if n_perm_boot and cen == "B":
+                            perm[(cen, mod)] = previsoes_permutadas(pipe, te[cols].copy(), blocos,
+                                                                    n_perm_boot, rng_perm)
+        prev.append({"etapa": etapa, "ano_alvo": ano, "y": y,
+                     "co": te["CO_ENTIDADE"].astype(str).to_numpy(), "p": p_ano, "perm": perm})
+    return pd.DataFrame(res), pd.DataFrame(imp), prev

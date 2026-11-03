@@ -15,6 +15,10 @@
      rendimento de t; nenhuma composição completa (trio de rendimento, IED N6/ALTO)
   H. walk-forward sem vazamento: perturbar alvo e preditores do ano de teste e
      dos seguintes não muda o modelo ajustado
+  I. bootstrap: reamostragem pareada, previsão constante = K/n em toda
+     reamostragem, diferença de um preditor com ele mesmo = 0, classes
+  J. bootstrap agrupado: sorteio por escola leva todos os anos da escola,
+     repetição duplica as linhas; estimativa agrupada = média das anuais do 02
 
 Saída: gustavo/saida/relatorios/validacao_avaliacao.txt
 Uso:   python testes/04_validar_avaliacao.py
@@ -32,6 +36,7 @@ import baselines as B  # noqa: E402
 import metricas as M  # noqa: E402
 import painel as P  # noqa: E402
 import walkforward as W  # noqa: E402
+import bootstrap as BS  # noqa: E402
 
 P_BASE = GUSTAVO / "saida" / "base_atual.parquet"
 P_REF = GUSTAVO.parent / "abandono-escolar" / "docs" / "desfechos_persistencia.csv"
@@ -224,8 +229,8 @@ pert = pn.copy()
 fut = pert["ANO_ALVO"] > ano
 pert.loc[fut, "y_t1"] = rng.uniform(0, 100, int(fut.sum()))
 pert.loc[fut, cols_todas] = rng.normal(0, 50, (int(fut.sum()), len(cols_todas)))
-r1, _ = W.rodar_etapa(pn, "EM", anos=(ano,))
-r2, _ = W.rodar_etapa(pert, "EM", anos=(ano,))
+r1, _, _ = W.rodar_etapa(pn, "EM", anos=(ano,))
+r2, _, _ = W.rodar_etapa(pert, "EM", anos=(ano,))
 met = ["MAE", "R2", "Rec@10", "Rec@20"]
 check(np.allclose(r1[met].to_numpy(), r2[met].to_numpy()),
       f"rodar_etapa: perturbar os anos após {ano} não muda nenhuma métrica de {ano} ({len(r1)} linhas)",
@@ -245,6 +250,61 @@ for mod in W.MODELOS:
     check(np.allclose(m1.predict(x), m2.predict(x)),
           f"{mod}: o alvo do ano de teste não entra no ajuste",
           f"{mod}: o alvo do ano de teste vazou para o ajuste")
+
+# ------------------------------------------------------------------
+secao("I. Bootstrap de escolas")
+# ------------------------------------------------------------------
+yb = rng.integers(0, 10, 60).astype(float)
+pb = yb + rng.normal(0, 3, 60)
+cel_b = {"y": yb, "p": {"um": pb, "dois": pb.copy(), "const": np.full(60, 2.0)}}
+rb = np.random.default_rng(5)
+db = BS.distribuicoes_ano(cel_b, rb)
+check(all(len(v) == BS.N_BOOT for v in db.values()), f"{BS.N_BOOT} reamostragens por preditor e métrica",
+      "número de reamostragens errado")
+check(np.array_equal(db[("um", "Rec@10")], db[("dois", "Rec@10")]),
+      "pareado: dois preditores iguais têm a mesma distribuição (mesmos índices)",
+      "reamostragens não pareadas")
+k6 = M.k_de_fracao(60, .10)
+check(np.allclose(db[("const", "Rec@10")], k6 / 60), "previsão constante = K/n em toda reamostragem",
+      "constante ≠ K/n no bootstrap")
+lo_b, hi_b = BS.intervalo(db[("um", "Rec@10")])
+check(lo_b <= M.recall_at_k(yb, pb, k6) <= hi_b and lo_b < hi_b,
+      f"intervalo [{lo_b:.2f}, {hi_b:.2f}] contém a estimativa pontual", "intervalo não contém a estimativa")
+check(BS.classe(0.01, 0.2) == "vence" and BS.classe(-0.2, -0.01) == "perde" and BS.classe(-0.1, 0.1) == "indeterminado",
+      "classes: IC > 0 vence, IC < 0 perde, cruza zero indeterminado", "classes erradas")
+
+# ------------------------------------------------------------------
+secao("J. Bootstrap agrupado por escola")
+# ------------------------------------------------------------------
+cels = [{"ano_alvo": 2021, "y": np.array([1., 2, 3]), "co": np.array(["a", "b", "c"]), "p": {}},
+        {"ano_alvo": 2022, "y": np.array([4., 5]), "co": np.array(["a", "c"]), "p": {}}]
+ag = BS.Agrupado(cels)
+sorteios = ag.sorteios(np.random.default_rng(3), n_boot=200)
+ok_esc = True
+for idx in sorteios:
+    co_s = np.concatenate([c["co"] for c in cels])[idx]
+    for e in ("a", "b", "c"):
+        n_linhas = {"a": 2, "b": 1, "c": 2}[e]
+        ok_esc &= (co_s == e).sum() % n_linhas == 0       # escola entra com todos os seus anos
+check(ok_esc, "sorteio por escola: cada escola sorteada entra com todos os seus anos (repetições inteiras)",
+      "sorteio quebrou o agrupamento por escola")
+check(sorted(ag.por_ano(np.arange(5)).keys()) == [2021, 2022] and len(ag.escolas) == 3,
+      "agrupado: 3 escolas, 2 anos, por_ano separa as linhas", "Agrupado mal construído")
+p02 = pd.read_csv(GUSTAVO / "saida" / "avaliacao" / "02_walkforward.csv")
+p02c = GUSTAVO / "saida" / "avaliacao" / "02c_largura.csv"
+if p02c.exists():
+    lg = pd.read_csv(p02c)
+    lg = lg[(lg["periodo"] == "agrupado") & (lg["id"] == "Ridge b2")]
+    erro = 0.0
+    for etapa in ("AF", "EM"):
+        for kk in ("Rec@10", "Rec@20"):
+            esperado = p02[(p02["etapa"] == etapa) & (p02["cenario"] == "B") & (p02["modelo"] == "ridge")
+                           & (p02["bloco"] == 2)][kk].mean()
+            erro = max(erro, abs(float(lg[(lg["etapa"] == etapa) & (lg["K"] == kk)]["valor"].iloc[0]) - esperado))
+    check(erro < 1e-9, f"estimativa agrupada = média das 4 transições do 02 (Ridge b2; erro {erro:.1e})",
+          f"agrupado diverge da média anual ({erro:.2e})")
+else:
+    warn("02c_largura.csv ausente — rode avaliacao/02c_poder.py")
 
 # ------------------------------------------------------------------
 secao("RESUMO")
