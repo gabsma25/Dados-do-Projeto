@@ -1,0 +1,21 @@
+Tempos de execução — 2026-11-02 22:46 — Python 3.12.8 — máquina: DESKTOP-NO6L50C
+Gerado por cronometragem sequencial (wall-clock), um comando por vez.
+
+99_pipeline.py (cache quente)                         7.7 s  exit=0  
+testes/01_validar_base.py                             1.1 s  exit=0   ✅ OK: 45  ⚠️ Warn: 0  ❌ Falhas: 0 
+testes/02_validar_indices.py                          3.6 s  exit=0   ✅ OK: 41  ⚠️ Warn: 0  ❌ Falhas: 0 
+testes/03_validar_censo_pos04.py --completo          23.5 s  exit=0   ✅ OK: 35  ⚠️ Warn: 1  ❌ Falhas: 0 
+testes/04_validar_avaliacao.py                        3.9 s  exit=0   ✅ OK: 65  ⚠️ Warn: 0  ❌ Falhas: 0 
+avaliacao/01_baselines.py                             0.9 s  exit=0  
+avaliacao/02_walkforward.py                          27.6 s  exit=0  
+avaliacao/02b_robustez.py (B=1000/ano)               12.5 s  exit=0  
+avaliacao/02c_poder.py (B=1000 agrupado)             69.9 s  exit=0  
+avaliacao/02d_tdi_separado.py (B=5000)              163.3 s  exit=0  
+abandono-escolar: pytest (tests/)                     2.3 s  exit=0  45 passed in 1.66s 
+99_pipeline.py --force (2019–2025 do bruto)       415.5 s  exit=0  
+FIM
+
+Determinismo (mesma sessão, 2026-11-02):
+- os 12 CSVs de saida/avaliacao/ (01_baselines, 02_*, 02b_*, 02c_*) têm md5 idêntico antes e depois da reexecução;
+- após o --force: base_atual.parquet idêntica (assert_frame_equal) à cópia de antes; cache/ e etapas/ sem diferença de bytes no git;
+  só diagnostico_bruto.txt mudou, na ordem das linhas (o 01 processa os anos em threads), e foi restaurado.
