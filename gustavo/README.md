@@ -45,8 +45,19 @@ O `99_pipeline.py` roda os 5 em ordem, com `--force` e `--from`.
 
 ## Estado atual
 
-Última execução completa: **14/10/2026**. `01_validar_base.py`: **45 checks / 0
-falhas**; `02_validar_indices.py`: **41 / 0**; `03_validar_censo_pos04.py --completo`: **35 / 0**.
+Última execução completa: **02/11/2026** (2019–2025 reprocessados do bruto,
+2007–2018 do cache; base idêntica à de 14/10). `01_validar_base.py`: **45 checks / 0
+falhas**; `02_validar_indices.py`: **41 / 0**; `03_validar_censo_pos04.py --completo`:
+**35 / 0 com 1 aviso** (abaixo).
+
+> **Limitação: 2007–2018 sem verificação contra a fonte.** Os zips brutos de
+> tx_rend e do Censo de 2007–2018 não estão nesta máquina (estavam na do Gustavo).
+> Esses 12 anos vêm só do recorte de RR em `cache/`, e o teste 03 não consegue
+> conferi-los contra os microdados originais: só 2019–2025 são conferidos. Isso
+> pesa na decisão de estender a série (D11 do `abandono-escolar/CLAUDE.md`):
+> qualquer uso de 2007–2018 hoje se apoia num cache que não foi reverificado.
+> Verificar exige rebaixar esses zips do INEP. Desde 02/11/2026 os scripts 01 e 03
+> usam o cache quando falta o zip do ano, e o `--force` não apaga esses anos.
 
 - **`saida/base_atual.parquet`** — 12.597 × 55, cópia do `05`:
   30 colunas do tx_rend longitudinal + 18 variáveis do Censo (`Int8`) + `INFRA_FONTE_ARTIGO`
