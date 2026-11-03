@@ -321,12 +321,20 @@ def main():
 
     arquivos = listar_arquivos()
     print(f"Arquivos: {len(arquivos)}\n")
+    # Anos sem arquivo bruto entram pelo cache (se houver); --force não os apaga.
+    com_arquivo = {a for a, _, _ in arquivos}
+    for p in sorted(CACHE.glob("*.parquet")):
+        if (p.stem.isdigit() and int(p.stem) >= ANO_MINIMO
+                and int(p.stem) not in com_arquivo
+                and (CACHE / f"{p.stem}_nacional.json").exists()):
+            arquivos.append((int(p.stem), None, "cache"))
+    arquivos.sort(key=lambda x: x[0])
 
     # Sequencial de propósito: cada ano carrega o CSV nacional em memória
     # (2010 estourava memória com 4 threads).
     partes, fontes = [], []
     for a, f, t in arquivos:
-        ano, cru, stats, msg = processar_ano(a, f, t, args.force)
+        ano, cru, stats, msg = processar_ano(a, f, t, args.force and f is not None)
         print(f"  {msg}", flush=True)
         if cru is None:
             continue

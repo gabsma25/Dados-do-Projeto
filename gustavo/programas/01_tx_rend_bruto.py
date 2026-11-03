@@ -373,10 +373,11 @@ def main():
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as ex:
         futs = {}
         for ano in ANOS:
-            if ano not in mapa:
+            # Sem zip, o ano entra pelo cache (se houver); --force não o apaga.
+            if ano not in mapa and not (CACHE / f"{ano}.parquet").exists():
                 continue
-            force = args.force or ano in force_years
-            futs[ex.submit(processar_ano, ano, mapa[ano], force)] = ano
+            force = (args.force or ano in force_years) and ano in mapa
+            futs[ex.submit(processar_ano, ano, mapa.get(ano), force)] = ano
         for fut in as_completed(futs):
             a, df, diag, err = fut.result()
             print(f"  {diag}")
@@ -388,7 +389,8 @@ def main():
 
     for ano in ANOS:
         if ano not in mapa:
-            diags.append(f"{ano}: SEM ZIP")
+            origem = "usado cache" if ano in resultados else "ano ausente"
+            diags.append(f"{ano}: SEM ZIP ({origem})")
 
     if not resultados:
         print("\n[!] Nada coletado. Abortando.")

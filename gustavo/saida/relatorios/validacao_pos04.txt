@@ -85,18 +85,6 @@ E. RECOMPUTO DA REGRA DE FONTE (cache + estatística nacional)
 ==============================================================================
 F. COMPARAÇÃO COM O MICRODADO ORIGINAL DO INEP (sem cache, sem o script 03)
 ==============================================================================
-     2007: ok  (718 escolas)  <- microdados_censo_escolar_2007.zip::microdados_ed_basica_2007/dados/microdados_ed_basica_2007.csv
-     2008: ok  (624 escolas)  <- microdados_censo_escolar_2008.zip::microdados_ed_basica_2008/dados/microdados_ed_basica_2008.csv
-     2009: ok  (596 escolas)  <- microdados_censo_escolar_2009.zip::microdados_ed_basica_2009/dados/microdados_ed_basica_2009.csv
-     2010: ok  (632 escolas)  <- microdados_censo_escolar_2010.zip::microdados_ed_basica_2010/dados/microdados_ed_basica_2010.csv
-     2011: ok  (618 escolas)  <- microdados_censo_escolar_2011.zip::microdados_ed_basica_2011/dados/microdados_ed_basica_2011.csv
-     2012: ok  (641 escolas)  <- microdados_censo_escolar_2012.zip::microdados_ed_basica_2012/dados/microdados_ed_basica_2012.csv
-     2013: ok  (666 escolas)  <- microdados_censo_escolar_2013.zip::microdados_ed_basica_2013/dados/microdados_ed_basica_2013.csv
-     2014: ok  (670 escolas)  <- microdados_censo_escolar_2014.zip::microdados_ed_basica_2014/dados/microdados_ed_basica_2014.csv
-     2015: ok  (669 escolas)  <- microdados_censo_escolar_2015.zip::microdados_ed_basica_2015/dados/microdados_ed_basica_2015.csv
-     2016: ok  (677 escolas)  <- microdados_censo_escolar_2016.zip::microdados_ed_basica_2016/dados/microdados_ed_basica_2016.csv
-     2017: ok  (679 escolas)  <- microdados_censo_escolar_2017.zip::microdados_ed_basica_2017/dados/microdados_ed_basica_2017.csv
-     2018: ok  (674 escolas)  <- microdados_censo_escolar_2018.zip::microdados_ed_basica_2018/dados/microdados_ed_basica_2018.csv
      2019: ok  (667 escolas)  <- microdados_ed_basica_2019.csv
      2020: ok  (662 escolas)  <- microdados_ed_basica_2020.CSV
      2021: ok  (650 escolas)  <- microdados_ed_basica_2021.csv
@@ -104,7 +92,8 @@ F. COMPARAÇÃO COM O MICRODADO ORIGINAL DO INEP (sem cache, sem o script 03)
      2023: ok  (689 escolas)  <- microdados_ed_basica_2023.csv
      2024: ok  (696 escolas)  <- microdados_ed_basica_2024.csv
      2025: ok  (687 escolas)  <- Tabela_Escola_2025_V2.csv
-  ✅ 19 anos conferem célula a célula com o microdado ORIGINAL: 2007–2025
+  ✅ 7 anos conferem célula a célula com o microdado ORIGINAL: 2019–2025
+  ⚠️  anos NÃO conferidos com o original (só zip; use --completo): [np.int64(2007), np.int64(2008), np.int64(2009), np.int64(2010), np.int64(2011), np.int64(2012), np.int64(2013), np.int64(2014), np.int64(2015), np.int64(2016), np.int64(2017), np.int64(2018)]
 
 ==============================================================================
 G. MERGE COM O TX_REND
@@ -183,7 +172,7 @@ J. USO NO MODELO: linhas com alvo e com as 18 completas
 RESUMO
 ==============================================================================
   ✅ OK:      35
-  ⚠️  Warn:   0
+  ⚠️  Warn:   1
   ❌ Falhas:  0
 
   🎉 BASE PÓS-04 VALIDADA

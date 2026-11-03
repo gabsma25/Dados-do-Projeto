@@ -271,22 +271,34 @@ Colunas (todas):
   - 3_CAT_MED_NS
 
 Detalhes por zip:
-  2010: [cache] 632 linhas
   2009: [cache] 596 linhas
+  2010: [cache] 632 linhas
   2007: [cache] 718 linhas
   2008: [cache] 624 linhas
   2011: [cache] 618 linhas
-  2012: [cache] 641 linhas
   2013: [cache] 666 linhas
+  2012: [cache] 641 linhas
   2014: [cache] 670 linhas
   2016: [cache] 677 linhas
-  2017: [cache] 679 linhas
   2015: [cache] 669 linhas
   2018: [cache] 674 linhas
-  2020: [cache] 662 linhas
-  2019: [cache] 667 linhas
-  2021: [cache] 650 linhas
-  2022: [cache] 682 linhas
-  2024: [cache] 696 linhas
-  2025: [cache] 687 linhas
-  2023: [cache] 689 linhas
+  2017: [cache] 679 linhas
+  2020: interno=tx_rend_escolas_2020/tx_rend_escolas_2020.xlsx | total=131230 | RR=662 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2021: interno=tx_rend_escolas_2021/tx_rend_escolas_2021.xlsx | total=130130 | RR=650 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2022: interno=tx_rend_escolas_2022/tx_rend_escolas_2022.xlsx | total=129308 | RR=682 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2019: interno=tx_rend_escolas_2019/tx_rend_escolas_2019.xlsx | total=132459 | RR=667 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2023: interno=tx_rend_escolas_2023/tx_rend_escolas_2023.xlsx | total=128371 | RR=689 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2025: interno=tx_rend_escolas_2025/tx_rend_escolas_2025.xlsx | total=126685 | RR=687 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2024: interno=tx_rend_escolas_2024/tx_rend_escolas_2024.xlsx | total=128097 | RR=696 | filtro=uf_sigla (col=SG_UF) vals=['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']
+  2007: SEM ZIP (usado cache)
+  2008: SEM ZIP (usado cache)
+  2009: SEM ZIP (usado cache)
+  2010: SEM ZIP (usado cache)
+  2011: SEM ZIP (usado cache)
+  2012: SEM ZIP (usado cache)
+  2013: SEM ZIP (usado cache)
+  2014: SEM ZIP (usado cache)
+  2015: SEM ZIP (usado cache)
+  2016: SEM ZIP (usado cache)
+  2017: SEM ZIP (usado cache)
+  2018: SEM ZIP (usado cache)

@@ -42,7 +42,7 @@ D. SEM VAZAMENTO TEMPORAL (executa o 05 em dados perturbados)
 E. IIE: PC1 do próprio ano
 ==============================================================================
   ✅ IIE_zano é NaN exatamente quando falta alguma das 4 dimensões
-  ✅ IIE_zano = soma(peso·dimensão) com PC1 do ano (erro máx 2.7e-15)
+  ✅ IIE_zano = soma(peso·dimensão) com PC1 do ano (erro máx 2.2e-15)
   ✅ pesos e autovalores por ano do JSON = recomputados
   ✅ pesos de norma 1 e soma > 0 em todos os anos
   ✅ variância do IIE em cada ano = autovalor do PC1
