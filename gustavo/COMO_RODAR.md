@@ -3,6 +3,30 @@
 Tudo é rodado da pasta `gustavo/`. Os scripts funcionam de qualquer CWD
 (auto-discovery de pasta), mas rodar daqui é o "jeito canônico".
 
+## Ambiente (desde 2026-11-03)
+
+O `gustavo/` roda no **mesmo `.venv` do `abandono-escolar`, nunca no Python
+global**. Dependências em `Dados-do-Projeto/requirements.txt`, que inclui o
+`requirements.txt` do pipeline oficial e fixa o que só o `gustavo/` usa
+(scikit-learn, xlrd e dependências):
+
+```bash
+..\abandono-escolar\.venv\Scripts\python.exe -m pip install -r ..\requirements.txt
+..\abandono-escolar\.venv\Scripts\python.exe programas/99_pipeline.py
+```
+
+Nos comandos abaixo, `python` significa esse interpretador.
+
+**Atenção — resultados registrados até 2026-11-03 vieram do Python global**
+(numpy 2.1.1, pandas 3.0.3, pyarrow 24.0.0, scikit-learn 1.8.0). Rodando no
+`.venv` (numpy 2.5.3, pandas 3.0.5, pyarrow 25.0.1, scikit-learn 1.9.1): bases
+com conteúdo idêntico (só os metadados do Parquet mudam), walk-forward e
+bootstraps idênticos a menos de 1e-15, correlações a menos de 1e-7; **o Random
+Forest da P026 (`analises/03`, bloco C) muda até 0,0036** e o
+`testes/05_validar_associacoes.py` acusa 2 faixas (TDI 0,25–0,34 e rendimento
+0,17–0,21 contra 0,25–0,35 e 0,17–0,20 registradas). As saídas versionadas
+continuam as do Python global até a pesquisadora decidir.
+
 ---
 
 ## Pipeline completo (reconstruir tudo)

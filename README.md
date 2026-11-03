@@ -96,7 +96,9 @@ Pipeline estendido (gustavo/)
 - **Como o `gustavo/` acha os dados:** os scripts sobem a árvore de pastas procurando
   `abandono-escolar/dados/`; podem ser rodados de qualquer pasta, mas o jeito canônico é
   `cd gustavo && python programas/99_pipeline.py`.
-- **Dependências:** as do `abandono-escolar/requirements.txt`; os `.xls` de 2007–2011 também exigem `xlrd`.
+- **Dependências e ambiente:** `requirements.txt` desta raiz (inclui o
+  `abandono-escolar/requirements.txt` e fixa scikit-learn, xlrd e dependências). O `gustavo/`
+  roda no `.venv` do `abandono-escolar`, nunca no Python global (`gustavo/COMO_RODAR.md`).
 - **Dois repositórios git:** a raiz (`GustavoGGI/Dados-do-Projeto`) e `abandono-escolar/`
   (`gabsma25/abandono-escolar`) têm `.git` próprio. Para o `gustavo/` rodar num clone novo, as duas
   pastas precisam estar lado a lado.

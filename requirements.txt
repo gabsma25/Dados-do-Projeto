@@ -1,0 +1,23 @@
+# Dependências do gustavo/ (pipeline estendido 2007–2025 e instrumento de avaliação).
+#
+# Um ambiente só: o .venv do abandono-escolar. O gustavo/ roda nele, nunca no
+# Python global (decisão da pesquisadora, 2026-11-03). Instalação:
+#   abandono-escolar\.venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# O requirements.txt do pipeline oficial fica intocado (CLAUDE.md §7: o
+# pipeline oficial não usa scikit-learn nem xlrd); este arquivo o inclui e
+# acrescenta só o que o gustavo/ importa e não está lá.
+#
+# Imports de terceiros do gustavo/: numpy, pandas, openpyxl e pyarrow (pelo
+# pandas) — já fixados no arquivo oficial —, scikit-learn e xlrd. scipy,
+# joblib e threadpoolctl são dependências do scikit-learn. Versões = as
+# instaladas no .venv em 2026-11-03.
+-r abandono-escolar/requirements.txt
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+xlrd==2.0.2
+# dependências transitivas do scikit-learn e do joblib, fixadas também
+narwhals==2.26.0
+cloudpickle==3.1.2
