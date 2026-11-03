@@ -1,0 +1,35 @@
+Valores pontuais registrados no DECISOES.md
+  ✅ AF TDI(t) x REPROVACAO(t-1) (pearson): obtido +0.2257, registrado +0.226
+  ✅ AF TDI(t) x REPROVACAO(t-1) (spearman): obtido +0.1502, registrado +0.150
+  ✅ EM TDI(t) x REPROVACAO(t-1) (pearson): obtido -0.0123, registrado -0.012
+  ✅ EM TDI(t) x REPROVACAO(t-1) (spearman): obtido -0.1368, registrado -0.137
+  ✅ AF TDI(t) x ABANDONO(t-1) (pearson): obtido +0.3613, registrado +0.361
+  ✅ AF TDI(t) x ABANDONO(t-1) (spearman): obtido +0.2713, registrado +0.271
+  ✅ EM TDI(t) x ABANDONO(t-1) (pearson): obtido +0.2118, registrado +0.212
+  ✅ EM TDI(t) x ABANDONO(t-1) (spearman): obtido +0.1620, registrado +0.162
+  ✅ AF TDI(t) x TDI(t-1) (pearson): obtido +0.8818, registrado +0.882
+  ✅ AF TDI(t) x TDI(t-1) (spearman): obtido +0.8584, registrado +0.858
+  ✅ EM TDI(t) x TDI(t-1) (pearson): obtido +0.8600, registrado +0.860
+  ✅ EM TDI(t) x TDI(t-1) (spearman): obtido +0.8291, registrado +0.829
+  ✅ AF ABANDONO(t) x ABANDONO(t-1) (pearson): obtido +0.2503, registrado +0.250
+  ✅ EM ABANDONO(t) x ABANDONO(t-1) (pearson): obtido +0.2264, registrado +0.226
+  ✅ escola IIE_zano(t) x IIE_zano(t-1) (spearman): obtido +0.979, registrado +0.98
+  ✅ AF TDI x alvo(t+1) (spearman): obtido +0.2874, registrado +0.287
+  ✅ AF abandono(t) x alvo(t+1) (spearman): obtido +0.2333, registrado +0.233
+  ✅ AF abandono(t-1) x alvo(t+1) (spearman): obtido +0.1831, registrado +0.183
+  ✅ AF ATU x alvo(t+1) (spearman): obtido +0.0318, registrado +0.032
+  ✅ EM TDI x alvo(t+1) (spearman): obtido +0.2330, registrado +0.233
+  ✅ EM abandono(t) x alvo(t+1) (spearman): obtido +0.2070, registrado +0.207
+  ✅ EM IED_ALTO x alvo(t+1) (spearman): obtido +0.1838, registrado +0.184
+  ✅ EM ATU x alvo(t+1) (spearman): obtido -0.0480, registrado -0.048
+  ✅ EM abandono(t-1) x alvo(t+1) (spearman): obtido +0.0235, registrado +0.023
+
+Faixas registradas (mín–máx, 2 casas)
+  ✅ dimensões da infraestrutura, persistência (Spearman): obtido 0.80–0.96, registrado 0.80–0.96 (n=4)
+  ✅ P026: MDI do trio somado (3 sementes): obtido 0.41–0.42, registrado 0.41–0.42 (n=3)
+  ✅ P026: MDI do TDI com trio (3 sementes): obtido 0.33–0.34, registrado 0.33–0.34 (n=3)
+  ✅ P026: permutação de bloco, TDI (3 sementes): obtido 0.25–0.35, registrado 0.25–0.35 (n=3)
+  ✅ P026: permutação de bloco, rendimento (3 sementes): obtido 0.17–0.20, registrado 0.17–0.20 (n=3)
+  ✅ P026: n do Random Forest = 1390 (registrado 1.390)
+
+RESUMO: 30 OK, 0 falhas

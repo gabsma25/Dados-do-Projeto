@@ -1,0 +1,89 @@
+bloco,nivel,etapa,medida,metodo,n,valor
+A,FATO,AF,TDI(t) x REPROVACAO(t-1),pearson,1395,0.2256536767207958
+A,FATO,AF,TDI(t) x REPROVACAO(t-1),spearman,1395,0.1502352687629203
+A,FATO,AF,TDI(t) x ABANDONO(t-1),pearson,1395,0.36126463559998595
+A,FATO,AF,TDI(t) x ABANDONO(t-1),spearman,1395,0.2712781429686856
+A,FATO,AF,TDI(t) x TDI(t-1),pearson,1395,0.8817889424167253
+A,FATO,AF,TDI(t) x TDI(t-1),spearman,1395,0.8584297212621195
+A,FATO,AF,ABANDONO(t) x ABANDONO(t-1),pearson,1395,0.2502750303532835
+A,FATO,AF,ABANDONO(t) x ABANDONO(t-1),spearman,1395,0.23326469771708225
+A,FATO,EM,TDI(t) x REPROVACAO(t-1),pearson,964,-0.012329031463319134
+A,FATO,EM,TDI(t) x REPROVACAO(t-1),spearman,964,-0.13675095737635665
+A,FATO,EM,TDI(t) x ABANDONO(t-1),pearson,964,0.21176693183066822
+A,FATO,EM,TDI(t) x ABANDONO(t-1),spearman,964,0.1620321414869038
+A,FATO,EM,TDI(t) x TDI(t-1),pearson,964,0.8600367777629938
+A,FATO,EM,TDI(t) x TDI(t-1),spearman,964,0.829117031930292
+A,FATO,EM,ABANDONO(t) x ABANDONO(t-1),pearson,965,0.22641892384647103
+A,FATO,EM,ABANDONO(t) x ABANDONO(t-1),spearman,965,0.20696132341867993
+A,FATO,escola,IIE_zano(t) x IIE_zano(t-1),spearman,3764,0.978669179122044
+A,FATO,escola,DIM_IIB_zano(t) x DIM_IIB_zano(t-1),spearman,3764,0.9612973080212538
+A,FATO,escola,DIM_IDA_zano(t) x DIM_IDA_zano(t-1),spearman,3764,0.9251680536961279
+A,FATO,escola,DIM_IDP_zano(t) x DIM_IDP_zano(t-1),spearman,3764,0.8047659674442661
+A,FATO,escola,DIM_IEP_zano(t) x DIM_IEP_zano(t-1),spearman,3764,0.9203541644828331
+B,EXPLORATÓRIO,AF,TDI x alvo(t+1),spearman,1395,0.28737533656896336
+B,EXPLORATÓRIO,AF,abandono(t) x alvo(t+1),spearman,1395,0.23326469771708225
+B,EXPLORATÓRIO,AF,abandono(t-1) x alvo(t+1),spearman,1144,0.18313527572496824
+B,EXPLORATÓRIO,AF,ATU x alvo(t+1),spearman,1390,0.03179706605867584
+B,EXPLORATÓRIO,AF,IED_ALTO x alvo(t+1),spearman,944,0.039058003236394065
+B,EXPLORATÓRIO,EM,TDI x alvo(t+1),spearman,963,0.2330244594512132
+B,EXPLORATÓRIO,EM,abandono(t) x alvo(t+1),spearman,965,0.20696132341867993
+B,EXPLORATÓRIO,EM,abandono(t-1) x alvo(t+1),spearman,797,0.02348094319496321
+B,EXPLORATÓRIO,EM,ATU x alvo(t+1),spearman,966,-0.04802799340456174
+B,EXPLORATÓRIO,EM,IED_ALTO x alvo(t+1),spearman,652,0.1837897809150345
+C,EXPLORATÓRIO,AF,MDI com trio: ABANDONO (semente 0),impureza,1390,0.1582314891254356
+C,EXPLORATÓRIO,AF,MDI com trio: APROVACAO (semente 0),impureza,1390,0.15208530076130494
+C,EXPLORATÓRIO,AF,MDI com trio: REPROVACAO (semente 0),impureza,1390,0.10597900721170862
+C,EXPLORATÓRIO,AF,MDI com trio: TDI (semente 0),impureza,1390,0.3362924385836758
+C,EXPLORATÓRIO,AF,MDI com trio: ATU (semente 0),impureza,1390,0.24741176431787504
+C,EXPLORATÓRIO,AF,MDI com trio: trio somado (semente 0),impureza,1390,0.41629579709844916
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ABANDONO (semente 0),impureza,1390,0.20676399896841044
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: REPROVACAO (semente 0),impureza,1390,0.16201469000922072
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: TDI (semente 0),impureza,1390,0.3547687692938495
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ATU (semente 0),impureza,1390,0.2764525417285193
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: rendimento somado (semente 0),impureza,1390,0.36877868897763116
+C,EXPLORATÓRIO,AF,MDI com trio: ABANDONO (semente 1),impureza,1390,0.15593740362950836
+C,EXPLORATÓRIO,AF,MDI com trio: APROVACAO (semente 1),impureza,1390,0.15148119369923355
+C,EXPLORATÓRIO,AF,MDI com trio: REPROVACAO (semente 1),impureza,1390,0.10373323693023961
+C,EXPLORATÓRIO,AF,MDI com trio: TDI (semente 1),impureza,1390,0.33689215801783734
+C,EXPLORATÓRIO,AF,MDI com trio: ATU (semente 1),impureza,1390,0.25195600772318116
+C,EXPLORATÓRIO,AF,MDI com trio: trio somado (semente 1),impureza,1390,0.4111518342589815
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ABANDONO (semente 1),impureza,1390,0.20441479453462977
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: REPROVACAO (semente 1),impureza,1390,0.1614194675327232
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: TDI (semente 1),impureza,1390,0.35662603534617365
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ATU (semente 1),impureza,1390,0.2775397025864734
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: rendimento somado (semente 1),impureza,1390,0.365834262067353
+C,EXPLORATÓRIO,AF,MDI com trio: ABANDONO (semente 2),impureza,1390,0.15899702098188254
+C,EXPLORATÓRIO,AF,MDI com trio: APROVACAO (semente 2),impureza,1390,0.1522402966086203
+C,EXPLORATÓRIO,AF,MDI com trio: REPROVACAO (semente 2),impureza,1390,0.104140020229306
+C,EXPLORATÓRIO,AF,MDI com trio: TDI (semente 2),impureza,1390,0.3330990705527876
+C,EXPLORATÓRIO,AF,MDI com trio: ATU (semente 2),impureza,1390,0.2515235916274037
+C,EXPLORATÓRIO,AF,MDI com trio: trio somado (semente 2),impureza,1390,0.41537733781980885
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ABANDONO (semente 2),impureza,1390,0.20608428831786563
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: REPROVACAO (semente 2),impureza,1390,0.16186653575877621
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: TDI (semente 2),impureza,1390,0.35375090375294566
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: ATU (semente 2),impureza,1390,0.27829827217041253
+C,EXPLORATÓRIO,AF,MDI com 2 das 3: rendimento somado (semente 2),impureza,1390,0.3679508240766418
+C,EXPLORATÓRIO,AF,R² holdout (semente 0),R2,417,0.10361120939796908
+C,EXPLORATÓRIO,AF,permutação de bloco: rendimento (trio) (semente 0),queda de R2,417,0.18945335915920591
+C,EXPLORATÓRIO,AF,permutação de bloco: TDI (semente 0),queda de R2,417,0.3066513332425513
+C,EXPLORATÓRIO,AF,permutação de bloco: ATU (semente 0),queda de R2,417,0.07513089003802745
+C,EXPLORATÓRIO,AF,R² holdout (semente 1),R2,417,-0.07449593908867014
+C,EXPLORATÓRIO,AF,permutação de bloco: rendimento (trio) (semente 1),queda de R2,417,0.2036785123980873
+C,EXPLORATÓRIO,AF,permutação de bloco: TDI (semente 1),queda de R2,417,0.24665942260526705
+C,EXPLORATÓRIO,AF,permutação de bloco: ATU (semente 1),queda de R2,417,0.04269157034716589
+C,EXPLORATÓRIO,AF,R² holdout (semente 2),R2,417,0.13748502990295108
+C,EXPLORATÓRIO,AF,permutação de bloco: rendimento (trio) (semente 2),queda de R2,417,0.17473258938211256
+C,EXPLORATÓRIO,AF,permutação de bloco: TDI (semente 2),queda de R2,417,0.3462150406746519
+C,EXPLORATÓRIO,AF,permutação de bloco: ATU (semente 2),queda de R2,417,0.10307070408802416
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t+1): entre escolas (médias por escola),pearson,252,0.6009413860946663
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t+1): dentro da escola (desvios da média),pearson,1382,0.03274389464777798
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t+1): total (sem decompor),pearson,1395,0.34608837107598844
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t): entre escolas (médias por escola),pearson,252,0.6362540539084814
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t): dentro da escola (desvios da média),pearson,1382,0.1354014451329936
+D,EXPLORATÓRIO,AF,TDI(t) x abandono(t): total (sem decompor),pearson,1395,0.3964943628845704
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t+1): entre escolas (médias por escola),pearson,169,0.43206734134155733
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t+1): dentro da escola (desvios da média),pearson,960,0.04613272656335543
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t+1): total (sem decompor),pearson,963,0.26396991695392413
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t): entre escolas (médias por escola),pearson,169,0.46930743254017954
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t): dentro da escola (desvios da média),pearson,959,0.12470155009761924
+D,EXPLORATÓRIO,EM,TDI(t) x abandono(t): total (sem decompor),pearson,962,0.2758927735959828
