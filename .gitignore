@@ -1,0 +1,6 @@
+# Cache de execução do Python e de ferramentas. Os .pyc que já estavam no git
+# continuam rastreados até decisão (gustavo/docs/relatorio_06_organizacao_estrutura.md).
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/

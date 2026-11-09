@@ -1,0 +1,91 @@
+A. Funil de recorte (funil_recorte.csv)
+  ✅ RR 2019–2025 = n_linhas_rr do inventário de indicadores ({2019: 667, 2020: 662, 2021: 650, 2022: 682, 2023: 689, 2024: 696, 2025: 687})
+  ✅ RR 2007–2025 = diagnostico_bruto.txt (19 anos)
+  ✅ degraus 2 e 3 iguais em AF e EM (não dependem da etapa)
+  ✅ AF: com a etapa em t, 2019–2025 = desfechos_cobertura.com_AF
+  ✅ AF: universo, ANO 2019–2024 = desfechos_cobertura.com_alvo_AF_t1
+  ✅ AF: soma do universo = 4155 (registrado 4155)
+  ✅ AF: soma do painel da Etapa 2 = 1419 (registrado 1419)
+  ✅ AF: sem a etapa em t = n_sem_t do 01_baselines.csv (17 transições)
+  ✅ AF: encaixe Brasil ≥ RR ≥ públicas ≥ com a etapa ≥ com a etapa e alvo
+  ✅ AF: universo = (com a etapa e alvo) + (sem a etapa)
+  ✅ AF: Brasil vazio exatamente em 2007–2018 (zips fora desta máquina)
+  ✅ AF: degraus 5–8 vazios em 2025 (t+1 não publicado)
+  ✅ AF: painel vazio fora de 2019–2024
+  ✅ AF: nenhuma contagem 0 no funil
+  ✅ EM: com a etapa em t, 2019–2025 = desfechos_cobertura.com_EM
+  ✅ EM: universo, ANO 2019–2024 = desfechos_cobertura.com_alvo_EM_t1
+  ✅ EM: soma do universo = 2478 (registrado 2478)
+  ✅ EM: soma do painel da Etapa 2 = 980 (registrado 980)
+  ✅ EM: sem a etapa em t = n_sem_t do 01_baselines.csv (17 transições)
+  ✅ EM: encaixe Brasil ≥ RR ≥ públicas ≥ com a etapa ≥ com a etapa e alvo
+  ✅ EM: universo = (com a etapa e alvo) + (sem a etapa)
+  ✅ EM: Brasil vazio exatamente em 2007–2018 (zips fora desta máquina)
+  ✅ EM: degraus 5–8 vazios em 2025 (t+1 não publicado)
+  ✅ EM: painel vazio fora de 2019–2024
+  ✅ EM: nenhuma contagem 0 no funil
+
+B. Desfecho por ano (desfecho_por_ano.csv)
+  ✅ AF 2019: n=239, média 5.42, p90 12.8, % zeros 22.2 = desfechos_distribuicao
+  ✅ AF 2020: n=237, média 1.04, p90 3.5, % zeros 71.7 = desfechos_distribuicao
+  ✅ AF 2021: n=234, média 3.13, p90 9.7, % zeros 41.9 = desfechos_distribuicao
+  ✅ AF 2022: n=235, média 5.22, p90 12.2, % zeros 24.3 = desfechos_distribuicao
+  ✅ AF 2023: n=233, média 3.16, p90 8.1, % zeros 31.8 = desfechos_distribuicao
+  ✅ AF 2024: n=240, média 2.76, p90 7.9, % zeros 35.0 = desfechos_distribuicao
+  ✅ AF 2025: n=244, média 2.53, p90 7.8, % zeros 43.0 = desfechos_distribuicao
+  ✅ EM 2019: n=158, média 10.71, p90 25.9, % zeros 17.7 = desfechos_distribuicao
+  ✅ EM 2020: n=157, média 1.67, p90 4.8, % zeros 70.7 = desfechos_distribuicao
+  ✅ EM 2021: n=159, média 5.83, p90 16.0, % zeros 35.8 = desfechos_distribuicao
+  ✅ EM 2022: n=162, média 12.05, p90 25.6, % zeros 11.1 = desfechos_distribuicao
+  ✅ EM 2023: n=167, média 7.58, p90 17.1, % zeros 14.4 = desfechos_distribuicao
+  ✅ EM 2024: n=168, média 5.74, p90 13.2, % zeros 25.0 = desfechos_distribuicao
+  ✅ EM 2025: n=173, média 6.20, p90 14.3, % zeros 19.1 = desfechos_distribuicao
+  ✅ AF: média e n de 2007–2025 = sintese_numeros (19 anos)
+  ✅ EM: média e n de 2007–2025 = sintese_numeros (19 anos)
+
+C. Cobertura do painel (cobertura_painel.csv)
+  ✅ AF: linhas do painel = 1419 (registrado 1419)
+  ✅ AF: IED vazio em 2019–2020 e presente em 2021–2024 (P019)
+  ✅ AF: HAD sem contagem nos 6 anos (não entra no painel)
+  ✅ AF: % entre 0 e 100
+  ✅ EM: linhas do painel = 980 (registrado 980)
+  ✅ EM: IED vazio em 2019–2020 e presente em 2021–2024 (P019)
+  ✅ EM: HAD sem contagem nos 6 anos (não entra no painel)
+  ✅ EM: % entre 0 e 100
+
+D. Etapa 1: diferenças e contagens sem 2025
+  ✅ B1R-B0_Rec@10 = B1R_Rec@10 − B0_Rec@10
+  ✅ B1R-B0_Rec@20 = B1R_Rec@20 − B0_Rec@20
+  ✅ B1-B0_MAE = B1_MAE − B0_MAE
+  ✅ com 2025: AF: transições avaliadas = 17 (2009–2025) (registrado 17 (2009–2025))
+  ✅ com 2025: AF: anos com MAE B1 < MAE B0 = 11 de 17 (registrado 11 de 17)
+  ✅ com 2025: AF: anos com R² B1 > 0 = 1 de 17 (registrado 1 de 17)
+  ✅ com 2025: AF: anos com B1R Recall@10% > aleatório = 17 de 17 (registrado 17 de 17)
+  ✅ com 2025: AF: anos com B1R Recall@20% > aleatório = 17 de 17 (registrado 17 de 17)
+  ✅ com 2025: EM: transições avaliadas = 17 (2009–2025) (registrado 17 (2009–2025))
+  ✅ com 2025: EM: anos com MAE B1 < MAE B0 = 6 de 17 (registrado 6 de 17)
+  ✅ com 2025: EM: anos com R² B1 > 0 = 1 de 17 (registrado 1 de 17)
+  ✅ com 2025: EM: anos com B1R Recall@10% > aleatório = 15 de 17 (registrado 15 de 17)
+  ✅ com 2025: EM: anos com B1R Recall@20% > aleatório = 16 de 17 (registrado 16 de 17)
+  ✅ sem 2025: AF: transições avaliadas = 16 (2009–2024)
+  ✅ sem 2025: AF: anos com MAE B1 < MAE B0 = 10 de 16
+  ✅ sem 2025: AF: anos com R² B1 > 0 = 0 de 16
+  ✅ sem 2025: AF: anos com B1R Recall@10% > aleatório = 16 de 16
+  ✅ sem 2025: AF: anos com B1R Recall@20% > aleatório = 16 de 16
+  ✅ sem 2025: EM: transições avaliadas = 16 (2009–2024)
+  ✅ sem 2025: EM: anos com MAE B1 < MAE B0 = 5 de 16
+  ✅ sem 2025: EM: anos com R² B1 > 0 = 1 de 16
+  ✅ sem 2025: EM: anos com B1R Recall@10% > aleatório = 14 de 16
+  ✅ sem 2025: EM: anos com B1R Recall@20% > aleatório = 15 de 16
+  ✅ sem 2025: 16 transições por etapa (2009–2024)
+  ✅ posição de 2024→2025, AF R² do B1: 1ª de 17 (valor +0.075; 1ª: 2024→2025, +0.075)
+  ✅ posição de 2024→2025, AF MAE do B1 − MAE do B0: 1ª de 17 (valor -1.883; 1ª: 2024→2025, -1.883)
+  ✅ posição de 2024→2025, AF Recall@10% do B1R: 1ª de 17 (valor +0.500; 1ª: 2024→2025, +0.500)
+  ✅ posição de 2024→2025, AF Recall@20% do B1R: 2ª de 17 (valor +0.478; 1ª: 2008→2009, +0.488)
+  ✅ posição de 2024→2025, EM R² do B1: 5ª de 17 (valor -0.219; 1ª: 2014→2015, +0.038)
+  ✅ posição de 2024→2025, EM MAE do B1 − MAE do B0: 2ª de 17 (valor -0.951; 1ª: 2020→2021, -1.368)
+  ✅ posição de 2024→2025, EM Recall@10% do B1R: 4ª de 17 (valor +0.353; 1ª: 2015→2016, +0.429)
+  ✅ posição de 2024→2025, EM Recall@20% do B1R: 2ª de 17 (valor +0.485; 1ª: 2014→2015, +0.519)
+  ✅ AF: o único R² do B1 > 0 é o de 2024→2025 (1 de 17 com, 0 de 16 sem, e 1ª posição)
+
+RESUMO: 82 OK, 0 falhas

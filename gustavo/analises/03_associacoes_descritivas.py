@@ -22,12 +22,15 @@ Blocos:
      (3 sementes) e queda de R² por permutação de bloco em holdout aleatório
      de 30% (3 sementes, 30 repetições). Parâmetros idênticos aos de 2026-11-02.
   D. [EXPLORATÓRIO] decomposição entre escolas / dentro da escola da
-     correlação do TDI(t) com o abandono. NÃO há número registrado para ela
-     (não está no DECISOES.md); a definição é a deste script: Pearson nas
-     médias por escola (entre) e nos desvios em relação à média da própria
-     escola (dentro, só escolas com ≥ 2 anos), base oficial, públicas,
-     alvo não nulo. Calculada contra o alvo (abandono em t+1) e, como
-     referência, contra o abandono em t.
+     correlação do TDI(t) com o abandono. Calculada primeiro pelo assistente
+     de chat (repassada pela pesquisadora), na mesma varredura da tabela de ρ,
+     sem número registrado; os números registrados no DECISOES.md (entrada
+     de 2026-11-02, correção de hipóteses; decomposição recalculada em
+     2026-11-03) são os deste script, com esta definição: Pearson nas médias por escola (entre) e nos desvios em
+     relação à média da própria escola (dentro, só escolas com ≥ 2 anos),
+     base oficial, públicas, alvo não nulo. Calculada contra o alvo (abandono
+     em t+1, alvos de 2020 a 2025 — é o quinto uso do desfecho de 2025,
+     CLAUDE.md §6, D7) e, como referência, contra o abandono em t.
 
 Saída: gustavo/saida/relatorios/associacoes_descritivas.csv
        (bloco, nivel, etapa, medida, metodo, n, valor)

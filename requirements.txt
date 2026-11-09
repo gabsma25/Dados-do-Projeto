@@ -11,13 +11,17 @@
 # Imports de terceiros do gustavo/: numpy, pandas, openpyxl e pyarrow (pelo
 # pandas) — já fixados no arquivo oficial —, scikit-learn e xlrd. scipy,
 # joblib e threadpoolctl são dependências do scikit-learn. Versões = as
-# instaladas no .venv em 2026-11-03.
+# instaladas no .venv em 2026-11-03, exceto o scikit-learn.
+#
+# scikit-learn em 1.8.0, a versão do Python global que gerou os resultados
+# registrados até 2026-11-03 (decisão da pesquisadora, 2026-11-03). Com a 1.9.1
+# o Random Forest da P026 (gustavo/analises/03, bloco C) muda até 0,0036 e o
+# gustavo/testes/05_validar_associacoes.py acusa 2 faixas.
 -r abandono-escolar/requirements.txt
-scikit-learn==1.9.1
+scikit-learn==1.8.0
 scipy==1.18.1
 joblib==1.6.0
 threadpoolctl==3.7.0
 xlrd==2.0.2
-# dependências transitivas do scikit-learn e do joblib, fixadas também
-narwhals==2.26.0
+# dependência transitiva do joblib, fixada também
 cloudpickle==3.1.2

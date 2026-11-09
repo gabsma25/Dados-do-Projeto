@@ -30,6 +30,14 @@ Faixas registradas (mín–máx, 2 casas)
   ✅ P026: MDI do TDI com trio (3 sementes): obtido 0.33–0.34, registrado 0.33–0.34 (n=3)
   ✅ P026: permutação de bloco, TDI (3 sementes): obtido 0.25–0.35, registrado 0.25–0.35 (n=3)
   ✅ P026: permutação de bloco, rendimento (3 sementes): obtido 0.17–0.20, registrado 0.17–0.20 (n=3)
+
+Decomposição entre / dentro da escola (bloco D), registrada no DECISOES.md
+  ✅ AF TDI(t) x abandono(t+1): entre escolas (médias por escola): obtido +0.6009 (n=252), registrado +0.601 (n=252)
+  ✅ AF TDI(t) x abandono(t+1): dentro da escola (desvios da média): obtido +0.0327 (n=1382), registrado +0.033 (n=1382)
+  ✅ AF TDI(t) x abandono(t+1): total (sem decompor): obtido +0.3461 (n=1395), registrado +0.346 (n=1395)
+  ✅ EM TDI(t) x abandono(t+1): entre escolas (médias por escola): obtido +0.4321 (n=169), registrado +0.432 (n=169)
+  ✅ EM TDI(t) x abandono(t+1): dentro da escola (desvios da média): obtido +0.0461 (n=960), registrado +0.046 (n=960)
+  ✅ EM TDI(t) x abandono(t+1): total (sem decompor): obtido +0.2640 (n=963), registrado +0.264 (n=963)
   ✅ P026: n do Random Forest = 1390 (registrado 1.390)
 
-RESUMO: 30 OK, 0 falhas
+RESUMO: 36 OK, 0 falhas

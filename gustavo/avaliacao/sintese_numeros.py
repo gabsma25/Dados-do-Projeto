@@ -69,18 +69,38 @@ for etapa, g in wb.groupby("etapa"):
     reg("Recall@10% observado", f"{etapa} modelos Cenário B (mín–máx)",
         f"{g['Rec@10'].min():.2f}–{g['Rec@10'].max():.2f}", "02_walkforward.csv")
 
-# ---- Etapa 1 (baselines, 2009–2025) ----
+# ---- Etapa 1 (baselines): 2009–2025 e, para os notebooks, sem 2024→2025 (D7) ----
 e1 = pd.read_csv(AV / "01_baselines.csv")
+
+
+def etapa1(grupo, e):
+    for etapa, g in e.groupby("etapa"):
+        reg(grupo, f"{etapa}: transições avaliadas", f"{len(g)} ({g['ano_alvo'].min()}–{g['ano_alvo'].max()})", "01_baselines.csv")
+        reg(grupo, f"{etapa}: anos com MAE B1 < MAE B0", f"{int((g['B1_MAE'] < g['B0_MAE']).sum())} de {len(g)}", "01_baselines.csv")
+        reg(grupo, f"{etapa}: anos com R² B1 > 0", f"{int((g['B1_R2'] > 0).sum())} de {len(g)}", "01_baselines.csv")
+        for k in ("10", "20"):
+            r = g[f"B1R_Rec@{k}"]
+            reg(grupo, f"{etapa}: B1R Recall@{k}% mín / mediana / máx",
+                f"{r.min():.2f} / {r.median():.2f} / {r.max():.2f}", "01_baselines.csv")
+            reg(grupo, f"{etapa}: anos com B1R Recall@{k}% > aleatório",
+                f"{int((r > g[f'B0_Rec@{k}']).sum())} de {len(g)}", "01_baselines.csv")
+
+
+etapa1("Etapa 1", e1)
+etapa1("Etapa 1 até 2024 (sem 2024→2025, D7)", e1[e1["ano_alvo"] <= 2024])
+
+# posição da transição bloqueada (D7) entre todas, por medida da persistência
+# (coluna, menor é mais favorável à persistência?)
+MEDIDAS_PERSISTENCIA = {"R² do B1": ("B1_R2", False), "MAE do B1 − MAE do B0": ("B1-B0_MAE", True),
+                        "Recall@10% do B1R": ("B1R_Rec@10", False), "Recall@20% do B1R": ("B1R_Rec@20", False)}
 for etapa, g in e1.groupby("etapa"):
-    reg("Etapa 1", f"{etapa}: transições avaliadas", f"{len(g)} ({g['ano_alvo'].min()}–{g['ano_alvo'].max()})", "01_baselines.csv")
-    reg("Etapa 1", f"{etapa}: anos com MAE B1 < MAE B0", f"{int((g['B1_MAE'] < g['B0_MAE']).sum())} de {len(g)}", "01_baselines.csv")
-    reg("Etapa 1", f"{etapa}: anos com R² B1 > 0", f"{int((g['B1_R2'] > 0).sum())} de {len(g)}", "01_baselines.csv")
-    for k in ("10", "20"):
-        r = g[f"B1R_Rec@{k}"]
-        reg("Etapa 1", f"{etapa}: B1R Recall@{k}% mín / mediana / máx",
-            f"{r.min():.2f} / {r.median():.2f} / {r.max():.2f}", "01_baselines.csv")
-        reg("Etapa 1", f"{etapa}: anos com B1R Recall@{k}% > aleatório",
-            f"{int((r > g[f'B0_Rec@{k}']).sum())} de {len(g)}", "01_baselines.csv")
+    g = g.set_index("ano_alvo")
+    for nome, (col, menor) in MEDIDAS_PERSISTENCIA.items():
+        pos = g[col].rank(ascending=menor, method="min")
+        primeiro = int(pos.idxmin())
+        reg("Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência)", f"{etapa}: {nome}",
+            f"{int(pos.loc[2025])}ª de {len(g)} (valor {g.loc[2025, col]:+.3f}; 1ª: {primeiro - 1}→{primeiro}, "
+            f"{g.loc[primeiro, col]:+.3f})", "01_baselines.csv")
 
 # ---- contagens de testes ----
 d02b = pd.read_csv(AV / "02b_diferencas.csv")
@@ -97,7 +117,7 @@ for fam, g in t[t["primario"]].groupby("familia"):
 for item in ["TDI", "ATU", "rendimento", "IED", "infraestrutura"]:
     g = t[(t["familia"] == "F1") & (t["item"] == item)]
     reg("testes 02d F1 por grupo", item,
-        f"IC>0 sem correção {int(g['ic_exclui_zero'].sum())}/{len(g)}; Holm {int(g['rejeita_holm'].sum())}/{int(g['primario'].sum())}",
+        f"IC exclui zero sem correção {int(g['ic_exclui_zero'].sum())}/{len(g)}; Holm {int(g['rejeita_holm'].sum())}/{int(g['primario'].sum())}",
         "02d_testes.csv")
 
 # ---- dados em disco ----

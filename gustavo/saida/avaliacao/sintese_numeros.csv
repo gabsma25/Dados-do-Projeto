@@ -84,6 +84,28 @@ Etapa 1,EM: B1R Recall@10% mín / mediana / máx,0.00 / 0.25 / 0.43,01_baselines
 Etapa 1,EM: anos com B1R Recall@10% > aleatório,15 de 17,01_baselines.csv
 Etapa 1,EM: B1R Recall@20% mín / mediana / máx,0.17 / 0.38 / 0.52,01_baselines.csv
 Etapa 1,EM: anos com B1R Recall@20% > aleatório,16 de 17,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: transições avaliadas,16 (2009–2024),01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: anos com MAE B1 < MAE B0,10 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: anos com R² B1 > 0,0 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: B1R Recall@10% mín / mediana / máx,0.17 / 0.32 / 0.46,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: anos com B1R Recall@10% > aleatório,16 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: B1R Recall@20% mín / mediana / máx,0.28 / 0.42 / 0.49,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",AF: anos com B1R Recall@20% > aleatório,16 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: transições avaliadas,16 (2009–2024),01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: anos com MAE B1 < MAE B0,5 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: anos com R² B1 > 0,1 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: B1R Recall@10% mín / mediana / máx,0.00 / 0.24 / 0.43,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: anos com B1R Recall@10% > aleatório,14 de 16,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: B1R Recall@20% mín / mediana / máx,0.17 / 0.35 / 0.52,01_baselines.csv
+"Etapa 1 até 2024 (sem 2024→2025, D7)",EM: anos com B1R Recall@20% > aleatório,15 de 16,01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),AF: R² do B1,"1ª de 17 (valor +0.075; 1ª: 2024→2025, +0.075)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),AF: MAE do B1 − MAE do B0,"1ª de 17 (valor -1.883; 1ª: 2024→2025, -1.883)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),AF: Recall@10% do B1R,"1ª de 17 (valor +0.500; 1ª: 2024→2025, +0.500)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),AF: Recall@20% do B1R,"2ª de 17 (valor +0.478; 1ª: 2008→2009, +0.488)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),EM: R² do B1,"5ª de 17 (valor -0.219; 1ª: 2014→2015, +0.038)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),EM: MAE do B1 − MAE do B0,"2ª de 17 (valor -0.951; 1ª: 2020→2021, -1.368)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),EM: Recall@10% do B1R,"4ª de 17 (valor +0.353; 1ª: 2015→2016, +0.429)",01_baselines.csv
+Etapa 1: posição de 2024→2025 (1ª = mais favorável à persistência),EM: Recall@20% do B1R,"2ª de 17 (valor +0.485; 1ª: 2014→2015, +0.519)",01_baselines.csv
 testes,"02b: diferenças por ano (Cenário B), IC exclui zero, sem correção",66 de 480,02b_diferencas.csv
 testes,"02c: modelo − B1R_lag e entre blocos (agrupado, 3 K), IC exclui zero, sem correção",3 de 84,02c_diferencas.csv
 "testes 02d (Holm, K primário)",F1,3 de 40,02d_testes.csv
@@ -91,11 +113,11 @@ testes,"02c: modelo − B1R_lag e entre blocos (agrupado, 3 K), IC exclui zero, 
 "testes 02d (Holm, K primário)",F3,0 de 8,02d_testes.csv
 "testes 02d (Holm, K primário)",F4,15 de 32,02d_testes.csv
 "testes 02d (Holm, K primário)",F5,0 de 56,02d_testes.csv
-testes 02d F1 por grupo,TDI,IC>0 sem correção 11/12; Holm 3/8,02d_testes.csv
-testes 02d F1 por grupo,ATU,IC>0 sem correção 0/12; Holm 0/8,02d_testes.csv
-testes 02d F1 por grupo,rendimento,IC>0 sem correção 3/12; Holm 0/8,02d_testes.csv
-testes 02d F1 por grupo,IED,IC>0 sem correção 3/12; Holm 0/8,02d_testes.csv
-testes 02d F1 por grupo,infraestrutura,IC>0 sem correção 2/12; Holm 0/8,02d_testes.csv
+testes 02d F1 por grupo,TDI,IC exclui zero sem correção 11/12; Holm 3/8,02d_testes.csv
+testes 02d F1 por grupo,ATU,IC exclui zero sem correção 0/12; Holm 0/8,02d_testes.csv
+testes 02d F1 por grupo,rendimento,IC exclui zero sem correção 3/12; Holm 0/8,02d_testes.csv
+testes 02d F1 por grupo,IED,IC exclui zero sem correção 3/12; Holm 0/8,02d_testes.csv
+testes 02d F1 por grupo,infraestrutura,IC exclui zero sem correção 2/12; Holm 0/8,02d_testes.csv
 dados em disco,dados/origem,2.90 GB,soma dos arquivos
 dados em disco,dados/bruto,3.05 GB,soma dos arquivos
 dados em disco,dados/interim,1.6 MB,soma dos arquivos
@@ -103,4 +125,4 @@ dados em disco,dados/processado,1.6 MB,soma dos arquivos
 dados em disco,dados/externo,1.4 MB,soma dos arquivos
 dados em disco,MANIFEST.csv: linhas por estágio,"{'bruto': 216, 'origem': 112, 'externo': 6, 'processado': 2}",dados/MANIFEST.csv
 dados em disco,gustavo/cache,2.3 MB,soma dos arquivos
-testes,abandono-escolar: testes pytest coletados,45 tests collected in 0.21s,pytest --collect-only
+testes,abandono-escolar: testes pytest coletados,70 tests collected in 1.46s,pytest --collect-only

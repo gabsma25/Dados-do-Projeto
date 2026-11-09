@@ -17,15 +17,24 @@ global**. Dependências em `Dados-do-Projeto/requirements.txt`, que inclui o
 
 Nos comandos abaixo, `python` significa esse interpretador.
 
-**Atenção — resultados registrados até 2026-11-03 vieram do Python global**
-(numpy 2.1.1, pandas 3.0.3, pyarrow 24.0.0, scikit-learn 1.8.0). Rodando no
-`.venv` (numpy 2.5.3, pandas 3.0.5, pyarrow 25.0.1, scikit-learn 1.9.1): bases
-com conteúdo idêntico (só os metadados do Parquet mudam), walk-forward e
-bootstraps idênticos a menos de 1e-15, correlações a menos de 1e-7; **o Random
-Forest da P026 (`analises/03`, bloco C) muda até 0,0036** e o
-`testes/05_validar_associacoes.py` acusa 2 faixas (TDI 0,25–0,34 e rendimento
-0,17–0,21 contra 0,25–0,35 e 0,17–0,20 registradas). As saídas versionadas
-continuam as do Python global até a pesquisadora decidir.
+**scikit-learn fixado em 1.8.0** (decisão da pesquisadora, 2026-11-03). Os
+resultados registrados até 2026-11-03 vieram do Python global (numpy 2.1.1,
+pandas 3.0.3, pyarrow 24.0.0, scikit-learn 1.8.0). Com o scikit-learn 1.9.1 que
+estava no `.venv`, o Random Forest da P026 (`analises/03`, bloco C) mudava até
+0,0036 e o `testes/05_validar_associacoes.py` acusava 2 faixas (TDI 0,25–0,34 e
+rendimento 0,17–0,21 contra 0,25–0,35 e 0,17–0,20 registradas).
+
+Verificação no `.venv` com o scikit-learn 1.8.0 (numpy 2.5.3, pandas 3.0.5,
+pyarrow 25.0.1), contra as saídas do Python global:
+
+- avaliação (`02`, `02b`, `02c`, `02d`): saídas idênticas byte a byte;
+- `testes/04`: 65 OK, 0 falhas; `testes/05`: 30 OK, 0 falhas (36 desde que passou a
+  conferir também a decomposição, rodado de novo no `.venv`);
+- `analises/03`: diferença máxima de 3e-16;
+- bases do pipeline (verificadas antes, com o scikit-learn 1.9.1; o pipeline não
+  usa scikit-learn): conteúdo idêntico, só os metadados do Parquet mudam.
+
+As saídas versionadas são as do Python global.
 
 ---
 
@@ -123,6 +132,19 @@ python testes/03_validar_censo_pos04.py --completo # confere também os zips 200
 
 Saídas em `saida/relatorios/validacao_base.txt`, `validacao_indices.txt` e `validacao_pos04.txt`. Se algum check falhar,
 o relatório aponta qual.
+
+```bash
+# Avaliação e associações (65 e 36 checks)
+python testes/04_validar_avaliacao.py
+python testes/05_validar_associacoes.py      # depois de analises/03
+
+# Números dos notebooks: funil, desfecho por ano, cobertura do painel, Etapa 1 sem 2025 (82 checks)
+python analises/04_funil_recorte.py
+python analises/05_descritivo_por_ano.py
+python testes/06_validar_descritivos.py      # depois de 01_baselines e sintese_numeros
+```
+
+Saídas em `validacao_avaliacao.txt`, `validacao_associacoes.txt` e `validacao_descritivos.txt`.
 
 ---
 

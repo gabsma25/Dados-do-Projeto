@@ -9,10 +9,10 @@ Para reconstruir tudo: `python programas/99_pipeline.py --force`
 
 ## `base_atual.parquet`
 
-**Cópia da última etapa pronta.** É o arquivo que o notebook de modelo
-consome.
+**Cópia da última etapa pronta.** É o arquivo que o instrumento de avaliação
+(`avaliacao/`) consome.
 
-- Dimensões: 12.597 × 64
+- Dimensões: 12.597 × 55
 - Conteúdo: idêntico ao `etapas/05_base_com_indices.parquet`
 - Como trocar a base do modelo: substitua este arquivo por qualquer
   `.parquet` de `etapas/` (a maioria dos scripts usa as mesmas chaves
@@ -124,12 +124,49 @@ dataset preditivo, use `02b`.
 - `validacao_base.txt` — 45 checks de integridade da base
 - `validacao_pos04.txt` — auditoria do parquet pós-04 (35 checks com `--completo` + tabelas de prevalência e ausência por ano)
 - `validacao_indices.txt` — 41 checks dos índices (recálculo independente e teste de vazamento)
+- `associacoes_descritivas.csv` — análise 03: associações descritivas registradas, reproduzidas por script
+- `validacao_associacoes.txt` — teste 05: análise 03 contra os números registrados (36 checks)
+- `funil_recorte.csv` — análise 04: funil de recorte da base avaliada, por ano e etapa
+- `desfecho_por_ano.csv` e `cobertura_painel.csv` — análise 05: série do desfecho e cobertura dos
+  indicadores no painel, por ano (números exibidos pelos notebooks do `abandono-escolar`)
+- `validacao_descritivos.txt` — teste 06: análises 04–05 contra os números registrados (82 checks)
+- `validacao_avaliacao.txt` — teste 04: instrumento de avaliação (65 checks)
+- `tempos_execucao.txt` — tempos de execução de 2026-11-02, cronometrados à mão (sem script)
 
-## Relatório de diagnóstico (na raiz de `saida/`)
+## Resultados da avaliação (em `avaliacao/`)
 
-- `relatorio_colunas_censo.csv` — inventário das colunas do Censo por ano,
-  gerado pelo script `programas/diagnostico/explorar_colunas_censo.py`.
-  Não faz parte do pipeline; é só material de investigação.
+Gerados pelos scripts de `gustavo/avaliacao/`; o prefixo do arquivo é o do script.
+
+- `01_baselines.csv` e `.md` — Etapa 1: B0, B1 e B1R por transição (`01_baselines.py`)
+- `02_*` — Etapa 2: walk-forward, decisões por bloco e importância (`02_walkforward.py`)
+- `02b_*` — robustez: células por ano, diferenças, decisões, padrão temporal (`02b_robustez.py`)
+- `02c_*` — poder: largura dos intervalos, diferenças e importância agrupadas (`02c_poder.py`)
+- `02d_testes.csv` e `02d_tdi_separado.md` — 228 linhas: os 152 testes primários (K de 10% e
+  20%, correção de Holm por família) e 76 de K = 30%, fora da correção (`02d_tdi_separado.py`)
+- `sintese_numeros.csv` — números de referência da síntese do projeto (`sintese_numeros.py`)
+
+## Figuras (em `figuras/`)
+
+Gravadas pelo notebook `abandono-escolar/notebooks/02_descritivo.ipynb` (PNG 300 dpi e PDF, com
+`src/figuras.py`); nenhuma calcula nada, todas exibem os CSV de `relatorios/`. Regenerar: executar o
+notebook (ver o README do `abandono-escolar`, limitações).
+
+- `02_funil_base_avaliada_2023.*` — funil de recorte da base avaliada em t = 2023 (`funil_recorte.csv`)
+- `02_desfecho_por_ano.*` — média, mediana e % de zeros do abandono, 2007–2025 (`desfecho_por_ano.csv`)
+- `02_cobertura_painel.*` — escolas-ano do painel da Etapa 2 com cada grupo de preditores (`cobertura_painel.csv`)
+
+## Instantâneo anterior (em `_backup_2026-10-14/`)
+
+Estado anterior à correção do relatório 04 e o 05 com 3 normalizações. Não é só histórico:
+`testes/03_validar_censo_pos04.py` (seção I, antes × depois) e `analises/01_escolha_metodo_infra.py`
+leem arquivos daqui. Mover a pasta exige mudar esses dois scripts.
+
+## Relatório de diagnóstico (fora do pipeline)
+
+- `relatorio_colunas_censo.csv` — inventário das colunas do Censo por ano, gerado em
+  `saida/` pelo script `programas/diagnostico/explorar_colunas_censo.py`. Não faz parte do
+  pipeline e não está no repositório hoje; uma versão anterior está em
+  `old/pipeline_ate_2026-10-09/saida/` (na raiz do repositório).
 
 ---
 

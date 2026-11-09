@@ -44,6 +44,11 @@ def main():
     base = pd.read_parquet(P_BASE)
     SAIDA.mkdir(parents=True, exist_ok=True)
     res = pd.concat([B.avaliar(base, e) for e in B.ETAPAS], ignore_index=True)
+    # Diferenças contra o B0, prontas para as figuras (o notebook não calcula).
+    # Sinal: Recall, B1R − B0 (> 0 = acima do aleatório); MAE, B1 − B0 (< 0 = B1 erra menos).
+    for k in ("10", "20"):
+        res[f"B1R-B0_Rec@{k}"] = res[f"B1R_Rec@{k}"] - res[f"B0_Rec@{k}"]
+    res["B1-B0_MAE"] = res["B1_MAE"] - res["B0_MAE"]
     res.to_csv(SAIDA / "01_baselines.csv", index=False, encoding="utf-8")
 
     txt = ["# Etapa 1 — Baselines", "",
