@@ -29,7 +29,7 @@ estendida para Roraima que:
 - `avaliacao/` — protocolo de avaliação: funções em `baselines.py`, `bootstrap.py`, `metricas.py`, `painel.py` e `walkforward.py`; scripts `01_baselines.py` (Etapa 1), `02_walkforward.py`, `02b_robustez.py`, `02c_poder.py`, `02d_tdi_separado.py` (Etapa 2) e `sintese_numeros.py`; resultados em `saida/avaliacao/`
 - `cache/` — recorte de RR por ano (`tx_rend/`, `censo/`). **Não apagar:** 2007–2018 só existe aqui (ver a limitação abaixo); 2019–2025 regenera dos zips
 - `docs/` — relatórios longos em markdown
-- `saida/` — parquets, relatórios, resultados da avaliação e figuras do notebook 02 do `abandono-escolar` (ver `saida/README.md`)
+- `saida/` — parquets, relatórios, resultados da avaliação e figuras dos notebooks 02 e 03 do `abandono-escolar` (ver `saida/README.md`)
 - `saida/_backup_2026-10-14/` — cópia parcial dos arquivos antes da correção do relatório 04 (scripts 03/04/99, teste 01, `base_atual.parquet` antigo = 04 antigo; o README raiz antigo não foi preservado) e o instantâneo do 05 com 3 normalizações (`*_3metodos.*`). Continua sendo entrada do teste 03 (seção I) e da análise 01, por isso fica em `saida/`
 
 ## Pipeline em 5 etapas

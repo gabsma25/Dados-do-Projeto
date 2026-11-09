@@ -147,13 +147,17 @@ Gerados pelos scripts de `gustavo/avaliacao/`; o prefixo do arquivo é o do scri
 
 ## Figuras (em `figuras/`)
 
-Gravadas pelo notebook `abandono-escolar/notebooks/02_descritivo.ipynb` (PNG 300 dpi e PDF, com
-`src/figuras.py`); nenhuma calcula nada, todas exibem os CSV de `relatorios/`. Regenerar: executar o
-notebook (ver o README do `abandono-escolar`, limitações).
+Gravadas pelos notebooks `abandono-escolar/notebooks/02_descritivo.ipynb` e `03_avaliacao.ipynb`
+(PNG 300 dpi e PDF, com `src/figuras.py`); nenhuma calcula nada, todas exibem os CSV de `relatorios/`
+e `avaliacao/`. Regenerar: executar o notebook (ver o README do `abandono-escolar`, limitações).
 
 - `02_funil_base_avaliada_2023.*` — funil de recorte da base avaliada em t = 2023 (`funil_recorte.csv`)
 - `02_desfecho_por_ano.*` — média, mediana e % de zeros do abandono, 2007–2025 (`desfecho_por_ano.csv`)
 - `02_cobertura_painel.*` — escolas-ano do painel da Etapa 2 com cada grupo de preditores (`cobertura_painel.csv`)
+- `03_etapa1_baselines.*` — Etapa 1: B1R − acaso e MAE B1 − MAE B0, alvos de 2009 a 2024 (`01_baselines.csv`)
+- `03_resolucao_recall10.*` — Recall@10% com IC 95% dos modelos do Cenário B, por ano e agrupado (`02c_largura.csv`)
+- `03_modelo_menos_baseline.*` — modelo − B1R_lag (F5) e modelo − B2 (F4), com Holm (`02d_testes.csv`)
+- `03_importancia_grupos.*` — importância por grupo no bloco 4 (F1), com Holm (`02d_testes.csv`)
 
 ## Instantâneo anterior (em `_backup_2026-10-14/`)
 

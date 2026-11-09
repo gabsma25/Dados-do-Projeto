@@ -19,6 +19,7 @@ Dados-do-Projeto/                      raiz do repositório
 ├── VISAO_GERAL_DO_PROJETO.md          visão geral para decisões futuras
 ├── requirements.txt                   ambiente comum (inclui o do abandono-escolar; fixa scikit-learn 1.8.0)
 ├── .gitignore                         cache do Python e de ferramentas
+├── arvore.py                          imprime a árvore de arquivos: python arvore.py [--nivel N] [--saida mapa.txt]
 ├── Artigos/                           referências em PDF (ex.: Almeida & Mussato, 2023)
 ├── Relatórios do Projeto/             planejamento (00_LEIA_PRIMEIRO … 07_PLANOS), anterior à avaliação
 │                                      de 2026-11-02; o que foi superado está na síntese, §4
@@ -57,7 +58,7 @@ Dados-do-Projeto/                      raiz do repositório
 │   │   ├── problemas.csv              mantido à mão pela pesquisadora
 │   │   ├── *.csv                      inventários, catálogo, desfechos, funil (gerados por código)
 │   │   └── figuras/                   figuras dos notebooks (PNG + PDF)
-│   ├── notebooks/                     01_leitura_e_recorte · 02_descritivo (lê gustavo/) · 03 a fazer
+│   ├── notebooks/                     01_leitura_e_recorte · 02_descritivo · 03_avaliacao (02 e 03 leem gustavo/)
 │   └── tests/                         pytest: sem rede, sem tocar em dados/; fixtures
 │
 ├── gustavo/                           pipeline estendido (2007–2025) e instrumento de avaliação
@@ -89,7 +90,7 @@ Dados-do-Projeto/                      raiz do repositório
 │       ├── etapas/                    01 · 02a · 02b · 03 · 04 · 05
 │       ├── relatorios/                diagnósticos do pipeline, saídas das análises, resultados dos testes
 │       ├── avaliacao/                 resultados do protocolo de avaliação (CSV + MD)
-│       ├── figuras/                   figuras do notebook 02 do abandono-escolar (PNG 300 dpi + PDF)
+│       ├── figuras/                   figuras dos notebooks 02 e 03 do abandono-escolar (PNG 300 dpi + PDF)
 │       └── _backup_2026-10-14/        estado anterior ao relatório 04; ainda é entrada do teste 03
 │                                      e da análise 01 (por isso fica aqui)
 │
