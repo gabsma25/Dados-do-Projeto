@@ -24,9 +24,9 @@ estendida para Roraima que:
 
 - `programas/` — construção da base (`01_` a `05_`, + `99_pipeline.py`)
 - `programas/diagnostico/` — scripts pontuais (não entram no pipeline)
-- `testes/` — `01_validar_base.py` (integridade, todos os estágios), `02_validar_indices.py` (05: índices), `03_validar_censo_pos04.py` (auditoria do parquet pós-04), `04_validar_avaliacao.py` (instrumento de avaliação), `05_validar_associacoes.py` (análise 03 contra os números registrados) e `06_validar_descritivos.py` (análises 04–05, números dos notebooks)
+- `testes/` — `01_validar_base.py` (integridade, todos os estágios), `02_validar_indices.py` (05: índices), `03_validar_censo_pos04.py` (auditoria do parquet pós-04), `04_validar_avaliacao.py` (instrumento de avaliação), `05_validar_associacoes.py` (análise 03 contra os números registrados) `06_validar_descritivos.py` (análises 04–05, números dos notebooks), `07_validar_sobreposicao.py` (rendimento 2019–2025 contra a base oficial) e `08_validar_classificacao.py` (ferramenta de classificação de alto risco)
 - `analises/` — análises fora do pipeline. Decisão de método, sem o alvo: `01_escolha_metodo_infra.py` (histórica: comparou prop/zano/zref19; lê o instantâneo de 3 métodos em `saida/_backup_2026-10-14/`) e `02_preenchimento_2007_2011.py` (como tratar IDA/IDP/IIE em 2007–2011). Com o alvo: `03_associacoes_descritivas.py` (reproduz associações registradas), `04_funil_recorte.py` e `05_descritivo_por_ano.py` (números exibidos pelos notebooks do `abandono-escolar`)
-- `avaliacao/` — protocolo de avaliação: funções em `baselines.py`, `bootstrap.py`, `metricas.py`, `painel.py` e `walkforward.py`; scripts `01_baselines.py` (Etapa 1), `02_walkforward.py`, `02b_robustez.py`, `02c_poder.py`, `02d_tdi_separado.py` (Etapa 2) e `sintese_numeros.py`; resultados em `saida/avaliacao/`
+- `avaliacao/` — protocolo de avaliação: funções em `baselines.py`, `bootstrap.py`, `metricas.py`, `painel.py` e `walkforward.py`; scripts `01_baselines.py` (Etapa 1), `02_walkforward.py`, `02b_robustez.py`, `02c_poder.py`, `02d_tdi_separado.py` (Etapa 2) e `sintese_numeros.py`; ferramenta de classificação de alto risco do sistema de alerta precoce (decisão de 10/11/2026): funções em `classificacao.py`, execução única em `03_classificacao.py` e verificação do treino em `03b_verificacao_classificacao.py`; resultados em `saida/avaliacao/`
 - `cache/` — recorte de RR por ano (`tx_rend/`, `censo/`). **Não apagar:** 2007–2018 só existe aqui (ver a limitação abaixo); 2019–2025 regenera dos zips
 - `docs/` — relatórios longos em markdown
 - `saida/` — parquets, relatórios, resultados da avaliação e figuras dos notebooks 02 e 03 do `abandono-escolar` (ver `saida/README.md`)
@@ -53,6 +53,7 @@ falhas**; `02_validar_indices.py`: **41 / 0**; `03_validar_censo_pos04.py --comp
 `04_validar_avaliacao.py` **65 / 0**, `05_validar_associacoes.py` **36 / 0**,
 `06_validar_descritivos.py` **82 / 0**.
 Rendimento 2019–2025 contra a base oficial (09/11/2026): `07_validar_sobreposicao.py` **25 / 0**.
+Classificação de alto risco, janela 2013–2018 (10/11/2026): `08_validar_classificacao.py` **65 / 0**; execução única de `avaliacao/03_classificacao.py` (nenhum modelo supera a régua do abandono de t−1; `abandono-escolar/docs/DECISOES.md`, 2026-11-10).
 
 > **Limitação: 2007–2018 sem verificação contra a fonte.** Os zips brutos de
 > tx_rend e do Censo de 2007–2018 não estão nesta máquina (estavam na do Gustavo).

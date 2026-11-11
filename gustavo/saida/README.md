@@ -131,11 +131,15 @@ dataset preditivo, use `02b`.
   indicadores no painel, por ano (números exibidos pelos notebooks do `abandono-escolar`)
 - `validacao_descritivos.txt` — teste 06: análises 04–05 contra os números registrados (82 checks)
 - `validacao_avaliacao.txt` — teste 04: instrumento de avaliação (65 checks)
+- `validacao_sobreposicao.txt` — teste 07: rendimento 2019–2025 contra a base oficial (25 checks)
+- `validacao_classificacao.txt` — teste 08: ferramenta de classificação de alto risco (65 checks)
+- `verificacao_classificacao.txt` — verificação do treino da classificação (`avaliacao/03b_verificacao_classificacao.py`)
 - `tempos_execucao.txt` — tempos de execução de 2026-11-02, cronometrados à mão (sem script)
 
 ## Resultados da avaliação (em `avaliacao/`)
 
 Gerados pelos scripts de `gustavo/avaliacao/`; o prefixo do arquivo é o do script.
+Classificação de alto risco (10/11/2026): `03_classificacao.csv` (métricas), `03_previsoes.csv` (uma linha por escola-ano de teste × nota), `03_testes.csv` (família F6 com Holm), `03_classificacao.md` (resumo) e `03b_controle_permutacao.csv` (sorteios da verificação).
 
 - `01_baselines.csv` e `.md` — Etapa 1: B0, B1 e B1R por transição (`01_baselines.py`)
 - `02_*` — Etapa 2: walk-forward, decisões por bloco e importância (`02_walkforward.py`)
@@ -147,7 +151,7 @@ Gerados pelos scripts de `gustavo/avaliacao/`; o prefixo do arquivo é o do scri
 
 ## Figuras (em `figuras/`)
 
-Gravadas pelos notebooks `abandono-escolar/notebooks/02_descritivo.ipynb` e `03_avaliacao.ipynb`
+Gravadas pelos notebooks `abandono-escolar/notebooks/02_descritivo.ipynb`, `03_avaliacao.ipynb` e `04_predicao.ipynb` (figuras `04_*`)
 (PNG 300 dpi e PDF, com `src/figuras.py`); nenhuma calcula nada, todas exibem os CSV de `relatorios/`
 e `avaliacao/`. Regenerar: executar o notebook (ver o README do `abandono-escolar`, limitações).
 

@@ -151,6 +151,13 @@ Saídas em `validacao_avaliacao.txt`, `validacao_associacoes.txt` e `validacao_d
 python testes/07_validar_sobreposicao.py      # depois do 05_indices_infra; saída em validacao_sobreposicao.txt
 ```
 
+```bash
+# Classificação de alto risco, janela 2013–2018 (sistema de alerta precoce; DECISOES.md, 2026-11-10)
+python testes/08_validar_classificacao.py              # 65 checks; não calcula métrica de modelo nos dados reais
+python avaliacao/03_classificacao.py                   # JÁ RODOU UMA VEZ (10/11/2026): não rodar de novo sem registrar no DECISOES
+python avaliacao/03b_verificacao_classificacao.py      # reexecuta em pasta temporária e confere md5; ~12 min (teste de permutação)
+```
+
 ---
 
 ## Análises de decisão (não são testes)
