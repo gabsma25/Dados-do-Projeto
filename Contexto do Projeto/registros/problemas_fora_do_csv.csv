@@ -1,0 +1,12 @@
+id,tipo,objeto,descricao,estado,onde_esta,fonte
+P006,cobertura,séries de indicadores do INEP,"correção proposta: o texto atual descreve uma cobertura de IED/HAD que a P019 já superou",resolvido,"linha proposta, não colada","síntese, 'O que não ficou registrado' nº 8"
+P019,cobertura,IED escola 2019–2020 e HAD 2019–2024,"baixados em 30/09 e fora do painel; usá-los muda o desenho",aberto,"linha proposta, não colada","CLAUDE.md §6; síntese §5.4"
+P020,versionamento,HAD escolas 2020 e 2021,"md5 publicado pelo INEP não confere com a planilha do zip (caso irmão do P007)",resolvido,"linha proposta, não colada","síntese §2"
+P021,versionamento,extrator de indicadores,"regravava a cada execução os arquivos de bruto/indicadores/ (regra 1)",resolvido,"linha proposta, não colada","DECISOES.md 2026-09-30 (regra 1)"
+P022,acesso,certificado TLS do INEP,"o servidor não envia o certificado intermediário; versionado e conferido por fingerprint",resolvido,"linha proposta, não colada","DECISOES.md 2026-09-30"
+P023,acesso,base v1.0 do orientador,"não estava no clone local; desde 02/11 os 6 arquivos estão em dados/externo/",resolvido,"linha proposta, não colada","Relatórios do Projeto/06"
+P027,defasagem_temporal,transição 2024→2025,"o desfecho de 2025 já foi observado em 5 análises descritivas; o texto proposto diz que o teste nunca avaliou modelo, o que não vale para os notebooks de outubro",aberto,"linha proposta, não colada; texto a corrigir","síntese §5.1; este notebook, §5"
+M001,método,notebook v1,"4 problemas: não filtra públicas, imputação quebrada por tipo, imputação antes do split, categóricas descartadas",resolvido,"Relatórios do Projeto/06 (antigo P021)","substituído pelo protocolo de gustavo/avaliacao (síntese §6.2)"
+M002,método,instabilidade temporal,"R² positivo num ano e negativo no outro",em parte,"Relatórios do Projeto/06 (antigo P022)","medida: o intervalo de um ano tem largura ~0,30; o padrão temporal foi refutado no EM e não é significativo no AF"
+M003,ambiente,bootstrap em pasta sincronizada,"~3h52 com a pasta dados/ sincronizando na nuvem",resolvido,"Relatórios do Projeto/06 (antigo P024)","36 min num clone limpo com --origem-local (CLAUDE.md §8, critério 9)"
+M004,método,métricas de classificação,"o uso real pede priorização, não só regressão",em parte,"Relatórios do Projeto/06 (antigo P025)","Recall@K implementado sobre a regressão; classificação binária e limiar ALTO_* não"

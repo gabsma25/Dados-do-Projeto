@@ -1,0 +1,30 @@
+id,tipo,objeto,estado,na_planilha,correcao_proposta,serie
+P001,ruptura_de_esquema,IN_MED / IN_COMUM_MEDIO_*,aberto,sim,,P
+P002,ruptura_de_esquema,IN_NOTURNO,aberto,sim,,P
+P003,ruptura_de_esquema,QT_MAT_* / QT_TUR_* / QT_DOC_* em Escola 2025,resolvido,sim,,P
+P004,cobertura,Tabela_Turma_2025 vs Tabela_Matricula_2025,informativo,sim,,P
+P005,versionamento,dados/bruto/brutos-inep/TDI_2025_MUNICIPIOS (1).zip,resolvido,sim,,P
+P006,cobertura,"dados/bruto/brutos-inep/ (séries ATU, HAD, IED, TDI, tx_rend)",aberto,sim,estado proposto: resolvido,P
+P007,versionamento,"brutos-inep/ATU_2022_{BRASIL_REGIOES_UFS,ESCOLAS,MUNICIPIOS}.zip; TDI_2021_MUNICIPIOS.zip",informativo,sim,,P
+P008,versionamento,brutos-inep/tx_rend_municipios_2020.zip,informativo,sim,,P
+P009,ruptura_de_esquema,"tx_rend (todos os níveis), nomes técnicos das colunas",aberto,sim,,P
+P010,ruptura_de_esquema,tx_rend_brasil_regioes_ufs_2019.xlsx e _2020.xlsx,informativo,sim,,P
+P011,versionamento,microdados_ed_basica_2019/2020/2021 (colunas QT_DOC_*),aberto,sim,,P
+P012,ruptura_de_esquema,IN_ESCOLARIZACAO (COLS_FILTRO) e 45 colunas descontinuadas em 2023,aberto,sim,,P
+P013,granularidade,Indicadores INEP níveis municipios e brasil_regioes_ufs,informativo,sim,,P
+P014,ambiguidade_semantica,"tx_rend 2019 e 2020: colunas tap_/tre_/tab_ F04, F58, F00..F08",resolvido,sim,,P
+P015,ambiguidade_semantica,HAD_ESCOLAS_2025.xlsx e HAD_MUNICIPIOS_2025.xlsx,informativo,sim,,P
+P016,ambiguidade_semantica,ATU FUN_AI_CAT_0 / FUN_AF_CAT_0 / FUN_0x_CAT_0,aberto,sim,,P
+P017,cobertura,base_longitudinal_abandono_rr_2019_2025.csv (universo),aberto,sim,,P
+P018,qualidade_do_rotulo,3_CAT_FUN_AF / 3_CAT_MED (taxas de abandono por escola),aberto,sim,,P
+P019,cobertura,IED escola 2019–2020 e HAD 2019–2024,aberto,não,,P
+P020,versionamento,HAD escolas 2020 e 2021,resolvido,não,,P
+P021,versionamento,extrator de indicadores,resolvido,não,,P
+P022,acesso,certificado TLS do INEP,resolvido,não,,P
+P023,acesso,base v1.0 do orientador,resolvido,não,,P
+P026,ambiguidade_semantica,"APROVACAO_* / REPROVACAO_* / ABANDONO_* (mesma etapa, mesmo ano)",aberto,sim,,P
+P027,defasagem_temporal,transição 2024→2025,aberto,não,,P
+M001,método,notebook v1,resolvido,não,,M
+M002,método,instabilidade temporal,em parte,não,,M
+M003,ambiente,bootstrap em pasta sincronizada,resolvido,não,,M
+M004,método,métricas de classificação,em parte,não,,M

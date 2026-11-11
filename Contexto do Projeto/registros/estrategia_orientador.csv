@@ -1,0 +1,11 @@
+item,recomendacao,estado,como,fonte
+1,definir o horizonte como t → t+1,feito,preditores de t e desfecho de t+1 (regra 4),"CLAUDE.md §3"
+2,restringir o modelo operacional às escolas públicas,feito,universo = públicas com o desfecho de t+1 (D3),"gustavo/avaliacao/baselines.py"
+3,"modelos de referência simples, incluindo persistência e regressão regularizada",feito,"B0, B1, B1R, B1R_lag e B2; Ridge com α fixo","DECISOES.md 2026-11-02"
+4,testar modelos interpretáveis e de machine learning,feito em parte,"Ridge e árvore rasa; Random Forest, boosting, GAM e EBM não rodados","síntese §5.4"
+5,fazer validação estritamente temporal,feito,"walk-forward com janela expansiva, testes 2021–2024","DECISOES.md 2026-11-02"
+6,"2023 → 2024 como validação e 2024 → 2025 como teste final",feito em parte,"2023→2024 é a última dobra do walk-forward; 2024→2025 está bloqueado no protocolo, mas os notebooks de outubro já testaram modelos nele","notebook 04 §1"
+7,"análises de sensibilidade para 2020–2021",não feito,sensibilidade S1–S4 (D6) não rodada,"síntese §5.5"
+8,"avaliar erro, ranqueamento, calibração e estabilidade por município, localização e dependência",feito em parte,"erro e ranqueamento (Recall@K) feitos; calibração e estabilidade por grupo não; território e rede só no B2","síntese §5.5"
+9,produzir explicações globais e por escola,feito em parte,"importância por permutação de grupo (global); nada por escola","DECISOES.md 2026-11-02"
+10,"transformar a saída em lista de priorização para intervenção humana",não feito,"o observatório (produto final do CLAUDE.md §1) não foi iniciado","CLAUDE.md §1"

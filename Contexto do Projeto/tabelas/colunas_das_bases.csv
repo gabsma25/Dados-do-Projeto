@@ -1,0 +1,85 @@
+coluna,grupo,na_base_oficial,na_base_atual,onde
+ABANDONO_FUN,rendimento,True,True,nas duas
+ABANDONO_FUN_AF,rendimento,True,True,nas duas
+ABANDONO_FUN_AF_DELTA1,rendimento,True,True,nas duas
+ABANDONO_FUN_AF_LAG1,rendimento,True,True,nas duas
+ABANDONO_FUN_AF_T1,rendimento,True,True,nas duas
+ABANDONO_FUN_AI,rendimento,True,True,nas duas
+ABANDONO_FUN_LAG1,rendimento,True,True,nas duas
+ABANDONO_FUN_T1,rendimento,True,True,nas duas
+ABANDONO_MED,rendimento,True,True,nas duas
+ABANDONO_MED_DELTA1,rendimento,True,True,nas duas
+ABANDONO_MED_LAG1,rendimento,True,True,nas duas
+ABANDONO_MED_T1,rendimento,True,True,nas duas
+ANO,identificação e contexto,True,True,nas duas
+ANO_ALVO,identificação e contexto,True,True,nas duas
+APROVACAO_FUN,rendimento,True,True,nas duas
+APROVACAO_FUN_AF,rendimento,True,True,nas duas
+APROVACAO_FUN_AI,rendimento,True,True,nas duas
+APROVACAO_MED,rendimento,True,True,nas duas
+ATU_FUN_AF,ATU,True,False,só na oficial
+ATU_FUN_AF_DELTA1,ATU,True,False,só na oficial
+ATU_FUN_AI,ATU,True,False,só na oficial
+ATU_FUN_TOTAL,ATU,True,False,só na oficial
+ATU_MED_TOTAL,ATU,True,False,só na oficial
+ATU_MED_TOTAL_DELTA1,ATU,True,False,só na oficial
+CO_ENTIDADE,identificação e contexto,True,True,nas duas
+CO_MUNICIPIO,identificação e contexto,True,True,nas duas
+DEPENDENCIA,identificação e contexto,True,True,nas duas
+DIM_IDA_zano,infraestrutura: índices,False,True,só na base_atual (gustavo)
+DIM_IDP_zano,infraestrutura: índices,False,True,só na base_atual (gustavo)
+DIM_IEP_zano,infraestrutura: índices,False,True,só na base_atual (gustavo)
+DIM_IIB_zano,infraestrutura: índices,False,True,só na base_atual (gustavo)
+DISP_ATU,disponibilidade (DISP_*),True,False,só na oficial
+DISP_IED,disponibilidade (DISP_*),True,False,só na oficial
+DISP_REND,disponibilidade (DISP_*),True,True,nas duas
+DISP_TDI,disponibilidade (DISP_*),True,False,só na oficial
+IDA_despensa,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDA_refeitorio,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDA_sala_diretoria,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDA_sala_professor,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDA_secretaria,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDP_biblioteca,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDP_lab_informatica,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDP_patio_coberto,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDP_patio_descoberto,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IDP_quadra_esportes,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IED_FUN_ALTO,IED,True,False,só na oficial
+IED_FUN_N1,IED,True,False,só na oficial
+IED_FUN_N2,IED,True,False,só na oficial
+IED_FUN_N3,IED,True,False,só na oficial
+IED_FUN_N4,IED,True,False,só na oficial
+IED_FUN_N5,IED,True,False,só na oficial
+IED_FUN_N6,IED,True,False,só na oficial
+IED_MED_ALTO,IED,True,False,só na oficial
+IED_MED_N1,IED,True,False,só na oficial
+IED_MED_N2,IED,True,False,só na oficial
+IED_MED_N3,IED,True,False,só na oficial
+IED_MED_N4,IED,True,False,só na oficial
+IED_MED_N5,IED,True,False,só na oficial
+IED_MED_N6,IED,True,False,só na oficial
+IEP_computador,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IEP_impressora,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IEP_internet,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IEP_projetor,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IIB_agua_potavel,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IIB_banheiro,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IIB_coleta_lixo,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IIB_energia_rede,infraestrutura: itens,False,True,só na base_atual (gustavo)
+IIE_zano,infraestrutura: índices,False,True,só na base_atual (gustavo)
+INFRA_FONTE_ARTIGO,infraestrutura: marcadores,False,True,só na base_atual (gustavo)
+INFRA_ITENS_COMPLETOS,infraestrutura: marcadores,False,True,só na base_atual (gustavo)
+LOCALIZACAO,identificação e contexto,True,True,nas duas
+NO_ENTIDADE,identificação e contexto,True,True,nas duas
+NO_MUNICIPIO,identificação e contexto,True,True,nas duas
+REDE_PUBLICA,identificação e contexto,True,True,nas duas
+REPROVACAO_FUN,rendimento,True,True,nas duas
+REPROVACAO_FUN_AF,rendimento,True,True,nas duas
+REPROVACAO_FUN_AI,rendimento,True,True,nas duas
+REPROVACAO_MED,rendimento,True,True,nas duas
+TDI_FUN_AF,TDI,True,False,só na oficial
+TDI_FUN_AF_DELTA1,TDI,True,False,só na oficial
+TDI_FUN_AI,TDI,True,False,só na oficial
+TDI_FUN_TOTAL,TDI,True,False,só na oficial
+TDI_MED_TOTAL,TDI,True,False,só na oficial
+TDI_MED_TOTAL_DELTA1,TDI,True,False,só na oficial

@@ -1,0 +1,11 @@
+familia,etapa,testes,sobrevivem,ic_exclui_zero_sem_correcao
+F1,AF,20,2,6
+F1,EM,20,1,3
+F2,AF,8,5,7
+F2,EM,8,2,7
+F3,AF,4,0,1
+F3,EM,4,0,0
+F4,AF,16,14,16
+F4,EM,16,1,7
+F5,AF,28,0,0
+F5,EM,28,0,0

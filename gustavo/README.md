@@ -52,6 +52,7 @@ falhas**; `02_validar_indices.py`: **41 / 0**; `03_validar_censo_pos04.py --comp
 **35 / 0 com 1 aviso** (abaixo). Testes da avaliação e das análises (03/11/2026):
 `04_validar_avaliacao.py` **65 / 0**, `05_validar_associacoes.py` **36 / 0**,
 `06_validar_descritivos.py` **82 / 0**.
+Rendimento 2019–2025 contra a base oficial (09/11/2026): `07_validar_sobreposicao.py` **25 / 0**.
 
 > **Limitação: 2007–2018 sem verificação contra a fonte.** Os zips brutos de
 > tx_rend e do Censo de 2007–2018 não estão nesta máquina (estavam na do Gustavo).

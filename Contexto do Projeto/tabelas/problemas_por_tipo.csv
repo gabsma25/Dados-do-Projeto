@@ -1,0 +1,14 @@
+tipo,status,problemas
+ambiguidade_semantica,aberto,2
+ambiguidade_semantica,informativo,1
+ambiguidade_semantica,resolvido,1
+cobertura,aberto,2
+cobertura,informativo,1
+granularidade,informativo,1
+qualidade_do_rotulo,aberto,1
+ruptura_de_esquema,aberto,4
+ruptura_de_esquema,informativo,1
+ruptura_de_esquema,resolvido,1
+versionamento,aberto,1
+versionamento,informativo,2
+versionamento,resolvido,1

@@ -1,0 +1,8 @@
+serie,na_planilha,estado,problemas
+M,não,em parte,2
+M,não,resolvido,2
+P,não,aberto,2
+P,não,resolvido,4
+P,sim,aberto,10
+P,sim,informativo,6
+P,sim,resolvido,3

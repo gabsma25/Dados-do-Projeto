@@ -1,0 +1,11 @@
+n,recomendacao,estado,o_que_aconteceu,fonte
+1,"tratar 2024→2025 como validação e declarar no artigo que ela foi usada no desenvolvimento",não adotada,"o protocolo manteve 2024→2025 como teste bloqueado (D7), e os documentos oficiais dizem que ela nunca avaliou modelo","CLAUDE.md §6 (estado da D7)"
+2,"teste final prospectivo 2025→2026: congelar a especificação e selar as previsões com hash e data",não adotada,nenhum registro,—
+3,"aprovar a D8 já e guardar o denominador reconstruído e as contagens",não decidida,a D8 segue em aberto,"CLAUDE.md §6"
+4,"contagem esperada de abandonos como desfecho principal; a taxa como secundário",não adotada,o desfecho segue sendo a taxa (D4); o peso por matrícula é proposta (P018),"DECISOES.md D4"
+5,"estrato no desenho da lista (cota por estrato), não como preditor",não decidida,"o estrato não é preditor (decisão de equidade, CLAUDE.md §6); cota não discutida","CLAUDE.md §6"
+6,"manter AF e EM como unidades de modelagem",adotada,painéis AF e EM (D2),"DECISOES.md D2"
+7,"aprovar a D11 (2007–2018), mas executar só depois de congelar o protocolo com 2019–2025",não decidida,"o protocolo foi congelado em 02/11; a D11 segue em aberto","CLAUDE.md §6"
+8,"manter 2020–2021 na base com a sensibilidade S1–S4",coincide,"é a D6 do orientador; S1–S4 não rodadas","DECISOES.md D6"
+9,"trocar o limiar fixo pela capacidade K e por curvas de captura",em parte,"Recall@K com K = 10% e 20%; captura de alunos não; o limiar ALTO_* segue em aberto","DECISOES.md 2026-11-02"
+10,"avaliar os horizontes t+1 e t+2",em parte,"só t+1; o atraso de publicação do abandono virou o baseline B1R_lag","DECISOES.md 2026-11-02 (B1R_lag)"

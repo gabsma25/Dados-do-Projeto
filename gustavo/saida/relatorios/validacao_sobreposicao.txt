@@ -1,0 +1,32 @@
+A. Chaves, anos e colunas
+  ✅ ANO + CO_ENTIDADE único nas duas bases (gustavo 2019–2025: 4733 linhas, oficial: 6054; repetidos: 0 e 0)
+  ✅ 2019–2025, ano a ano, nas duas bases
+  ✅ as mesmas 20 colunas de rendimento nas duas bases (12 taxas do ano e 8 derivadas)
+
+B. Linhas
+  ✅ toda escola-ano do gustavo tem par na oficial (4733 de 4733)
+  ✅ as 1321 escolas-ano só da oficial não têm nenhuma das 12 taxas do ano (com alguma: 0)
+
+C. Valores, coluna a coluna (tolerância 1e-09; _LAG1 e _DELTA1 de 2020 em diante)
+  ✅ ABANDONO_FUN: 4574 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_FUN_AF: 1749 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_FUN_AF_DELTA1: 1468 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0; 2019: oficial vazia, gustavo com 244 (vêm de 2018)
+  ✅ ABANDONO_FUN_AF_LAG1: 1487 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0; 2019: oficial vazia, gustavo com 249 (vêm de 2018)
+  ✅ ABANDONO_FUN_AF_T1: 1494 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_FUN_AI: 3741 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_FUN_LAG1: 3830 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0; 2019: oficial vazia, gustavo com 621 (vêm de 2018)
+  ✅ ABANDONO_FUN_T1: 3838 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_MED: 1215 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ ABANDONO_MED_DELTA1: 1023 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0; 2019: oficial vazia, gustavo com 159 (vêm de 2018)
+  ✅ ABANDONO_MED_LAG1: 1026 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0; 2019: oficial vazia, gustavo com 159 (vêm de 2018)
+  ✅ ABANDONO_MED_T1: 1039 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ APROVACAO_FUN: 4574 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ APROVACAO_FUN_AF: 1749 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ APROVACAO_FUN_AI: 3741 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ APROVACAO_MED: 1215 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ REPROVACAO_FUN: 4574 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ REPROVACAO_FUN_AF: 1749 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ REPROVACAO_FUN_AI: 3741 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+  ✅ REPROVACAO_MED: 1215 valores nas duas, 0 diferentes (maior dif. 0.0e+00); ausência difere em 0
+
+RESUMO: 25 OK, 0 falhas

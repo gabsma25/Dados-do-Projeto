@@ -1,0 +1,53 @@
+registro,grupo,estado,n
+decisoes_doc06,,vigente,6
+decisoes_doc06,,feito,1
+decisoes_doc06,,não implementada,3
+decisoes_doc06,,aguarda decisão,4
+decisoes_doc06,,substituída,2
+perguntas_doc06,,respondida,5
+perguntas_doc06,,em parte,2
+perguntas_doc06,,aberta,3
+plano_outubro,Fase 2,feito de outra forma,1
+plano_outubro,Fase 2,feito,2
+plano_outubro,Fase 2,feito em parte,2
+plano_outubro,Fase 3,aguarda decisão,3
+plano_outubro,Fase 3,feito em parte,1
+plano_outubro,Fase 3,não feito,2
+plano_outubro,Fase 3,feito,1
+plano_outubro,Fase 4,aguarda decisão,1
+plano_outubro,Fase 4,não feito,2
+plano_outubro,Fase 4,feito em parte,1
+plano_outubro,Fase 4,feito,1
+plano_outubro,Fase 5,feito em parte,1
+plano_outubro,Fase 5,feito,1
+plano_outubro,Fase 5,não feito,1
+estrategia_orientador,,feito,4
+estrategia_orientador,,feito em parte,4
+estrategia_orientador,,não feito,2
+criterios_fase1,,feito,9
+plano_avancado,,não adotada,3
+plano_avancado,,não decidida,3
+plano_avancado,,adotada,1
+plano_avancado,,coincide,1
+plano_avancado,,em parte,2
+matriz_experimentos,,feito,1
+matriz_experimentos,,feito em parte,1
+matriz_experimentos,,não rodado,5
+matriz_experimentos,,feito (nulo),2
+matriz_experimentos,,feito de outra forma,1
+referencias,fonte de dados,citada nos documentos,4
+referencias,artigo-base,citada nos documentos,1
+referencias,documento do orientador,citada nos documentos,2
+referencias,legislação,citada nos documentos,1
+referencias,legislação,sugerida,1
+referencias,método citado na metodologia,citada nos documentos,8
+referencias,"método usado, ainda não citado",sugerida,4
+referencias,indireta (via Almeida & Mussato),indireta,3
+referencias,citada no Plano avançado,a conferir,7
+problemas_fora_do_csv,,resolvido,7
+problemas_fora_do_csv,,aberto,2
+problemas_fora_do_csv,,em parte,2
+experimentos_historico,,sim,5
+experimentos_historico,,não,7
+experimentos_historico,,não (só baselines),1
+experimentos_historico,,em parte,1

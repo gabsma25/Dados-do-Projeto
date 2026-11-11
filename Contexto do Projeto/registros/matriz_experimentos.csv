@@ -1,0 +1,11 @@
+exp,atributos,modelo,pergunta,estado,o_que_foi_feito,fonte
+E0,—,"B0, B1, B2",é possível superar o trivial?,feito,"Etapa 1 (B0, B1, B1R; 2009–2025) e Etapa 2 (B0, B1R, B1R_lag, B2; 2021–2024)","01_baselines.csv; 02_walkforward.csv"
+E1,Core,Elastic Net (B3) / logística (B4),quanto explica o linear?,feito em parte,"só Ridge com α = 1 fixo (sem L1, sem busca de α); a logística B4 não foi implementada","síntese §5.4"
+E2,Core,GAM / EBM,não linearidade interpretável ajuda?,não rodado,—,"síntese §5.4"
+E3,Core,Random Forest,interações?,não rodado,"no protocolo só há a árvore rasa (profundidade 3); Random Forest só no exploratório da P026, sem divisão temporal","síntese §3.6 e §5.4"
+E4,Core,LightGBM / CatBoost,ganho robusto no walk-forward?,não rodado,—,"síntese §5.4"
+E5,Core + IED (2021+),melhor de E1–E4,IED agrega?,feito (nulo),"bloco 3 (IED N1..N5) e família F3 nas transições com IED no treino: 0 de 8; ausência de evidência, não evidência de ausência","02d_testes.csv; DECISOES.md 2026-11-02"
+E6,Cenário B,melhor,quanto se perde ao antecipar o alerta?,feito de outra forma,"o Cenário B virou o principal; a comparação A × B ficou só pontual (A não superou B no Ridge do bloco 1)","síntese §3.4"
+E7,"Core, S2/S3/S4",melhor,resiste à pandemia?,não rodado,"sensibilidade S1–S4 da D6 pendente","síntese §5.5"
+E8,Core + Censo harmonizado,melhor,quanto a estrutura da escola agrega?,feito (nulo),"infraestrutura (18 itens → 4 dimensões + IIE) no bloco 4: 0 de 8 testes na F1; sai do modelo e fica como estratificação","DECISOES.md 2026-11-02"
+E9,"Core, com e sem peso QT_MAT",melhor,ponderar muda quem é priorizado?,não rodado,"depende das matrículas da D8","metodologia §8; P018"

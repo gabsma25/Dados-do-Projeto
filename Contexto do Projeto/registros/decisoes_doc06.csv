@@ -1,0 +1,17 @@
+id,decisao,origem,estado,hoje,fonte
+D1,Base dos Dados não é fonte do desfecho (falta o tx_rend),Conversa 30/09,vigente,o desfecho vem do tx_rend do INEP,"Relatórios do Projeto/02 §6"
+D2,Fonte do desfecho: tx_rend do INEP,Relatório diário,vigente,"harmonizado pelo rótulo humano: 2 gerações de layout na base oficial, 3 no gustavo/","metodologia §4.2; síntese §2"
+D3,"A v1.0 do orientador é referência, não substitui o código",README,vigente,"dependência externa documentada; a base oficial é a regerada por código","DECISOES.md 2026-09-30"
+D4,src/base_longitudinal.py reproduz a v1.0,Log do bootstrap 01/10,feito,"mesmas 6.054 linhas; 49 colunas idênticas e 8 na tolerância de 1e-9","CLAUDE.md §8, critérios 1–4"
+D5,Dois conjuntos: AF e EM,Relatório diário,vigente,"é a D2 da metodologia (orientador, 17/09)","DECISOES.md D2"
+D6,Desfecho: abandono em t+1,Relatório diário,vigente,é a D4 da metodologia,"DECISOES.md D4"
+D7,INSE só para comparar grupos,Relatório diário,não implementada,INSE nunca carregado,"síntese §5.5"
+D8,Pé-de-Meia como período pré/pós-2024,Sugestões do grupo,não implementada,variável não construída,"síntese §5.5"
+D9,Cuidado com vazamento do Pé-de-Meia,Sugestões do grupo,não implementada,sem objeto enquanto a variável não existir,—
+D10,Manter todas as escolas e criar elegivel_analise,Sugestões do grupo,aguarda decisão,"todas ficam na base (universo = união das planilhas); a flag não existe; a P017 propõe tirar do universo as escolas só de infantil","problemas.csv P017"
+D11,Escola indígena e localização diferenciada: incluir já,Sugestões do grupo,aguarda decisão,virou a proposta D8 da metodologia,"CLAUDE.md §6"
+D12,Multisseriadas: média do fundamental com indicador,Sugestões do grupo,aguarda decisão,"virou a proposta D9 (ATU_FUN_TOTAL + IN_MULTISSERIADA)","problemas.csv P016"
+D13,IED 2019–2020 e HAD: incluir se a metodologia for consistente,Sugestões do grupo,aguarda decisão,baixados em 30/09; nunca usados,"P019 (linha proposta)"
+D14,Categóricas com One-Hot,Análise do v1,substituída,"os modelos do protocolo não usam categóricas; território e rede entram só no baseline B2","gustavo/avaliacao/painel.py; CLAUDE.md §6 (estrato)"
+D15,Cada modelo só vê a sua etapa,Análise do v1,vigente,"com uma exceção: no AF o IED é o IED_FUN (fundamental inteiro)","síntese §6.1"
+D16,Corrigir os 4 problemas do v1,Análise do orientador,substituída,o v1 foi substituído pelo protocolo de gustavo/avaliacao,"síntese §6.2"

@@ -1,0 +1,11 @@
+id,pergunta,estado,resposta,fonte
+Q1,Quem escreve e valida src/base_longitudinal.py? Está definitivo?,respondida,"existe desde 30/09 e regera a v1.0 com as mesmas 6.054 linhas (critérios 1–4); mudanças futuras só pelas propostas D8 e P017","CLAUDE.md §8"
+Q2,A v1.0 do orientador vira base oficial ou fica como referência?,respondida,"fica como referência externa (dados/externo/); a base oficial é a regerada por código, igual a ela","DECISOES.md 2026-09-30"
+Q3,Qual R² / MAE / Recall@K é 'bom o suficiente'?,em parte,"não há meta de R² nem de MAE; o critério passou a ser superar baselines pré-especificados, com intervalo e Holm (pesquisadora, 02/11; validação do orientador pendente)","DECISOES.md 2026-11-02"
+Q4,"Pico de 2022: incluir, excluir ou usar como teste?",respondida,"a D6 do orientador mantém 2020–2021 com sensibilidade S1–S4; 2022 não é pico no AF (síntese §4, nº 2); as S1–S4 não foram rodadas","DECISOES.md D6"
+Q5,IED 2019–2020 e HAD: no modelo ou só na análise?,aberta,"baixados e fora do painel (P019); decisão com o orientador","CLAUDE.md §6"
+Q6,Prazos do PIBIC e do artigo,aberta,não registrados em nenhum documento do projeto,—
+Q7,Divisão de trabalho nas próximas fases,em parte,"de fato: o Gustavo construiu o gustavo/ (07–14/10) e a pesquisadora, a base oficial e a avaliação (desde 02/11); nada decidido para a escrita","git log dos dois repositórios"
+Q8,Variáveis do fundamental no modelo de EM?,respondida,"não: cada modelo só vê a sua etapa (doc 06, D15)","síntese §6.1"
+Q9,Infraestrutura do Censo no modelo ou só como caracterização?,respondida,"testada no bloco 4, sem sinal (0 de 8 na F1); sai do modelo e fica como estratificação","DECISOES.md 2026-11-02"
+Q10,Qual limiar define 'alto risco'?,aberta,"decisão do orientador (CLAUDE.md §6); o protocolo usa os K de maior abandono real, sem limiar","CLAUDE.md §6"

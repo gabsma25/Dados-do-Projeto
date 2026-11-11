@@ -1,0 +1,10 @@
+criterio,descricao,estado,evidencia
+1,"src/base_longitudinal.py regera a base a partir de dados/interim/indicadores_rr/",feito,"2026-09-30; CLAUDE.md §8"
+2,"a base regerada bate com a v1.0 do orientador nas 59 colunas",feito,"docs/comparacao_base_v1.csv: 49 colunas idênticas e 8 na tolerância de 1e-9"
+3,"as validações do validacao_base_longitudinal.json rodam por código e passam",feito,"assert no módulo; CLAUDE.md §8"
+4,"Parquet + CSV com chave única e hash no MANIFEST.csv",feito,"dados/processado/ (2 arquivos no manifesto)"
+5,"docs/desfechos.csv e docs/dicionario_anotado.csv gerados da metodologia",feito,"59 variáveis vigentes + 7 propostas"
+6,"DECISOES.md com entradas datadas para D1–D7 e para o que for aprovado de D8–D9",feito,"D1–D7 retroativas, criadas em 03/11; nada de D8–D9 foi aprovado"
+7,"notebooks/01_leitura_e_recorte.ipynb roda de ponta a ponta, com o kernel reiniciado",feito,"9 células executadas em ordem (1 a 9), sem erro; a pasta notebooks/ ainda não está no git"
+8,"nenhum arquivo de origem/, bruto/ ou externo/ modificado; nenhum microdado no git",feito,"conferido em 30/09 pelo manifesto; reconferível a qualquer momento"
+9,"um clone limpo chega ao mesmo estado pelo bootstrap",feito,"36 min com --origem-local (30/09); o caminho --baixar só foi testado contra servidor falso"

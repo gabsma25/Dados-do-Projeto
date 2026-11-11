@@ -1,0 +1,43 @@
+data,titulo,categoria,substituida
+2026-09-09,Encoding de todos os arquivos brutos,dados e procedência,False
+2026-09-09,Separador dos arquivos brutos,dados e procedência,False
+2026-09-09,Granularidade das tabelas Turma/Matrícula/Docente 2025,dados e procedência,False
+2026-09-09,Proxy para IN_NOTURNO em 2025,dados e procedência,False
+2026-09-09,"Definição de ""oferta de ensino médio"" entre gerações",dados e procedência,False
+2026-09-15,Organização dos arquivos de dados/bruto/brutos-inep/ (SUBSTITUÍDA pela entrada seguinte),dados e procedência,True
+2026-09-15,Extração dos .zip de indicadores (substitui a cópia organizada),dados e procedência,False
+2026-09-15,Leitura das planilhas de indicadores: linha de nomes técnicos é detectada,dados e procedência,False
+2026-09-15,Microdados 2019–2021 entram no dicionário ARQUIVOS,dados e procedência,False
+2026-09-15,MANIFEST.csv passa a cobrir tudo em dados/bruto/,dados e procedência,False
+2026-09-15,"Catálogo completo de variáveis (todas, não só as candidatas)",dados e procedência,False
+2026-09-15,Cabeçalho humano das planilhas de indicadores vira descrição,dados e procedência,False
+2026-09-17,D1 — Unidade de análise: escola-ano,"desenho (orientador, 17/09)",False
+2026-09-17,D2 — Dois painéis separados: anos finais (AF) e ensino médio (EM),"desenho (orientador, 17/09)",False
+2026-09-17,D3 — Universo: escolas públicas com taxa de rendimento na etapa,"desenho (orientador, 17/09)",False
+2026-09-17,D4 — Desfecho: taxa de abandono da etapa em t+1,"desenho (orientador, 17/09)",False
+2026-09-17,D5 — TDI deixa de ser desfecho e vira preditor,"desenho (orientador, 17/09)",False
+2026-09-17,D6 — Pandemia (2020–2021): manter na base e testar sensibilidade,"desenho (orientador, 17/09)",False
+2026-09-17,D7 — Partição temporal com teste 2024→2025 bloqueado,"desenho (orientador, 17/09)",False
+2026-09-30,dados/ organizada por estágio do dado,dados e procedência,False
+2026-09-30,"Manifesto cobre origem, bruto e externo",dados e procedência,False
+2026-09-30,Base longitudinal v1.0 como dependência externa documentada,dados e procedência,False
+2026-09-30,Regra 1: pastas imutáveis só recebem arquivo novo e conferido,dados e procedência,False
+2026-09-30,Relação de extração sai de bruto/ para docs/,dados e procedência,False
+2026-09-30,O que se obtém do INEP é exatamente o manifesto,dados e procedência,False
+2026-09-30,Infraestrutura encerrada até a fase 1 entregar resultado,dados e procedência,False
+2026-09-30,Regeração da base longitudinal e comparação com a v1.0,dados e procedência,False
+2026-09-30,Papel das variáveis da fase 1 (Tabela B),dados e procedência,False
+2026-09-30,Certificado intermediário do INEP versionado (P022),dados e procedência,False
+2026-11-02,"Protocolo de avaliação, Etapa 1: definição dos baselines e das métricas",avaliação e objetivo,False
+2026-11-02,Identidade contábil do rendimento: nunca as três taxas juntas; importância só por bloco (P026),avaliação e objetivo,False
+2026-11-02,"Protocolo de avaliação, Etapa 2: desenho do walk-forward",avaliação e objetivo,False
+2026-11-02,B1R_lag é o baseline principal; B1R é limite superior otimista,avaliação e objetivo,False
+2026-11-02,Resultado da Etapa 2: o instrumento não tem poder para separar os blocos,avaliação e objetivo,False
+2026-11-02,"Hipótese do padrão temporal: refutada no EM, não significativa no AF",avaliação e objetivo,False
+2026-11-02,Regra: testes múltiplos com correção e K fixado antes do resultado,avaliação e objetivo,False
+2026-11-02,"Correção de hipóteses: TDI × rendimento e ""atributos permanentes""",avaliação e objetivo,False
+2026-11-02,TDI separado do ATU; IED nos anos com treino (02d),avaliação e objetivo,False
+2026-11-02,Mudança de objetivo: identificar a informação que carrega sinal; a previsão vira instrumento,avaliação e objetivo,False
+2026-11-02,Cópia oficial do abandono-escolar e junction em Dados-do-Projeto,avaliação e objetivo,False
+2026-11-03,`src/filtros.py` passa a gerar o funil da base oficial,avaliação e objetivo,False
+2026-11-03,Inventário de indicadores: contagem de RR vazia quando a planilha não tem coluna de UF,avaliação e objetivo,False

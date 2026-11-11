@@ -146,6 +146,11 @@ python testes/06_validar_descritivos.py      # depois de 01_baselines e sintese_
 
 Saídas em `validacao_avaliacao.txt`, `validacao_associacoes.txt` e `validacao_descritivos.txt`.
 
+```bash
+# Rendimento 2019–2025 da base_atual contra a base oficial, célula por célula (25 checks)
+python testes/07_validar_sobreposicao.py      # depois do 05_indices_infra; saída em validacao_sobreposicao.txt
+```
+
 ---
 
 ## Análises de decisão (não são testes)
